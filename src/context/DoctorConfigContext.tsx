@@ -5,7 +5,8 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 export interface CVItem {
   year: string;
   title: string;
-  institution: string;
+  institution?: string;
+  description?: string;
 }
 
 export interface DoctorConfig {

@@ -184,7 +184,7 @@ export default function DoctorCard() {
                     {item.title}
                   </h5>
                   <p className="text-[10px] text-foreground/40 leading-relaxed font-semibold">
-                    {item.institution}
+                    {item.description || item.institution || ""}
                   </p>
                 </div>
               ))}
