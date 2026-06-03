@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { doctorConfig } from "@/doctor-config";
+import { useDoctorConfig } from "@/context/DoctorConfigContext";
 import { 
   MapPin, 
   Camera, 
@@ -17,69 +17,9 @@ import {
 
 export default function DoctorCard() {
   const [showSchedule, setShowSchedule] = useState(false);
+  const doctorConfig = useDoctorConfig();
 
-  const cvData = [
-    {
-      year: "2005 - 2011",
-      title: "General Doctor",
-      institution: "Faculty of Medicine, Universitas Jember (UNEJ), Jember"
-    },
-    {
-      year: "2018",
-      title: "Board Certified Neurosurgeon",
-      institution: "Faculty of Medicine, Universitas Airlangga (UNAIR) – Dr. Soetomo Hospital, Surabaya"
-    },
-    {
-      year: "2018",
-      title: "Spine Fellowship",
-      institution: "Center of Minimally Invasive Spine – Shin Yurigaoka Hospital, Neurosurgery Department, Japan"
-    },
-    {
-      year: "2019",
-      title: "Fellowship Neurosurgical Pain Society",
-      institution: "Indonesian Neurosurgical Pain Society"
-    },
-    {
-      year: "2022",
-      title: "Uni-portal Endoscopic Surgery Training",
-      institution: "ESPINEA, Academia, Singapore"
-    },
-    {
-      year: "2022",
-      title: "Neuro-Spine Fellowship",
-      institution: "Neurosurgery Department, Dr. Soetomo Hospital, Surabaya (National Certification of College of Indonesian Neurosurgery)"
-    },
-    {
-      year: "2023",
-      title: "Visiting & Training UBE Program",
-      institution: "St. Peter Hospital, Neurosurgery Department, Seoul, South Korea"
-    },
-    {
-      year: "2023",
-      title: "Visiting & Training BESS Interbody Fusion",
-      institution: "Hallym University Kangnam Sacred Heart Hospital, Orthopedic Department, Seoul, South Korea"
-    },
-    {
-      year: "2023",
-      title: "Visiting & Training MISS OLIF",
-      institution: "AJU University Hospital, Neurosurgery Department, Suwon, South Korea"
-    },
-    {
-      year: "2024",
-      title: "Intensive Bi-Portal Endoscopic Spine Course",
-      institution: "St. Mary & Saeum Hospital, Seoul, South Korea"
-    },
-    {
-      year: "2024",
-      title: "Euro Spine Education Week Module (Basic Diploma)",
-      institution: "Strasbourg, France"
-    },
-    {
-      year: "2024",
-      title: "Training of Spine Surgery",
-      institution: "Kawasaki Saiwai Hospital, Jikei University Hospital & Tokyo Spine Clinic, Kawasaki - Tokyo, Japan"
-    }
-  ];
+  const cvData = doctorConfig.cvTimeline;
 
   return (
     <>
@@ -126,11 +66,11 @@ export default function DoctorCard() {
                 <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 space-y-3">
                   <h4 className="text-sm font-bold text-white flex items-center gap-2">
                     <Award className="w-4 h-4 text-primary" />
-                    RS Soeradji Tirtonegoro Klaten
+                    {doctorConfig.clinic}
                   </h4>
                   <div className="flex gap-3 text-xs text-foreground/60 leading-relaxed">
                     <MapPinned className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                    <span>Jalan KRT Jl. Dr. Soeradji Tirtonegoro No.1, Dusun 1, Tegalyoso, Kec. Klaten Sel., Kabupaten Klaten, Jawa Tengah 57424</span>
+                    <span>{doctorConfig.location}</span>
                   </div>
                 </div>
 
@@ -148,7 +88,7 @@ export default function DoctorCard() {
               {/* Action Footer */}
               <div className="flex gap-4 pt-4">
                 <a 
-                  href="https://www.google.com/maps/search/?api=1&query=RS+Dr.+Soeradji+Tirtonegoro+Klaten"
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(doctorConfig.clinic + " " + doctorConfig.location)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 py-4 bg-primary text-white font-bold rounded-2xl text-center text-sm hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20"

@@ -12,6 +12,7 @@ import {
   ArrowLeft
 } from "lucide-react";
 import Link from "next/link";
+import { useDoctorConfig } from "@/context/DoctorConfigContext";
 
 const articles = [
   {
@@ -149,6 +150,7 @@ const articles = [
 ];
 
 export default function ArticlesPage() {
+  const doctorConfig = useDoctorConfig();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -161,7 +163,7 @@ export default function ArticlesPage() {
     setErrorMessage("");
 
     try {
-      const res = await fetch("https://newsletter-api.eka-prasaja.workers.dev/v1/spot-otb-k6uh8/subscribe", {
+      const res = await fetch(`https://newsletter-api.eka-prasaja.workers.dev/v1/${doctorConfig.doctorId}/subscribe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, referrer: window.location.href }),

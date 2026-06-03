@@ -3,7 +3,7 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import AppShell from "@/components/AppShell";
 import { ErrorBoundary } from "@/components/shared/ErrorBoundary";
-import Script from "next/script";
+import { DoctorConfigProvider } from "@/context/DoctorConfigContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -20,13 +20,13 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "SPOT-OTB | Portal Dokter Spesialis",
-  description: "Portal Digital Dokter Spesialis — SPOT-OTB",
+  title: "Portal Dokter Spesialis",
+  description: "Portal Digital Dokter Spesialis & Asisten AI Monitoring Mandiri",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "SPOT-OTB",
+    title: "Portal Dokter",
   },
 };
 
@@ -39,19 +39,10 @@ export default function RootLayout({
     <html lang="id" className={`${inter.variable} ${outfit.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-inter overscroll-none">
         <ErrorBoundary>
-          <AppShell>{children}</AppShell>
+          <DoctorConfigProvider>
+            <AppShell>{children}</AppShell>
+          </DoctorConfigProvider>
         </ErrorBoundary>
-
-        {/* Incodebot AI Chat Widget */}
-        {/* TODO: Ganti data-tenant-id dengan tenant ID dari dashboard.incodepanel.com */}
-        <Script 
-          src="/chat-widget.js?v=20260525_gdpr" 
-          data-tenant-id="spot-otb"
-          data-api-url="https://api.incodebot.com"
-          data-site-key="0x4AAAAAADLH-shsyjvDfhj8"
-          data-bottom="100px"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );

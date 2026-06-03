@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import DoctorCard from "@/components/DoctorCard";
-import { doctorConfig } from "@/doctor-config";
+import { useDoctorConfig } from "@/context/DoctorConfigContext";
 import DiagnosticToolGrid from "@/components/patterns/DiagnosticToolGrid";
 import MedicalInsightScroller from "@/components/patterns/MedicalInsightScroller";
 import AnimeBackground from "@/components/shared/AnimeBackground";
@@ -97,6 +97,7 @@ const tools = [
 ];
 
 export default function Home() {
+  const doctorConfig = useDoctorConfig();
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -110,7 +111,7 @@ export default function Home() {
     setErrorMessage("");
 
     try {
-      const res = await fetch("https://newsletter-api.eka-prasaja.workers.dev/v1/spot-otb-k6uh8/subscribe", {
+      const res = await fetch(`https://newsletter-api.eka-prasaja.workers.dev/v1/${doctorConfig.doctorId}/subscribe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, referrer: window.location.href }),
@@ -687,7 +688,7 @@ export default function Home() {
                 Dapatkan Update Kesehatan Tulang Belakang
               </h3>
               <p className="text-sm md:text-base text-foreground/50 leading-relaxed">
-                Bergabunglah dengan ribuan pembaca setia kami. Dapatkan wawasan tepercaya, tips kebugaran tulang belakang, dan artikel edukasi medis dari dr. Nama Dokter, Sp.OT, Subsp. OTB (K) langsung ke inbox Anda setiap minggu.
+                Bergabunglah dengan ribuan pembaca setia kami. Dapatkan wawasan tepercaya, tips kebugaran tulang belakang, dan artikel edukasi medis dari {doctorConfig.name} langsung ke inbox Anda setiap minggu.
               </p>
             </div>
 
