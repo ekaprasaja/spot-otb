@@ -3,12 +3,18 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Download, X } from "lucide-react";
+import { useDoctorConfig } from "@/context/DoctorConfigContext";
 
 export default function PWAInstallPrompt() {
+  const config = useDoctorConfig();
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [showPrompt, setShowPrompt] = useState(false);
 
   useEffect(() => {
+    // Check if user has already dismissed the prompt
+    const isDismissed = localStorage.getItem("pwa_install_dismissed") === "true";
+    if (isDismissed) return;
+
     const handleBeforeInstallPrompt = (e: Event) => {
       // Prevent the mini-infobar from appearing on mobile
       e.preventDefault();
@@ -45,8 +51,12 @@ export default function PWAInstallPrompt() {
   };
 
   const handleClose = () => {
+    // Don't show again once closed/dismissed
+    localStorage.setItem("pwa_install_dismissed", "true");
     setShowPrompt(false);
   };
+
+  const clinicTitle = config?.clinic ? config.clinic.toUpperCase() : "WISNU SPINECARE";
 
   return (
     <AnimatePresence>
@@ -64,7 +74,7 @@ export default function PWAInstallPrompt() {
             transition={{ type: "spring", damping: 25, stiffness: 350 }}
             className="relative w-full max-w-md bg-[#16161B] border border-white/10 rounded-[2.5rem] p-8 md:p-10 shadow-2xl text-center space-y-6 overflow-hidden"
           >
-            {/* Ambient gold glow */}
+            {/* Ambient glow */}
             <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-primary/10 blur-[80px] -z-10 rounded-full" />
             
             {/* Close Button */}
@@ -83,10 +93,12 @@ export default function PWAInstallPrompt() {
             {/* Typography */}
             <div className="space-y-3">
               <h2 className="text-xl md:text-2xl font-outfit font-black italic tracking-wide text-white uppercase leading-none">
-                PASANG <span className="text-primary font-bold">WISNU SPINECARE</span>
+                PASANG <span className="text-primary font-bold">{clinicTitle}</span>
               </h2>
               <p className="text-xs md:text-sm text-foreground/60 leading-relaxed px-2">
-                Akses pemantauan mandiri saraf & pemulihan pasca-operasi Anda lebih mudah langsung dari layar utama. Cukup satu klik.
+                {config?.whitelabelType === "spog"
+                  ? "Akses pemantauan mandiri kehamilan & perkembangan janin Anda lebih mudah langsung dari layar utama. Cukup satu klik."
+                  : "Akses pemantauan mandiri saraf & pemulihan pasca-operasi Anda lebih mudah langsung dari layar utama. Cukup satu klik."}
               </p>
             </div>
 

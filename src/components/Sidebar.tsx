@@ -33,7 +33,9 @@ export default function Sidebar() {
           </div>
           <div>
             <h1 className="font-outfit font-bold text-xl tracking-tight text-white">{doctorConfig.clinic || "Wisnu SpineCare"}</h1>
-            <p className="text-[10px] font-bold text-primary uppercase tracking-widest leading-none">Spine & Pain Intervention</p>
+            <p className="text-[10px] font-bold text-primary uppercase tracking-widest leading-none">
+              {doctorConfig.whitelabelType === "spog" ? "Obstetrics & Gynecology" : "Spine & Pain Intervention"}
+            </p>
           </div>
         </Link>
       </div>

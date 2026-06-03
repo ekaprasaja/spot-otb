@@ -23,6 +23,7 @@ export interface DoctorConfig {
   wordpressApiUrl: string;
   wordpressCategoryFilter: string;
   cvTimeline: CVItem[];
+  whitelabelType?: string;
 }
 
 const DoctorConfigContext = createContext<DoctorConfig | null>(null);
@@ -67,6 +68,7 @@ export function DoctorConfigProvider({ children }: { children: React.ReactNode }
           wordpressApiUrl: rawData.wordpressApiUrl || rawData.wordpress_api_url || "",
           wordpressCategoryFilter: rawData.wordpressCategoryFilter || rawData.wordpress_category_filter || "",
           cvTimeline: [],
+          whitelabelType: rawData.whitelabelType || "spog",
         };
 
         // 1. Inject Dynamic CSS accent color
@@ -117,6 +119,7 @@ export function DoctorConfigProvider({ children }: { children: React.ReactNode }
           wordpressApiUrl: "",
           wordpressCategoryFilter: "",
           cvTimeline: [],
+          whitelabelType: "spot-otb",
         });
       } finally {
         setLoading(false);
