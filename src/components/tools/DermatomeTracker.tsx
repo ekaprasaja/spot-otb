@@ -60,9 +60,9 @@ export default function DermatomeTracker() {
       status = "danger";
       zone = "ZONA MERAH";
       if (activeDermatome === "S1" || activeDermatome === "L5") {
-        message = "🚨 ALARM KRITIS: MATI RASA TOTAL (ANESTESIA SPINAL / SADDLE ANESTHESIA)\nTerjadi hilangnya rasa raba total pada area dermatome " + activeDermatome + " atau area bokong/kemaluan. Kondisi ini dicurigai merupakan indikasi Sindrom Kauda Ekuina (Cauda Equina Syndrome) atau jepitan saraf parah.\n\nTindakan Darurat Anda:\n1. Segera hubungi asisten dr. Wisnu Baskoro, Sp.BS atau langsung pergi ke UGD Rumah Sakit terdekat sekarang juga!\n2. Kehilangan kontrol buang air kecil/besar pasca mati rasa merupakan indikasi bedah dekompresi darurat.";
+        message = "🚨 ALARM KRITIS: MATI RASA TOTAL (ANESTESIA SPINAL / SADDLE ANESTHESIA)\nTerjadi hilangnya rasa raba total pada area dermatome " + activeDermatome + " atau area bokong/kemaluan. Kondisi ini dicurigai merupakan indikasi Sindrom Kauda Ekuina (Cauda Equina Syndrome) atau jepitan saraf parah.\n\nTindakan Darurat Anda:\n1. Segera hubungi asisten dr. Nama Dokter, Sp.OT, Subsp. OTB (K) atau langsung pergi ke UGD Rumah Sakit terdekat sekarang juga!\n2. Kehilangan kontrol buang air kecil/besar pasca mati rasa merupakan indikasi bedah dekompresi darurat.";
       } else {
-        message = "🚨 ALARM KRITIS: ANOMALI SENSORIK TOTAL\nMati rasa total pada area dermatome " + activeDermatome + " (lengan/tangan) mengindikasikan blok konduksi impuls saraf leher yang parah akibat herniasi masif.\n\nTindakan Darurat Anda:\nSegera hubungi dr. Wisnu Baskoro, Sp.BS untuk penjadwalan pemeriksaan neurologis mendesak guna mencegah defisit permanen.";
+        message = "🚨 ALARM KRITIS: ANOMALI SENSORIK TOTAL\nMati rasa total pada area dermatome " + activeDermatome + " (lengan/tangan) mengindikasikan blok konduksi impuls saraf leher yang parah akibat herniasi masif.\n\nTindakan Darurat Anda:\nSegera hubungi dr. Nama Dokter, Sp.OT, Subsp. OTB (K) untuk penjadwalan pemeriksaan neurologis mendesak guna mencegah defisit permanen.";
       }
     } else if (sensationLevel === "hypoesthesia") {
       status = "warning";

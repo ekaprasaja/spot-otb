@@ -64,24 +64,24 @@ export default function EdemaMonitor() {
 
     let status: "stable" | "danger" = "stable";
     let zone = "ZONA HIJAU";
-    let message = "Luka/titik bekas tindakan terpantau bersih dan kering. Tidak terdeteksi komplikasi atau tanda-tanda infeksi aktif. Lanjutkan perawatan steril sesuai instruksi dr. Wisnu Baskoro, Sp.BS.";
+    let message = "Luka/titik bekas tindakan terpantau bersih dan kering. Tidak terdeteksi komplikasi atau tanda-tanda infeksi aktif. Lanjutkan perawatan steril sesuai instruksi dr. Nama Dokter, Sp.OT, Subsp. OTB (K).";
 
     if (procedureType === "surgical") {
       if (simulationType === "csf") {
         status = "danger";
         zone = "ZONA MERAH";
-        message = "🚨 ALARM KRITIS: INDIKASI KEBOCORAN CAIRAN SEREBROSPINAL (CSF LEAK)\nTerdeteksi adanya rembesan cairan bening encer meluas pada perban luka operasi tulang belakang (spine) Anda. Kondisi ini membutuhkan penanganan steril segera untuk mencegah kontaminasi selaput otak/tulang belakang (meningitis).\n\nTindakan Darurat Anda:\n1. Tetap dalam posisi berbaring datar sempurna (tanpa bantal) jika luka berada di punggung atau leher.\n2. Segera pergi ke Rumah Sakit tempat dr. Wisnu Baskoro, Sp.BS praktik atau langsung menuju UGD terdekat!";
+        message = "🚨 ALARM KRITIS: INDIKASI KEBOCORAN CAIRAN SEREBROSPINAL (CSF LEAK)\nTerdeteksi adanya rembesan cairan bening encer meluas pada perban luka operasi tulang belakang (spine) Anda. Kondisi ini membutuhkan penanganan steril segera untuk mencegah kontaminasi selaput otak/tulang belakang (meningitis).\n\nTindakan Darurat Anda:\n1. Tetap dalam posisi berbaring datar sempurna (tanpa bantal) jika luka berada di punggung atau leher.\n2. Segera pergi ke Rumah Sakit tempat dr. Nama Dokter, Sp.OT, Subsp. OTB (K) praktik atau langsung menuju UGD terdekat!";
       } else if (simulationType === "infection") {
         status = "danger";
         zone = "ZONA MERAH";
-        message = "🚨 ALARM INFEKSI AKTIF PADA LUKA OPERASI\nTerdeteksi tanda-tanda infeksi bakteri seperti kemerahan meluas yang terasa panas, pembengkakan hebat, atau keluarnya cairan keruh/nanah dari luka bedah.\n\nTindakan Darurat Anda:\n1. Jaga area luka tetap steril, tutup dengan kasa kering steril baru.\n2. Segera hubungi asisten klinis dr. Wisnu Baskoro, Sp.BS untuk evaluasi jahitan dan resep antibiotik.";
+        message = "🚨 ALARM INFEKSI AKTIF PADA LUKA OPERASI\nTerdeteksi tanda-tanda infeksi bakteri seperti kemerahan meluas yang terasa panas, pembengkakan hebat, atau keluarnya cairan keruh/nanah dari luka bedah.\n\nTindakan Darurat Anda:\n1. Jaga area luka tetap steril, tutup dengan kasa kering steril baru.\n2. Segera hubungi asisten klinis dr. Nama Dokter, Sp.OT, Subsp. OTB (K) untuk evaluasi jahitan dan resep antibiotik.";
       }
     } else {
       // Injection/Intervention needle punctures
       if (simulationType === "hematoma") {
         status = "danger";
         zone = "ZONA MERAH";
-        message = "🚨 ALARM MEMAR / HEMATOMA LOKAL MELUAS\nTerdeteksi pembengkakan keras berdenyut atau lebam keunguan yang meluas secara cepat di sekitar titik bekas jarum tindakan intervensi nyeri. Hal ini mengindikasikan perdarahan di bawah kulit.\n\nTindakan Darurat Anda:\n1. Lakukan kompres dingin dengan es dibalut handuk tipis selama 10-15 menit untuk menghentikan aliran darah.\n2. Hubungi dr. Wisnu Baskoro, Sp.BS jika ukuran bengkak bertambah besar secara signifikan.";
+        message = "🚨 ALARM MEMAR / HEMATOMA LOKAL MELUAS\nTerdeteksi pembengkakan keras berdenyut atau lebam keunguan yang meluas secara cepat di sekitar titik bekas jarum tindakan intervensi nyeri. Hal ini mengindikasikan perdarahan di bawah kulit.\n\nTindakan Darurat Anda:\n1. Lakukan kompres dingin dengan es dibalut handuk tipis selama 10-15 menit untuk menghentikan aliran darah.\n2. Hubungi dr. Nama Dokter, Sp.OT, Subsp. OTB (K) jika ukuran bengkak bertambah besar secara signifikan.";
       } else if (simulationType === "irritation") {
         status = "danger";
         zone = "ZONA MERAH";
@@ -171,7 +171,7 @@ export default function EdemaMonitor() {
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-600/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
-                    <span><strong>Segera pergi ke Rumah Sakit tempat dr. Wisnu Baskoro, Sp.BS praktik</strong> atau langsung menuju <strong>Instalasi Gawat Darurat (IGD) terdekat sekarang juga!</strong> Jangan tunda sampai besok.</span>
+                    <span><strong>Segera pergi ke Rumah Sakit tempat dr. Nama Dokter, Sp.OT, Subsp. OTB (K) praktik</strong> atau langsung menuju <strong>Instalasi Gawat Darurat (IGD) terdekat sekarang juga!</strong> Jangan tunda sampai besok.</span>
                   </li>
                 </ul>
               </div>
@@ -411,7 +411,7 @@ export default function EdemaMonitor() {
           <ClinicalSection 
             title="Dasar Klinis: Cerebrospinal Fluid (CSF) Leakage & Infection"
             description="Kebocoran Cairan Serebrospinal (CSF) melalui luka jahitan operasi leher atau punggung (spinal) merupakan komplikasi serius bedah tulang belakang yang dapat memicu kontaminasi retrograde ke selaput otak dan saraf (meningitis). Tanda khas CSF leak adalah terbentuknya noda rembesan cairan bening meluas di perban (halo sign). Segmentasi gambar stateless mengidentifikasi perubahan warna dan meluasnya rembesan secara instan untuk deteksi dini Dural Tear."
-            disclaimer="Uji ini merupakan screening awal segmentasi visual perban steril Anda. Selalu kunjungi ruang praktek dr. Wisnu Baskoro secara langsung atau kunjungi IGD terdekat bila perban terasa basah atau timbul demam tinggi."
+            disclaimer="Uji ini merupakan screening awal segmentasi visual perban steril Anda. Selalu kunjungi ruang praktek dr. Nama Dokter secara langsung atau kunjungi IGD terdekat bila perban terasa basah atau timbul demam tinggi."
             colorClass="rose"
           />
 

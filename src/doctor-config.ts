@@ -4,13 +4,13 @@
 
 export const doctorConfig = {
   tenant_id: "spot-otb",                       // ← ganti dengan tenant_id dari dashboard
-  name: "Nama Dokter, Sp.XX",                   // ← nama lengkap + gelar spesialisasi
-  specialty: "Spesialisasi Lengkap",             // ← spesialisasi lengkap
-  clinic: "Nama Klinik / Rumah Sakit",           // ← nama klinik utama
+  name: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)", // ← nama lengkap + gelar spesialisasi
+  specialty: "Spesialis Orthopedi & Traumatologi, Konsultan Tulang Belakang (Spine Surgeon)",             // ← spesialisasi lengkap
+  clinic: "Spine & Pain Clinic",               // ← nama klinik utama
   whatsapp: "62812345678",                       // ← nomor WA dokter (format: 62xxx)
   location: "Kota, Indonesia",                   // ← lokasi praktik
   image: "/images/doctor_profile.webp",          // ← ganti foto dokter
-  bio: "Deskripsi singkat tentang dokter dan keahliannya.",
+  bio: "Spesialis Orthopedi & Traumatologi — Konsultan Bedah Tulang Belakang & Intervensi Nyeri.",
   socials: {
     instagram: "@handle_instagram",
     linkedin: "linkedin-slug",

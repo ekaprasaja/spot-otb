@@ -65,12 +65,12 @@ export default function SciaticaMapper() {
       status = "danger";
       zone = "ZONA MERAH";
       suspectedCondition = "Defisit Motorik Akut / Sindrom Kauda Ekuina Suspect";
-      message = "🚨 ALARM KRITIS: DEFISIT MOTORIK PROGRESSIF\nKelemahan motorik mendadak (seperti foot drop/pergelangan kaki lunglai atau hilangnya genggaman tangan) menandakan kompresi saraf tingkat tinggi yang membutuhkan tindakan dekompresi segera.\n\nTindakan Darurat Anda:\n1. Segera hentikan aktivitas berjalan atau membawa barang berat.\n2. Segera menuju IGD Rumah Sakit terdekat atau hubungi dr. Wisnu Baskoro, Sp.BS untuk evaluasi bedah darurat demi mencegah kelumpuhan permanen!";
+      message = "🚨 ALARM KRITIS: DEFISIT MOTORIK PROGRESSIF\nKelemahan motorik mendadak (seperti foot drop/pergelangan kaki lunglai atau hilangnya genggaman tangan) menandakan kompresi saraf tingkat tinggi yang membutuhkan tindakan dekompresi segera.\n\nTindakan Darurat Anda:\n1. Segera hentikan aktivitas berjalan atau membawa barang berat.\n2. Segera menuju IGD Rumah Sakit terdekat atau hubungi dr. Nama Dokter, Sp.OT, Subsp. OTB (K) untuk evaluasi bedah darurat demi mencegah kelumpuhan permanen!";
     } else if (painScale >= 7) {
       status = "danger";
       zone = "ZONA MERAH";
       suspectedCondition = "Radikulopati Berat dengan Nyeri Akut";
-      message = "🚨 ALARM NYERI RADIKULER HEBAT\nNyeri menjalar hebat (VAS " + painScale + "/10) mengindikasikan inflamasi/gesekan agresif pada akar saraf. Direkomendasikan istirahat total (bed rest) dalam posisi semi-Fowler (lutut ditekuk/disangga bantal) untuk lumbar, atau menggunakan cervical collar lunak untuk leher.\n\nTindakan Darurat:\nSegera hubungi asisten klinis dr. Wisnu Baskoro untuk resep anti-inflamasi/anti-nyeri neuropatik dosis terarah.";
+      message = "🚨 ALARM NYERI RADIKULER HEBAT\nNyeri menjalar hebat (VAS " + painScale + "/10) mengindikasikan inflamasi/gesekan agresif pada akar saraf. Direkomendasikan istirahat total (bed rest) dalam posisi semi-Fowler (lutut ditekuk/disangga bantal) untuk lumbar, atau menggunakan cervical collar lunak untuk leher.\n\nTindakan Darurat:\nSegera hubungi asisten klinis dr. Nama Dokter untuk resep anti-inflamasi/anti-nyeri neuropatik dosis terarah.";
     } else if (primaryLocation === "lumbar_radiation") {
       status = "warning";
       zone = "ZONA KUNING";
@@ -184,7 +184,7 @@ export default function SciaticaMapper() {
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
-                    <span>Hubungi tim medis <strong>dr. Wisnu Baskoro, Sp.BS</strong> di klinik atau UGD sekarang juga!</span>
+                    <span>Hubungi tim medis <strong>dr. Nama Dokter, Sp.OT, Subsp. OTB (K)</strong> di klinik atau UGD sekarang juga!</span>
                   </li>
                 </ul>
               </div>
@@ -479,7 +479,7 @@ export default function SciaticaMapper() {
           <ClinicalSection 
             title="Dasar Klinis: Radikulopati Saraf Spinal & Sciatica"
             description="Sciatica dan Radikulopati leher merupakan kondisi tertekannya akar saraf keluar (spinal nerve root) akibat herniasi nucleus pulposus (HNP), hipertrofi ligamen, atau osteofit. Skrining posisi yang memperberat dan deteksi kelemahan motorik (seperti parese L5 penyebab foot drop) memilah secara tajam mana indikasi konservatif/blok nyeri, dan mana indikasi tindakan bedah dekompresi dekompresif minimal invasif (BESS/PELD)."
-            disclaimer="Skrining mandiri digital ini bukan pengganti penegakan diagnosis radiologis (MRI/CT Scan) oleh dr. Wisnu Baskoro, Sp.BS."
+            disclaimer="Skrining mandiri digital ini bukan pengganti penegakan diagnosis radiologis (MRI/CT Scan) oleh dr. Nama Dokter, Sp.OT, Subsp. OTB (K)."
             colorClass="emerald"
           />
         </div>

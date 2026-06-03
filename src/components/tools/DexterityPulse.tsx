@@ -205,7 +205,7 @@ export default function DexterityPulse() {
         if (speedTps < 2.0 || accuracy < 60) {
           status = "danger";
           zone = "ZONA MERAH";
-          message = "⚠️ ALARM GANGGUAN MOTORIK NEUROLOGIS\nTerjadi penurunan drastis pada fungsi koordinasi motorik halus jari tangan Anda. Ini merupakan tanda adanya kompresi saraf tulang belakang leher (Cervical Myelopathy).\nTindakan yang Harus Dilakukan:\nHarap segera menghentikan aktivitas, batasi pergerakan leher, dan segera temui dr. Wisnu Baskoro, Sp.BS di tempat praktik Rumah Sakit, atau langsung kunjungi Instalasi Gawat Darurat (IGD) terdekat hari ini juga untuk pemeriksaan fisik dan evaluasi MRI tulang belakang leher!";
+          message = "⚠️ ALARM GANGGUAN MOTORIK NEUROLOGIS\nTerjadi penurunan drastis pada fungsi koordinasi motorik halus jari tangan Anda. Ini merupakan tanda adanya kompresi saraf tulang belakang leher (Cervical Myelopathy).\nTindakan yang Harus Dilakukan:\nHarap segera menghentikan aktivitas, batasi pergerakan leher, dan segera temui dr. Nama Dokter, Sp.OT, Subsp. OTB (K) di tempat praktik Rumah Sakit, atau langsung kunjungi Instalasi Gawat Darurat (IGD) terdekat hari ini juga untuk pemeriksaan fisik dan evaluasi MRI tulang belakang leher!";
         } else if (speedTps < 3.5 || accuracy < 80 || consistency < 70) {
           status = "warning";
           zone = "ZONA KUNING";
@@ -297,7 +297,7 @@ export default function DexterityPulse() {
                 <ul className="space-y-3.5 text-sm font-semibold text-white/90">
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</span>
-                    <span>Harap segera menghentikan aktivitas, batasi pergerakan, dan segera temui <strong className="text-red-400 font-bold">dr. Wisnu Baskoro, Sp.BS</strong> di Rumah Sakit sekarang.</span>
+                    <span>Harap segera menghentikan aktivitas, batasi pergerakan, dan segera temui <strong className="text-red-400 font-bold">dr. Nama Dokter, Sp.OT, Subsp. OTB (K)</strong> di Rumah Sakit sekarang.</span>
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
@@ -581,7 +581,7 @@ export default function DexterityPulse() {
           <ClinicalSection 
             title="Dasar Klinis: Finger Tapping Test (FTT) untuk Cervical Myelopathy"
             description="Tapping Test berseling A/B merupakan metode klinis standar untuk menguji fungsionalitas traktus kortikospinal yang melewati tulang belakang leher. Inkonsistensi irama (micro-delay bervariasi) mengarah pada tanda awal disdiadokokinesia akibat kompresi medula spinalis servikal, sedangkan penurunan akurasi visual fokal sensitif untuk mendeteksi gejala Cervical Myelopathy seperti tangan kaku, baal, dan kehilangan ketangkasan."
-            disclaimer="Layar sentuh yang lambat atau pelindung layar dapat sedikit mempengaruhi akurasi pengukuran irama. Hubungi dr. Wisnu Baskoro jika terjadi kelemahan fisik ekstrem."
+            disclaimer="Layar sentuh yang lambat atau pelindung layar dapat sedikit mempengaruhi akurasi pengukuran irama. Hubungi dr. Nama Dokter, Sp.OT, Subsp. OTB (K) jika terjadi kelemahan fisik ekstrem."
             colorClass="purple"
           />
         </div>

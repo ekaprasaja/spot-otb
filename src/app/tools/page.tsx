@@ -26,7 +26,7 @@ const tools = [
     href: "/tools/sciatica-radiculopathy",
     icon: <Activity className="w-5 h-5 text-emerald-400" />,
     color: "bg-emerald-500/10",
-    category: "Spine",
+    category: "Spine & Pain",
     description: "Skrining mandiri 3 menit gejala jepitan saraf pinggang menjalar (sciatica) atau saraf leher.",
     recommendation: "Sangat Dianjurkan Pasien HNP & Stenosis Spinal"
   },
@@ -36,7 +36,7 @@ const tools = [
     href: "/tools/dermatome-tracker",
     icon: <Hand className="w-5 h-5 text-indigo-400" />,
     color: "bg-indigo-500/10",
-    category: "Spine",
+    category: "Spine & Pain",
     description: "Pemetaan area kebas, kesemutan, atau hilangnya sensasi raba pada kulit sesuai dermatom saraf spinal.",
     recommendation: "Pantau Gangguan Sensorik & Terapi Nyeri Saraf"
   },
@@ -46,7 +46,7 @@ const tools = [
     href: "/tools/dexterity",
     icon: <Hand className="w-5 h-5 text-rose-400" />,
     color: "bg-rose-500/10",
-    category: "Neuro-Motor",
+    category: "Cervical Spine",
     description: "Uji koordinasi motorik halus jari telunjuk untuk memantau derajat keparahan Cervical Myelopathy leher.",
     recommendation: "Pantau Kelemahan Jari Pasca-ACDF Leher & Mielopati"
   },
@@ -56,8 +56,8 @@ const tools = [
     href: "/tools/spine",
     icon: <Scan className="w-5 h-5 text-emerald-400" />,
     color: "bg-emerald-500/10",
-    category: "Spine",
-    description: "Evaluasi batas aman tunduk/dongak leher & pinggang pasca-operasi besar tulang belakang.",
+    category: "Spine ROM",
+    description: "Evaluasi batas aman tunduk/dongak leher & pinggang pasca-operasi besar fusi tulang belakang.",
     recommendation: "Batas Aman Leher & Punggung Pasca-ACDF / BESS / TLIF"
   },
   {
@@ -66,8 +66,8 @@ const tools = [
     href: "/tools/trauma",
     icon: <ActivitySquare className="w-5 h-5 text-purple-400" />,
     color: "bg-purple-500/10",
-    category: "Trauma",
-    description: "Panduan pembebanan kaki aman bertahap pasca-trauma fiksasi tulang belakang.",
+    category: "Spine Trauma",
+    description: "Panduan pembebanan kaki aman bertahap pasca fiksasi internal cedera tulang belakang.",
     recommendation: "Rehabilitasi Pasca-TLIF & Kyphoplasty Osteoporosis"
   },
   {
@@ -76,7 +76,7 @@ const tools = [
     href: "/tools/edema",
     icon: <ActivitySquare className="w-5 h-5 text-indigo-400" />,
     color: "bg-indigo-500/10",
-    category: "Spine",
+    category: "Spine Surgical",
     description: "Evaluasi perban luka operasi tulang belakang dari rembesan cairan serebrospinal (CSF) secara stateless.",
     recommendation: "Pantau Luka Bedah ACDF/BESS & Kebocoran Cairan Serebrospinal"
   },
@@ -86,7 +86,7 @@ const tools = [
     href: "/tools/recovery",
     icon: <TrendingUp className="w-5 h-5 text-indigo-400" />,
     color: "bg-indigo-500/10",
-    category: "Spine",
+    category: "Spine & Pain",
     description: "Evaluasi pemulihan harian skala nyeri (VAS) dan jarak berjalan pasca-tindakan injeksi blok saraf.",
     recommendation: "Sangat Penting Pasca-Injeksi Blok Saraf & Tindakan Nyeri PLDD"
   }
@@ -234,7 +234,7 @@ export default function ToolsLibraryPage() {
           <div>
             <h4 className="text-xs font-bold text-white mb-1 uppercase tracking-widest">Standar Klinis & Edukasi</h4>
             <p className="text-[10px] text-foreground/40 leading-relaxed">
-              Seluruh algoritma AI divalidasi oleh spesialis bedah saraf sebagai asisten pemantauan mandiri (monitoring aid) dan media edukasi penunjang. Alat ini bukan instrumen diagnosis medis resmi.
+              Seluruh algoritma AI divalidasi oleh spesialis orthopedi konsultan tulang belakang (spine) sebagai asisten pemantauan mandiri (monitoring aid) dan media edukasi penunjang. Alat ini bukan instrumen diagnosis medis resmi.
             </p>
           </div>
         </div>

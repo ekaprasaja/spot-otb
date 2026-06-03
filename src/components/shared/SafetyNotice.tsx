@@ -46,7 +46,7 @@ export function SafetyNotice() {
             ⚠️ <strong>Pernyataan Batasan Resmi:</strong> Portal skrining SpineCare AI ini bukanlah instrumen diagnosis medis resmi dan tidak menggantikan keputusan klinis profesional. Aplikasi ini berfungsi sebagai media pemantauan mandiri (monitoring aid) dan alat edukasi penunjang untuk membantu Anda mengenali gejala dan melacak kemajuan latihan fusi leher/pinggang secara terstruktur selama masa pemulihan di bawah pengawasan dokter.
           </p>
           <p className="text-xs font-black text-rose-200 leading-relaxed text-center pt-1">
-            Demi keselamatan medis, Anda WAJIB melakukan konsultasi fisik langsung dengan dr. Wisnu Baskoro, Sp.BS sebelum merencanakan tindakan atau menghentikan terapi pemulihan!
+            Demi keselamatan medis, Anda WAJIB melakukan konsultasi fisik langsung dengan dr. Nama Dokter, Sp.OT, Subsp. OTB (K) sebelum merencanakan tindakan atau menghentikan terapi pemulihan!
           </p>
         </div>
       </div>

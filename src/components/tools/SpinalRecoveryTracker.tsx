@@ -66,16 +66,16 @@ export default function SpinalRecoveryTracker() {
       status = "danger";
       zone = "ZONA MERAH";
       if (intervention === "nerve_block") {
-        message = "⚠️ ALARM DEFISIT SARAF PASCA-TINDAKAN\nAnda melaporkan kebas/lemas baru yang progresif di kaki. Jika ini terjadi lebih dari 6 jam pasca-suntikan blok saraf, hal ini mengindikasikan potensi risiko hematoma (bekuan darah) yang menekan akar saraf spinal di area suntikan.\n\nTindakan Darurat:\n1. Segera hentikan aktivitas berjalan, berbaring rata tanpa bantal.\n2. Segera kunjungi tempat praktek dr. Wisnu Baskoro, Sp.BS atau menuju Instalasi Gawat Darurat (IGD) Rumah Sakit terdekat!";
+        message = "⚠️ ALARM DEFISIT SARAF PASCA-TINDAKAN\nAnda melaporkan kebas/lemas baru yang progresif di kaki. Jika ini terjadi lebih dari 6 jam pasca-suntikan blok saraf, hal ini mengindikasikan potensi risiko hematoma (bekuan darah) yang menekan akar saraf spinal di area suntikan.\n\nTindakan Darurat:\n1. Segera hentikan aktivitas berjalan, berbaring rata tanpa bantal.\n2. Segera kunjungi tempat praktek dr. Nama Dokter, Sp.OT, Subsp. OTB (K) atau menuju Instalasi Gawat Darurat (IGD) Rumah Sakit terdekat!";
       } else if (intervention === "pldd") {
-        message = "⚠️ ALARM DEFISIT SARAF PASCA-PLDD\nTerjadi kelemahan/kebas baru pasca-tindakan dekompresi laser. Ini merupakan indikasi iritasi saraf akut atau kompresi sisa bantalan tulang belakang.\n\nTindakan Darurat:\n1. Berbaring telentang, jangan membungkuk atau memutar pinggang.\n2. Segera kunjungi tempat praktek dr. Wisnu Baskoro, Sp.BS sekarang untuk evaluasi neurologis tatap muka darurat!";
+        message = "⚠️ ALARM DEFISIT SARAF PASCA-PLDD\nTerjadi kelemahan/kebas baru pasca-tindakan dekompresi laser. Ini merupakan indikasi iritasi saraf akut atau kompresi sisa bantalan tulang belakang.\n\nTindakan Darurat:\n1. Berbaring telentang, jangan membungkuk atau memutar pinggang.\n2. Segera kunjungi tempat praktek dr. Nama Dokter, Sp.OT, Subsp. OTB (K) sekarang untuk evaluasi neurologis tatap muka darurat!";
       } else {
-        message = "⚠️ ALARM NEUROLOGIS PROGRESIF\nTerjadi kelemahan motorik atau kebas baru pada kaki yang semakin memberat. Segera kunjungi tempat praktek dr. Wisnu Baskoro, Sp.BS secara langsung atau langsung kunjungi IGD terdekat!";
+        message = "⚠️ ALARM NEUROLOGIS PROGRESIF\nTerjadi kelemahan motorik atau kebas baru pada kaki yang semakin memberat. Segera kunjungi tempat praktek dr. Nama Dokter, Sp.OT, Subsp. OTB (K) secara langsung atau langsung kunjungi IGD terdekat!";
       }
     } else if (vasPainScore >= 7) {
       status = "danger";
       zone = "ZONA MERAH";
-      message = "⚠️ ALERT SKALA NYERI EKSTREM\nSkala nyeri Anda berada di level berat (" + vasPainScore + "/10). Sangat dianjurkan untuk tidak memaksakan aktivitas fisik, segera konsumsi obat pereda nyeri sesuai resep dr. Wisnu Baskoro, Sp.BS, dan segera jadwalkan kontrol jika nyeri menetap lebih dari 24 jam.";
+      message = "⚠️ ALERT SKALA NYERI EKSTREM\nSkala nyeri Anda berada di level berat (" + vasPainScore + "/10). Sangat dianjurkan untuk tidak memaksakan aktivitas fisik, segera konsumsi obat pereda nyeri sesuai resep dr. Nama Dokter, Sp.OT, Subsp. OTB (K), dan segera jadwalkan kontrol jika nyeri menetap lebih dari 24 jam.";
     } else if (vasPainScore >= 4 || parsedLimit < 100) {
       status = "warning";
       zone = "ZONA KUNING";
@@ -185,7 +185,7 @@ export default function SpinalRecoveryTracker() {
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
-                    <span>Hubungi <strong className="text-red-400 font-bold">dr. Wisnu Baskoro, Sp.BS</strong> sekarang juga untuk instruksi lebih lanjut.</span>
+                    <span>Hubungi <strong className="text-red-400 font-bold">dr. Nama Dokter, Sp.OT, Subsp. OTB (K)</strong> sekarang juga untuk instruksi lebih lanjut.</span>
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</span>
@@ -513,7 +513,7 @@ export default function SpinalRecoveryTracker() {
           <ClinicalSection 
             title="Dasar Medis: Visual Analog Scale (VAS) & Klaudikasi Saraf"
             description="Visual Analog Scale (VAS) merupakan baku emas klinis untuk mengukur tingkat keparahan nyeri secara subjektif. Pada kelainan tulang belakang (seperti HNP atau stenosis), perbaikan kapasitas jalan tanpa keluhan kesemutan/lemas (Klaudikasi Intermiten Neurogenik) adalah tolok ukur utama keberhasilan terapi intervensi nyeri (PLDD/Block) untuk memantau dekompresi saraf yang memadai."
-            disclaimer="Layanan log mandiri ini bersifat asisten pemantau pemulihan dan tidak menggantikan keputusan medis darurat dokter. Hubungi layanan darurat atau dr. Wisnu Baskoro jika terjadi penurunan motorik ekstrim mendadak."
+            disclaimer="Layanan log mandiri ini bersifat asisten pemantau pemulihan dan tidak menggantikan keputusan medis darurat dokter. Hubungi layanan darurat atau dr. Nama Dokter jika terjadi penurunan motorik ekstrim mendadak."
             colorClass="indigo"
           />
         </div>

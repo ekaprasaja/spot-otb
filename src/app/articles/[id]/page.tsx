@@ -8,7 +8,7 @@ const articlesData: Record<string, any> = {
     category: "Gaya Hidup",
     date: "6 Mei 2026",
     readTime: "8 menit",
-    author: "Tim Medis Wisnu Baskoro",
+    author: "Tim Medis Nama Dokter",
     image: "/images/articles/posture.webp",
     content: `
       <p class="mb-6 leading-relaxed">Bekerja dari rumah (Work from Home) telah menjadi standar baru bagi jutaan profesional di Indonesia. Namun, transisi ini membawa tantangan kesehatan baru, terutama terkait kesehatan muskuloskeletal. Tanpa peralatan kantor yang ergonomis, banyak dari kita bekerja di sofa, tempat tidur, atau meja makan yang tidak dirancang untuk penggunaan jangka panjang.</p>
@@ -34,7 +34,7 @@ const articlesData: Record<string, any> = {
       </div>
 
       <h2 class="text-2xl font-bold text-white mt-10 mb-6">Pentingnya Dynamic Sitting (Duduk Dinamis)</h2>
-      <p class="mb-6 leading-relaxed">Bahkan dengan kursi terbaik sekalipun, duduk diam terlalu lama tetaplah berisiko. Para ahli bedah saraf merekomendasikan metode <strong>"Micro-breaks"</strong> di mana setiap 30 menit, Anda disarankan untuk berdiri selama 2 menit untuk melakukan peregangan ringan pada leher, bahu, dan pinggang.</p>
+      <p class="mb-6 leading-relaxed">Bahkan dengan kursi terbaik sekalipun, duduk diam terlalu lama tetaplah berisiko. Para ahli spesialis orthopedi merekomendasikan metode <strong>"Micro-breaks"</strong> di mana setiap 30 menit, Anda disarankan untuk berdiri selama 2 menit untuk melakukan peregangan ringan pada leher, bahu, dan pinggang.</p>
       
       <p class="mb-6 leading-relaxed">Gunakan alat seperti <strong>Inclinometer AI</strong> kami untuk memantau kemiringan tulang belakang Anda secara berkala. Kesadaran akan posisi tubuh adalah langkah pertama menuju pemulihan dan pencegahan cedera permanen.</p>
 
@@ -48,7 +48,7 @@ const articlesData: Record<string, any> = {
     category: "Kesehatan Spine",
     date: "5 Mei 2026",
     readTime: "10 menit",
-    author: "dr. Wisnu Baskoro, Sp.BS, (F. N-TB), FINSS, FINPS",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
     image: "/images/article_exercise.webp",
     content: `
       <p class="mb-6 leading-relaxed">Nyeri punggung bukan lagi masalah yang hanya dialami oleh lansia. Di era modern, semakin banyak pasien di usia produktif (30-an dan 40-an) yang datang dengan keluhan kaku pada pinggang, nyeri leher menjalar, hingga mati rasa pada kaki. Gaya hidup sedenter dan postur duduk yang salah saat bekerja menjadi pemicu utama saraf kejepit.</p>
@@ -85,17 +85,17 @@ const articlesData: Record<string, any> = {
     category: "Kesehatan Spine",
     date: "4 Mei 2026",
     readTime: "9 menit",
-    author: "dr. Wisnu Baskoro, Sp.BS, (F. N-TB), FINSS, FINPS",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
     image: "/images/articles/lumbar_compression.webp",
     content: `
-      <p class="mb-6 leading-relaxed">Diagnosis saraf kejepit atau Hernia Nukleus Pulposus (HNP) sering kali membuat pasien merasa cemas dan membayangkan meja operasi. Namun, ada fakta penting yang perlu diketahui dari sudut pandang bedah saraf: lebih dari 85 hingga 90 persen pasien HNP dapat pulih sepenuhnya melalui penanganan konservatif tanpa operasi, seperti fisioterapi, obat anti-inflamasi saraf, dan perbaikan postur tubuh.</p>
-      <p class="mb-6 leading-relaxed">Meskipun demikian, ada kondisi-kondisi khusus di mana penundaan operasi dapat berisiko menyebabkan kerusakan saraf permanen. Kondisi ini disebut sebagai <strong>Indikasi Absolut Operasi</strong>, di mana tindakan bedah saraf dekompresi mikro menjadi opsi tunggal yang wajib dilakukan segera.</p>
+      <p class="mb-6 leading-relaxed">Diagnosis saraf kejepit atau Hernia Nukleus Pulposus (HNP) sering kali membuat pasien merasa cemas dan membayangkan meja operasi. Namun, ada fakta penting yang perlu diketahui dari sudut pandang spesialis orthopedi: lebih dari 85 hingga 90 persen pasien HNP dapat pulih sepenuhnya melalui penanganan konservatif tanpa operasi, seperti fisioterapi, obat anti-inflamasi saraf, dan perbaikan postur tubuh.</p>
+      <p class="mb-6 leading-relaxed">Meskipun demikian, ada kondisi-kondisi khusus di mana penundaan operasi dapat berisiko menyebabkan kerusakan saraf permanen. Kondisi ini disebut sebagai <strong>Indikasi Absolut Operasi</strong>, di mana tindakan spesialis orthopedi dekompresi mikro menjadi opsi tunggal yang wajib dilakukan segera.</p>
       
       <h2 class="text-2xl font-bold text-white mt-10 mb-6">3 Indikasi Absolut Kapan Operasi HNP Menjadi Wajib</h2>
       <div class="space-y-6 mb-10">
         <div class="bg-white/5 p-6 rounded-2xl border border-white/5">
           <h3 class="text-lg font-bold text-primary mb-2">1. Sindrom Cauda Equina (Cauda Equina Syndrome)</h3>
-          <p class="text-sm text-foreground/70 leading-relaxed">Ini adalah kondisi darurat bedah saraf utama. Terjadi ketika jepitan bantalan tulang belakang sangat besar sehingga menekan kumpulan serabut saraf di ujung bawah sumsum tulang belakang (cauda equina). Gejalanya meliputi hilangnya kontrol berkemih atau buang air besar (inkontinensia), serta mati rasa pada area selangkangan dan bokong (saddle anesthesia). Kondisi ini membutuhkan operasi dekompresi darurat dalam waktu 24-48 jam untuk mencegah kelumpuhan dan disfungsi permanen.</p>
+          <p class="text-sm text-foreground/70 leading-relaxed">Ini adalah kondisi darurat spesialis orthopedi utama. Terjadi ketika jepitan bantalan tulang belakang sangat besar sehingga menekan kumpulan serabut saraf di ujung bawah sumsum tulang belakang (cauda equina). Gejalanya meliputi hilangnya kontrol berkemih atau buang air besar (inkontinensia), serta mati rasa pada area selangkangan dan bokong (saddle anesthesia). Kondisi ini membutuhkan operasi dekompresi darurat dalam waktu 24-48 jam untuk mencegah kelumpuhan dan disfungsi permanen.</p>
         </div>
         <div class="bg-white/5 p-6 rounded-2xl border border-white/5">
           <h3 class="text-lg font-bold text-primary mb-2">2. Defisit Motorik Progresif (Kelemahan Saraf yang Memburuk)</h3>
@@ -108,7 +108,7 @@ const articlesData: Record<string, any> = {
       </div>
 
       <h2 class="text-2xl font-bold text-white mt-10 mb-6">Konsultasi yang Adil dan Terarah</h2>
-      <p class="mb-6 leading-relaxed">Keputusan untuk menjalani operasi harus diambil berdasarkan pemeriksaan fisik neurologis yang teliti oleh dokter bedah saraf serta konfirmasi pencitraan MRI tulang belakang. Dokter bedah saraf yang etis akan selalu mengutamakan terapi tanpa operasi terlebih dahulu, kecuali jika Anda telah memenuhi salah satu dari tiga indikasi absolut di atas.</p>
+      <p class="mb-6 leading-relaxed">Keputusan untuk menjalani operasi harus diambil berdasarkan pemeriksaan fisik neurologis yang teliti oleh dokter spesialis orthopedi serta konfirmasi pencitraan MRI tulang belakang. Dokter spesialis orthopedi yang etis akan selalu mengutamakan terapi tanpa operasi terlebih dahulu, kecuali jika Anda telah memenuhi salah satu dari tiga indikasi absolut di atas.</p>
     `
   },
   "4": {
@@ -116,7 +116,7 @@ const articlesData: Record<string, any> = {
     category: "Kesehatan Spine",
     date: "3 Mei 2026",
     readTime: "7 menit",
-    author: "dr. Wisnu Baskoro, Sp.BS, (F. N-TB), FINSS, FINPS",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
     image: "/images/articles/lumbar_compression.webp",
     content: `
       <p class="mb-6 leading-relaxed">Nyeri pinggang bawah kronis (chronic low back pain) sering kali disebabkan oleh peradangan pada sendi facet—yaitu sendi-sendi kecil yang menghubungkan ruas-ruas tulang belakang Anda. Ketika obat pereda nyeri dan fisioterapi tidak mempan, tindakan minimal invasif <strong>Radiofrequency Ablation (RFA)</strong> menjadi pilihan populer untuk menghentikan nyeri secara jangka panjang tanpa operasi.</p>
@@ -137,10 +137,10 @@ const articlesData: Record<string, any> = {
     category: "Teknologi",
     date: "2 Mei 2026",
     readTime: "11 menit",
-    author: "dr. Wisnu Baskoro, Sp.BS, (F. N-TB), FINSS, FINPS",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
     image: "/images/articles/ai_robotic_surgery.webp",
     content: `
-      <p class="mb-6 leading-relaxed">Dunia bedah saraf tulang belakang (Spine Surgery) sedang berada di ambang revolusi besar. Integrasi Kecerdasan Buatan (AI) dan asisten robotik bukan lagi tentang menggantikan peran dokter, melainkan memberikan "mata" dan "tangan" yang jauh lebih presisi untuk dekompresi saraf dan stabilisasi vertebra demi hasil pasien yang lebih baik.</p>
+      <p class="mb-6 leading-relaxed">Dunia spesialis orthopedi tulang belakang (Spine Surgery) sedang berada di ambang revolusi besar. Integrasi Kecerdasan Buatan (AI) dan asisten robotik bukan lagi tentang menggantikan peran dokter, melainkan memberikan "mata" dan "tangan" yang jauh lebih presisi untuk dekompresi saraf dan stabilisasi vertebra demi hasil pasien yang lebih baik.</p>
       
       <h2 class="text-2xl font-bold text-white mt-10 mb-6">Presisi Sub-Milimeter dalam Operasi Stabilisasi Tulang Belakang</h2>
       <p class="mb-6 leading-relaxed">Pada operasi dekompresi atau stabilisasi tulang belakang konvensional, penempatan komponen implan atau sekrup pedicle screw sangat bergantung pada pengalaman visual dokter. Dengan bantuan AI, kami dapat melakukan pemetaan 3D secara real-time. Robot tidak melakukan operasi secara mandiri, tetapi ia bertindak sebagai pembatas yang memastikan instrumen bedah hanya bergerak pada area aman di sekitar sumsum tulang belakang dengan akurasi sub-milimeter.</p>
@@ -151,7 +151,7 @@ const articlesData: Record<string, any> = {
       <h2 class="text-2xl font-bold text-white mt-10 mb-6">Kesimpulan: Kolaborasi Manusia dan Mesin</h2>
       <p class="mb-6 leading-relaxed">Tujuan akhir dari semua teknologi ini adalah mempercepat pemulihan pasien. Pasien yang dahulu membutuhkan waktu berminggu-minggu untuk bisa berjalan setelah operasi, kini seringkali diizinkan untuk mobilisasi dalam hitungan jam pasca-prosedur.</p>
       
-      <p class="mb-6 leading-relaxed">Platform <strong>Wisnu Baskoro</strong> adalah wujud dari visi ini, di mana setiap modul yang kami sediakan bertujuan untuk memberikan transparansi dan akurasi medis yang tertinggi bagi setiap pasien.</p>
+      <p class="mb-6 leading-relaxed">Platform <strong>Nama Dokter</strong> adalah wujud dari visi ini, di mana setiap modul yang kami sediakan bertujuan untuk memberikan transparansi dan akurasi medis yang tertinggi bagi setiap pasien.</p>
     `
   },
   "6": {
@@ -159,10 +159,10 @@ const articlesData: Record<string, any> = {
     category: "Kesehatan Spine",
     date: "1 Mei 2026",
     readTime: "9 menit",
-    author: "dr. Wisnu Baskoro, Sp.BS, (F. N-TB), FINSS, FINPS",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
     image: "/images/spine_scan.webp",
     content: `
-      <p class="mb-6 leading-relaxed">Degenerasi diskus intervertebralis (ausnya bantalan tulang belakang) merupakan penyebab utama nyeri punggung kronis pada kelompok usia produktif dan lansia. Salah satu terobosan terbaru dalam kedokteran regeneratif bedah saraf tulang belakang adalah penggunaan <strong>Terapi Platelet-Rich Plasma (PRP)</strong> untuk merangsang penyembuhan alami diskus dari dalam.</p>
+      <p class="mb-6 leading-relaxed">Degenerasi diskus intervertebralis (ausnya bantalan tulang belakang) merupakan penyebab utama nyeri punggung kronis pada kelompok usia produktif dan lansia. Salah satu terobosan terbaru dalam kedokteran regeneratif spesialis orthopedi tulang belakang adalah penggunaan <strong>Terapi Platelet-Rich Plasma (PRP)</strong> untuk merangsang penyembuhan alami diskus dari dalam.</p>
       
       <h2 class="text-2xl font-bold text-white mt-10 mb-6">Mekanisme Terapi Biologis PRP</h2>
       <p class="mb-6 leading-relaxed">Terapi PRP dilakukan dengan mengambil sampel darah pasien sendiri, kemudian memutarnya dalam mesin sentrifugasi khusus untuk memisahkan dan memekatkan plasma yang kaya akan trombosit. Plasma kaya trombosit ini mengandung konsentrasi faktor pertumbuhan (growth factors) yang sangat tinggi yang disuntikkan secara presisi ke dalam sendi facet atau diskus yang mengalami robekan mikro (annular tear).</p>
@@ -176,13 +176,13 @@ const articlesData: Record<string, any> = {
     category: "Kesehatan Spine",
     date: "30 April 2026",
     readTime: "8 menit",
-    author: "dr. Wisnu Baskoro, Sp.BS, (F. N-TB), FINSS, FINPS",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
     image: "/images/articles/endoscopic_spine.webp",
     content: `
       <p class="mb-6 leading-relaxed">Selama berdekade-dekade, diagnosis saraf kejepit (HNP) seringkali menakutkan bagi pasien karena bayang-bayang operasi terbuka dengan sayatan besar, nyeri pasca-operasi yang hebat, dan masa pemulihan berminggu-minggu di tempat tidur. Namun, era bedah modern telah bergeser ke arah Minimal Invasif.</p>
       
       <h2 class="text-2xl font-bold text-white mt-10 mb-6">Mengenal Teknologi BESS (Biportal Endoscopic Spinal Decompression)</h2>
-      <p class="mb-6 leading-relaxed">Endoskopi Tulang Belakang dengan metode BESS adalah salah satu teknik bedah minimal invasif paling mutakhir di dunia untuk membebaskan jepitan saraf secara presisi. Melalui dua sayatan sangat kecil berukuran kurang dari 5 milimeter, dokter bedah saraf memasukkan kamera endoskopi definisi tinggi dan instrumen mikro khusus secara bersamaan.</p>
+      <p class="mb-6 leading-relaxed">Endoskopi Tulang Belakang dengan metode BESS adalah salah satu teknik bedah minimal invasif paling mutakhir di dunia untuk membebaskan jepitan saraf secara presisi. Melalui dua sayatan sangat kecil berukuran kurang dari 5 milimeter, dokter spesialis orthopedi memasukkan kamera endoskopi definisi tinggi dan instrumen mikro khusus secara bersamaan.</p>
       
       <h2 class="text-2xl font-bold text-white mt-10 mb-6">Mengapa BESS Lebih Unggul daripada Operasi Terbuka?</h2>
       <div class="space-y-6 mb-10">
@@ -196,7 +196,7 @@ const articlesData: Record<string, any> = {
         </div>
         <div class="bg-white/5 p-6 rounded-2xl border border-white/5">
           <h3 class="text-lg font-bold text-primary mb-2">3. Visualisasi HD & Presisi Tinggi</h3>
-          <p class="text-sm text-foreground/70">Kamera endoskopi memberikan pembesaran gambar yang sangat jernih di layar monitor, memungkinkan dokter bedah saraf mengangkat serpihan diskus yang menjepit tanpa mencederai sumsum tulang belakang.</p>
+          <p class="text-sm text-foreground/70">Kamera endoskopi memberikan pembesaran gambar yang sangat jernih di layar monitor, memungkinkan dokter spesialis orthopedi mengangkat serpihan diskus yang menjepit tanpa mencederai sumsum tulang belakang.</p>
         </div>
       </div>
       
@@ -211,7 +211,7 @@ const articlesData: Record<string, any> = {
     category: "Kesehatan Spine",
     date: "29 April 2026",
     readTime: "9 menit",
-    author: "dr. Wisnu Baskoro, Sp.BS, (F. N-TB), FINSS, FINPS",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
     image: "/images/articles/lumbar_compression.webp",
     content: `
       <p class="mb-6 leading-relaxed">Banyak pasien mengira gangguan saraf leher hanya memicu nyeri leher lokal atau pegal bahu biasa. Namun, jika jepitan terjadi pada sumsum tulang belakang pusat (spinal cord) di area leher, kondisi ini dapat berkembang menjadi <strong>Mielopati Cervical (Cervical Spondylotic Myelopathy)</strong> yang berisiko memicu kecacatan motorik berat.</p>
@@ -234,13 +234,13 @@ const articlesData: Record<string, any> = {
     category: "Kesehatan Spine",
     date: "28 April 2026",
     readTime: "10 menit",
-    author: "dr. Wisnu Baskoro, Sp.BS, (F. N-TB), FINSS, FINPS",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
     image: "/images/spine_scan.webp",
     content: `
-      <p class="mb-6 leading-relaxed">Kecelakaan lalu lintas, jatuh dari ketinggian, atau cedera olahraga berat dapat menyebabkan trauma hebat pada tulang belakang. Ketika ruas tulang belakang patah atau bergeser, serpihan tulang dapat menekan sumsum tulang belakang (spinal cord), pusat transmisi sinyal gerak dari otak ke seluruh tubuh. Keadaan darurat ini memerlukan penanganan medis bedah saraf instan untuk mencegah kelumpuhan permanen.</p>
+      <p class="mb-6 leading-relaxed">Kecelakaan lalu lintas, jatuh dari ketinggian, atau cedera olahraga berat dapat menyebabkan trauma hebat pada tulang belakang. Ketika ruas tulang belakang patah atau bergeser, serpihan tulang dapat menekan sumsum tulang belakang (spinal cord), pusat transmisi sinyal gerak dari otak ke seluruh tubuh. Keadaan darurat ini memerlukan penanganan medis spesialis orthopedi instan untuk mencegah kelumpuhan permanen.</p>
       
       <h2 class="text-2xl font-bold text-white mt-10 mb-6">Mengenal Konsep Golden Hour (Waktu Emas)</h2>
-      <p class="mb-6 leading-relaxed">Dalam kedokteran darurat bedah saraf, 8 jam pertama pasca-trauma tulang belakang adalah <strong>Golden Hour (Waktu Emas)</strong>. Selama jendela waktu yang sangat sempit ini, kerusakan sel saraf akibat jepitan atau pembengkakan masih bersifat reversibel (dapat dipulihkan). Jika dekompresi bedah saraf terlambat dilakukan melebihi batas waktu tersebut, risiko kelumpuhan total di bawah tingkat cedera menjadi sangat tinggi dan permanen.</p>
+      <p class="mb-6 leading-relaxed">Dalam kedokteran darurat spesialis orthopedi, 8 jam pertama pasca-trauma tulang belakang adalah <strong>Golden Hour (Waktu Emas)</strong>. Selama jendela waktu yang sangat sempit ini, kerusakan sel saraf akibat jepitan atau pembengkakan masih bersifat reversibel (dapat dipulihkan). Jika dekompresi spesialis orthopedi terlambat dilakukan melebihi batas waktu tersebut, risiko kelumpuhan total di bawah tingkat cedera menjadi sangat tinggi dan permanen.</p>
       
       <h2 class="text-2xl font-bold text-white mt-10 mb-6">Langkah Pertolongan Pertama yang Krusial</h2>
       <p class="mb-6 leading-relaxed">Sebelum tim medis tiba, kesalahan penanganan korban trauma dapat memperparah cedera saraf:</p>
@@ -249,8 +249,8 @@ const articlesData: Record<string, any> = {
         <li><strong>Log-Roll Method</strong> jika korban terpaksa harus dimiringkan seperti saat muntah agar tidak tersedak, seluruh tubuh harus dimiringkan secara bersamaan seperti satu batang kayu bulat untuk mencegah pergeseran tulang belakang.</li>
       </ul>
 
-      <h2 class="text-2xl font-bold text-white mt-10 mb-6">Tindakan Stabilisasi Bedah Saraf</h2>
-      <p class="mb-6 leading-relaxed">Di rumah sakit, penanganan bedah darurat oleh dr. Wisnu Baskoro melibatkan dekompresi mikro untuk membebaskan saraf yang terjepit serta pemasangan instrumen stabilisasi sekrup titanium untuk menyatukan kembali ruas tulang belakang yang patah. Pemulihan gerak motorik pasca-tindakan sangat bergantung pada seberapa cepat kompresi saraf dibebaskan selama Golden Hour.</p>
+      <h2 class="text-2xl font-bold text-white mt-10 mb-6">Tindakan Stabilisasi Spesialis Orthopedi</h2>
+      <p class="mb-6 leading-relaxed">Di rumah sakit, penanganan bedah darurat oleh dr. Nama Dokter melibatkan dekompresi mikro untuk membebaskan saraf yang terjepit serta pemasangan instrumen stabilisasi sekrup titanium untuk menyatukan kembali ruas tulang belakang yang patah. Pemulihan gerak motorik pasca-tindakan sangat bergantung pada seberapa cepat kompresi saraf dibebaskan selama Golden Hour.</p>
     `
   },
   "10": {
@@ -258,7 +258,7 @@ const articlesData: Record<string, any> = {
     category: "Kesehatan Spine",
     date: "27 April 2026",
     readTime: "9 menit",
-    author: "dr. Wisnu Baskoro, Sp.BS, (F. N-TB), FINSS, FINPS",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
     image: "/images/articles/endoscopic_spine.webp",
     content: `
       <p class="mb-6 leading-relaxed">Ketika bantalan sendi menonjol parah (HNP akut) dan menekan saraf sciatica pinggang, rasa nyeri menjalar ke kaki (sciatica) bisa sangat menyiksa hingga membuat pasien tidak sanggup berdiri atau tidur. Dalam kondisi peradangan akut ini, <strong>Epidural Steroid Injection (ESI)</strong> merupakan salah satu terapi intervensi nyeri terpopuler untuk memadamkan badai inflamasi secara instan.</p>
@@ -275,10 +275,10 @@ const articlesData: Record<string, any> = {
     category: "Kesehatan Spine",
     date: "26 April 2026",
     readTime: "8 menit",
-    author: "dr. Wisnu Baskoro, Sp.BS, (F. N-TB), FINSS, FINPS",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
     image: "/images/articles/lumbar_compression.webp",
     content: `
-      <p class="mb-6 leading-relaxed">Ketakutan akan operasi besar dengan bius total dan risiko kelumpuhan sering kali membuat penderita saraf kejepit (HNP) menunda pengobatan ke dokter spesialis bedah saraf. Akibatnya, kondisi jepitan saraf dapat memburuk hingga memicu kerusakan motorik permanen. Padahal, teknologi medis modern saat ini menawarkan pilihan <strong>Tindakan Intervensi Nyeri Minimal Invasif (Pain Interventions)</strong> tanpa operasi besar, tanpa rawat inap, dan hanya menggunakan anestesi lokal.</p>
+      <p class="mb-6 leading-relaxed">Ketakutan akan operasi besar dengan bius total dan risiko kelumpuhan sering kali membuat penderita saraf kejepit (HNP) menunda pengobatan ke dokter spesialis spesialis orthopedi. Akibatnya, kondisi jepitan saraf dapat memburuk hingga memicu kerusakan motorik permanen. Padahal, teknologi medis modern saat ini menawarkan pilihan <strong>Tindakan Intervensi Nyeri Minimal Invasif (Pain Interventions)</strong> tanpa operasi besar, tanpa rawat inap, dan hanya menggunakan anestesi lokal.</p>
       
       <h2 class="text-2xl font-bold text-white mt-10 mb-6">1. Selective Nerve Root Block (Injeksi Blok Saraf)</h2>
       <p class="mb-6 leading-relaxed">Blok saraf selektif adalah prosedur di mana obat anestesi lokal dikombinasikan dengan zat anti-inflamasi steroid disuntikkan secara presisi langsung ke akar saraf yang meradang akibat jepitan bantalan tulang belakang. Tindakan ini dilakukan menggunakan panduan sinar-X real-time (C-arm fluoroscopy) untuk menjamin akurasi jarum suntik mikro.</p>
@@ -302,21 +302,21 @@ const articlesData: Record<string, any> = {
     category: "Kesehatan Spine",
     date: "25 April 2026",
     readTime: "9 menit",
-    author: "dr. Wisnu Baskoro, Sp.BS, (F. N-TB), FINSS, FINPS",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
     image: "/images/spine_scan.webp",
     content: `
-      <p class="mb-6 leading-relaxed">Pada kasus kelainan tulang belakang yang berat—seperti ketidakstabilan ruas tulang (spondilolistesis), penyempitan kanal saraf parah (stenosis), atau kerusakan diskus parah—terapi konservatif maupun suntikan blok saraf terkadang tidak lagi memadai. Di fase ini, dokter bedah saraf akan menganjurkan tindakan fusi dan stabilisasi menggunakan implan khusus untuk mengenangkan kembali arsitektur kokoh tulang belakang Anda.</p>
+      <p class="mb-6 leading-relaxed">Pada kasus kelainan tulang belakang yang berat—seperti ketidakstabilan ruas tulang (spondilolistesis), penyempitan kanal saraf parah (stenosis), atau kerusakan diskus parah—terapi konservatif maupun suntikan blok saraf terkadang tidak lagi memadai. Di fase ini, dokter spesialis orthopedi akan menganjurkan tindakan fusi dan stabilisasi menggunakan implan khusus untuk mengenangkan kembali arsitektur kokoh tulang belakang Anda.</p>
       
       <h2 class="text-2xl font-bold text-white mt-10 mb-6">1. ACDF (Anterior Cervical Discectomy and Fusion)</h2>
       <p class="mb-6 leading-relaxed">ACDF adalah standar emas pembedahan untuk saraf kejepit di area leher (cervical HNP/Mielopati). Operasi ini dilakukan secara mikroskopis melalui sayatan kecil di lipatan kulit depan leher. Mengapa dari depan? Jalur ini meminimalkan cedera pada otot leher belakang yang tebal dan memberikan akses langsung ke diskus leher yang rusak tanpa menekan sumsum tulang belakang.</p>
-      <p class="mb-6 leading-relaxed">Dokter bedah saraf akan mengangkat bantalan leher yang rusak secara menyeluruh, membebaskan jepitan sumsum saraf, lalu memasang implan penyangga (cage) untuk memfusi dua ruas tulang leher menjadi satu kesatuan yang stabil.</p>
+      <p class="mb-6 leading-relaxed">Dokter spesialis orthopedi akan mengangkat bantalan leher yang rusak secara menyeluruh, membebaskan jepitan sumsum saraf, lalu memasang implan penyangga (cage) untuk memfusi dua ruas tulang leher menjadi satu kesatuan yang stabil.</p>
 
       <h2 class="text-2xl font-bold text-white mt-10 mb-6">2. MISS TLIF (Minimally Invasive Transforaminal Lumbar Interbody Fusion)</h2>
       <p class="mb-6 leading-relaxed">MISS TLIF adalah teknologi fusi tulang belakang pinggang modern menggunakan teknik bedah minimal invasif. Dibandingkan operasi fusi terbuka tradisional yang memotong otot punggung secara luas, MISS TLIF menggunakan tabung dilator khusus berukuran milimeter untuk membelah serat otot dengan lembut.</p>
       <p class="mb-6 leading-relaxed">Melalui tabung mikro ini, bantalan sendi pinggang yang rusak diangkat, dipasang cage penyangga berisi cangkok tulang untuk menyatukan ruas sendi belakang, lalu distabilkan menggunakan sekrup pedikel kulit (percutaneous pedicle screws). Teknik ini meminimalkan perdarahan, mengurangi nyeri pasca-operasi secara dramatis, dan mempercepat mobilisasi pasien lansia.</p>
 
       <h2 class="text-2xl font-bold text-white mt-10 mb-6">Protokol Pemulihan Ketat: Patuhi Aturan BLT</h2>
-      <p class="mb-6 leading-relaxed">Meskipun teknik bedah saraf MISS TLIF dan ACDF sangat presisi, stabilitas awal implan dan proses penyatuan tulang (fusion) membutuhkan waktu beberapa minggu. Selama masa pemulihan awal ini, pasien wajib mematuhi protokol mobilitas <strong>BLT</strong>:</p>
+      <p class="mb-6 leading-relaxed">Meskipun teknik spesialis orthopedi MISS TLIF dan ACDF sangat presisi, stabilitas awal implan dan proses penyatuan tulang (fusion) membutuhkan waktu beberapa minggu. Selama masa pemulihan awal ini, pasien wajib mematuhi protokol mobilitas <strong>BLT</strong>:</p>
       <ul class="list-disc pl-6 mb-6 space-y-3 leading-relaxed">
         <li><strong>No Bending:</strong> Dilarang keras membungkukkan pinggang saat mengambil barang di lantai atau saat memakai sepatu.</li>
         <li><strong>No Twisting:</strong> Dilarang meliuk atau memutar tubuh ekstrem dari satu sisi ke sisi lain secara mendadak.</li>

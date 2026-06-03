@@ -33,7 +33,7 @@ import React, { useEffect } from "react";
 const tools = [
   {
     id: "sciatica-radiculopathy",
-    title: "Spine",
+    title: "Spine & Pain",
     tool: "Sciatica & Radiculopathy Mapper",
     desc: "Skrining mandiri 3 menit gejala jepitan saraf pinggang menjalar (sciatica) atau saraf leher",
     icon: <Activity className="w-5 h-5" />,
@@ -42,7 +42,7 @@ const tools = [
   },
   {
     id: "dermatome-tracker",
-    title: "Spine",
+    title: "Spine & Pain",
     tool: "Dermatome Pain Tracker",
     desc: "Pemetaan area kebas, kesemutan, atau hilangnya sensasi raba pada kulit sesuai dermatom saraf spinal",
     icon: <Hand className="w-5 h-5" />,
@@ -51,7 +51,7 @@ const tools = [
   },
   {
     id: "dexterity",
-    title: "Neuro-Motor",
+    title: "Cervical Spine",
     tool: "Dexterity Pulse",
     desc: "Uji koordinasi motorik halus jari telunjuk untuk memantau derajat keparahan Cervical Myelopathy leher",
     icon: <Hand className="w-5 h-5" />,
@@ -60,25 +60,25 @@ const tools = [
   },
   {
     id: "spine-inclinometer",
-    title: "Spine",
+    title: "Spine ROM",
     tool: "Cervical & Lumbar ROM",
-    desc: "Evaluasi batas aman leher & pinggang pasca-operasi besar tulang belakang",
+    desc: "Evaluasi batas aman leher & pinggang pasca-operasi besar fusi tulang belakang",
     icon: <Scan className="w-5 h-5" />,
     color: "bg-emerald-500",
     href: "/tools/spine",
   },
   {
     id: "trauma",
-    title: "Trauma",
+    title: "Spine Trauma",
     tool: "Weight-Bear Guide",
-    desc: "Panduan pembebanan kaki aman bertahap pasca-trauma fiksasi tulang belakang",
+    desc: "Panduan pembebanan kaki aman bertahap pasca fiksasi internal cedera tulang belakang",
     icon: <ActivitySquare className="w-5 h-5" />,
     color: "bg-purple-500",
     href: "/tools/trauma",
   },
   {
     id: "edema",
-    title: "Spine",
+    title: "Spine Surgical",
     tool: "Wound & CSF Tracker",
     desc: "Evaluasi perban luka operasi tulang belakang dari rembesan cairan serebrospinal (CSF)",
     icon: <ActivitySquare className="w-5 h-5" />,
@@ -87,7 +87,7 @@ const tools = [
   },
   {
     id: "recovery",
-    title: "Spine",
+    title: "Spine & Pain",
     tool: "VAS & Neuro-Deficit Diary",
     desc: "Evaluasi pemulihan harian skala nyeri (VAS) dan jarak berjalan pasca-tindakan injeksi blok saraf",
     icon: <TrendingUp className="w-5 h-5" />,
@@ -110,7 +110,7 @@ export default function Home() {
     setErrorMessage("");
 
     try {
-      const res = await fetch("https://newsletter-api.eka-prasaja.workers.dev/v1/wisnu-baskoro-k6uh8/subscribe", {
+      const res = await fetch("https://newsletter-api.eka-prasaja.workers.dev/v1/spot-otb-k6uh8/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, referrer: window.location.href }),
@@ -198,7 +198,7 @@ export default function Home() {
                     </div>
 
                     <p className="text-sm text-foreground/60 leading-relaxed">
-                      Kami sangat menyarankan Anda untuk selalu berkonsultasi dengan <span className="text-primary font-bold">dokter spesialis bedah saraf</span> atau tenaga medis profesional sebelum mengambil keputusan medis apa pun. Gunakan teknologi ini secara bijak untuk meningkatkan kesadaran akan kesehatan tubuh Anda.
+                      Kami sangat menyarankan Anda untuk selalu berkonsultasi dengan <span className="text-primary font-bold">dokter spesialis orthopedi konsultan tulang belakang (spine)</span> atau tenaga medis profesional sebelum mengambil keputusan medis apa pun. Gunakan teknologi ini secara bijak untuk meningkatkan kesadaran akan kesehatan tubuh Anda.
                     </p>
 
                     <button 
@@ -408,7 +408,7 @@ export default function Home() {
                 <span className="text-[10px] font-bold uppercase tracking-widest text-primary/80">Available for Consultation</span>
               </div>
             </motion.div>
-
+ 
             <h1 className="text-[36px] md:text-7xl font-outfit font-bold leading-[1.05] mb-8 tracking-tight">
               {"Kesehatan Spine & Manajemen Nyeri,".split(" ").map((word, i) => (
                 <motion.span
@@ -450,7 +450,7 @@ export default function Home() {
               transition={{ delay: 1, duration: 1 }}
               className="text-lg md:text-xl text-foreground/60 leading-relaxed mb-10 max-w-xl"
             >
-              Dapatkan edukasi medis bedah tulang belakang & manajemen nyeri terpercaya serta akses teknologi diagnostik mandiri langsung di bawah pengawasan ahli.
+              Dapatkan edukasi medis orthopedi tulang belakang & manajemen nyeri terpercaya serta akses teknologi diagnostik mandiri langsung di bawah pengawasan ahli.
             </motion.p>
 
             <motion.div
@@ -573,11 +573,11 @@ export default function Home() {
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-2xl font-outfit font-bold text-white">Alat Bantu Kesehatan Mandiri</h2>
-            <p className="text-sm text-foreground/40 mt-1">Gunakan simulasi AI kami untuk memantau kondisi bedah saraf Anda di rumah</p>
+            <p className="text-sm text-foreground/40 mt-1">Gunakan simulasi AI kami untuk memantau kondisi tulang belakang Anda di rumah</p>
           </div>
           <div className="flex gap-2">
             <div className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl text-[10px] font-bold uppercase tracking-widest text-foreground/40">
-              Total 6 Modules
+              Total 7 Modules
             </div>
           </div>
         </div>
@@ -621,7 +621,7 @@ export default function Home() {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="text-2xl font-outfit font-bold text-white">Wawasan Medis</h2>
-              <p className="text-sm text-foreground/40 mt-1">Edukasi bedah saraf untuk kesehatan jangka panjang Anda</p>
+              <p className="text-sm text-foreground/40 mt-1">Edukasi kesehatan tulang belakang untuk kebugaran jangka panjang Anda</p>
             </div>
             <Link href="/articles" prefetch={false} className="text-xs font-bold text-primary uppercase tracking-widest hover:underline">
               Lihat Semua Artikel
@@ -646,7 +646,7 @@ export default function Home() {
               },
               {
                 id: 5,
-                title: "Masa Depan Bedah Saraf",
+                title: "Masa Depan Spesialis Orthopedi",
                 desc: "Revolusi presisi sub-milimeter dengan asisten navigasi robotik AI.",
                 tag: "Teknologi",
                 img: "/images/articles/ai_robotic_surgery.webp"
@@ -684,10 +684,10 @@ export default function Home() {
                 Edukasi Berkala
               </div>
               <h3 className="text-3xl md:text-4xl font-outfit font-bold text-white mb-4 tracking-tight">
-                Dapatkan Update Kesehatan Bedah Saraf
+                Dapatkan Update Kesehatan Tulang Belakang
               </h3>
               <p className="text-sm md:text-base text-foreground/50 leading-relaxed">
-                Bergabunglah dengan ribuan pembaca setia kami. Dapatkan wawasan tepercaya, tips kebugaran tulang, dan artikel edukasi medis dari dr. Wisnu Baskoro langsung ke inbox Anda setiap minggu.
+                Bergabunglah dengan ribuan pembaca setia kami. Dapatkan wawasan tepercaya, tips kebugaran tulang belakang, dan artikel edukasi medis dari dr. Nama Dokter, Sp.OT, Subsp. OTB (K) langsung ke inbox Anda setiap minggu.
               </p>
             </div>
 
@@ -768,7 +768,7 @@ export default function Home() {
             <Stethoscope className="w-5 h-5 text-primary" />
           </div>
           <p className="text-[10px] text-foreground/20 uppercase font-black tracking-[0.4em] mb-2">
-            Neurosurgery Specialist Care • 2026
+            Orthopaedic Spine Specialist Care • 2026
           </p>
           <p className="text-[10px] text-foreground/30 uppercase tracking-widest">
             Made by <a href="https://incodepanel.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-bold">Incode Panel</a>
@@ -860,7 +860,7 @@ export default function Home() {
                 transition={{ delay: 1 }}
                 className="text-xs text-foreground/50 leading-relaxed mb-6 max-w-[80%]"
               >
-                Teknologi AI tercanggih untuk deteksi dini dan pemantauan bedah saraf mandiri.
+                Teknologi AI tercanggih untuk deteksi dini dan pemantauan spesialis orthopedi mandiri.
               </motion.p>
               
               <motion.button 
@@ -965,7 +965,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-white mb-2 leading-tight">Buletin Kesehatan</h3>
               <p className="text-xs text-foreground/50 leading-relaxed">
-                Dapatkan wawasan medis terpercaya dari dr. Wisnu Baskoro langsung ke inbox Anda setiap minggu.
+                Dapatkan wawasan medis terpercaya dari dr. Nama Dokter langsung ke inbox Anda setiap minggu.
               </p>
             </div>
 

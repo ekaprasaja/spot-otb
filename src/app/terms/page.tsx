@@ -12,7 +12,7 @@ export default function TermsPage() {
     {
       title: "Batasan Tanggung Jawab Medis",
       icon: AlertTriangle,
-      content: "dr. Wisnu Baskoro, Sp.BS, (F. N-TB), FINSS, FINPS beserta tim pengembang dan Incode Panel tidak bertanggung jawab atas keputusan medis atau tindakan pengobatan mandiri yang diambil pengguna berdasarkan hasil perhitungan AI. Keakuratan deteksi sensor dan kamera sangat dipengaruhi oleh kondisi lingkungan (seperti pencahayaan) serta spesifikasi teknis perangkat Anda."
+      content: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K), (F. N-TB), FINSS, FINPS beserta tim pengembang dan Incode Panel tidak bertanggung jawab atas keputusan medis atau tindakan pengobatan mandiri yang diambil pengguna berdasarkan hasil perhitungan AI. Keakuratan deteksi sensor dan kamera sangat dipengaruhi oleh kondisi lingkungan (seperti pencahayaan) serta spesifikasi teknis perangkat Anda."
     },
     {
       title: "Kepatuhan & Penggunaan Data",
@@ -22,7 +22,7 @@ export default function TermsPage() {
     {
       title: "Hak Cipta & Lisensi",
       icon: BookOpen,
-      content: "Seluruh materi edukasi, artikel kesehatan, dan algoritma asisten AI di platform ini dilindungi oleh hak cipta intelektual. Penggunaan, penyalinan, atau distribusi komersial tanpa izin tertulis dari dr. Wisnu Baskoro, Sp.BS dilarang keras."
+      content: "Seluruh materi edukasi, artikel kesehatan, dan algoritma asisten AI di platform ini dilindungi oleh hak cipta intelektual. Penggunaan, penyalinan, atau distribusi komersial tanpa izin tertulis dari dr. Nama Dokter, Sp.OT, Subsp. OTB (K) dilarang keras."
     }
   ];
 

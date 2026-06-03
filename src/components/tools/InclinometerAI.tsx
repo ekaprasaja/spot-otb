@@ -287,7 +287,7 @@ export default function InclinometerAI() {
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
-                    <span>Segera <strong>jadwalkan pertemuan fisik langsung dengan dr. Wisnu Baskoro, Sp.BS</strong> di klinik rumah sakit untuk evaluasi implan/pen tulang belakang Anda.</span>
+                    <span>Segera <strong>jadwalkan pertemuan fisik langsung dengan dr. Nama Dokter, Sp.OT, Subsp. OTB (K)</strong> di klinik rumah sakit untuk evaluasi implan/pen tulang belakang Anda.</span>
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</span>
@@ -642,7 +642,7 @@ export default function InclinometerAI() {
 
           <div className="p-6 bg-white/[0.02] rounded-3xl border border-white/5">
             <h4 className="text-xs font-bold text-foreground/40 uppercase mb-3 flex items-center gap-2">
-              <Info className="w-3.5 h-3.5" /> Catatan dr. Wisnu Baskoro, Sp.BS
+              <Info className="w-3.5 h-3.5" /> Catatan dr. Nama Dokter, Sp.OT, Subsp. OTB (K)
             </h4>
             <p className="text-[11px] text-foreground/50 leading-relaxed italic">
               "Kekakuan mendadak disertai spasme otot hebat di area operasi leher atau pinggang pasca-fusi merupakan alarm darurat pergeseran implan. Segera hentikan seluruh mobilisasi paksa dan lakukan rujukan fisik langsung."

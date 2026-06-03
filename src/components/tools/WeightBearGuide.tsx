@@ -67,11 +67,11 @@ export default function WeightBearGuide() {
       status = "danger";
       zone = "ZONA MERAH";
       if (procedureType === "tlif") {
-        message = "⚠️ PERINGATAN DARURAT FOOT DROP (TLIF)\nTerjadi kelemahan motorik kaki mendadak (sulit mengangkat pergelangan kaki / foot drop). Ini mengindikasikan kemungkinan kompresi atau regangan serius pada akar saraf L5 pasca-operasi TLIF.\n\nTindakan Darurat Segera:\n1. Segera hentikan seluruh latihan jalan, berbaring telentang flat.\n2. Segera hubungi dr. Wisnu Baskoro, Sp.BS atau langsung menuju UGD!";
+        message = "⚠️ PERINGATAN DARURAT FOOT DROP (TLIF)\nTerjadi kelemahan motorik kaki mendadak (sulit mengangkat pergelangan kaki / foot drop). Ini mengindikasikan kemungkinan kompresi atau regangan serius pada akar saraf L5 pasca-operasi TLIF.\n\nTindakan Darurat Segera:\n1. Segera hentikan seluruh latihan jalan, berbaring telentang flat.\n2. Segera hubungi dr. Nama Dokter, Sp.OT, Subsp. OTB (K) atau langsung menuju UGD!";
       } else if (procedureType === "vertebroplasty") {
-        message = "⚠️ PERINGATAN DARURAT MOTORIK (POST-SEMEN MEDIS)\nTerjadi kelemahan kaki mendadak pasca-injeksi semen medis tulang belakang. Hal ini mengindikasikan kompresi sumsum saraf mendadak (misalnya akibat semen medis meluap ke kanal spinal).\n\nTindakan Darurat Segera:\n1. Hentikan seluruh aktivitas berjalan, berbaring telentang tegap.\n2. Segera hubungi dr. Wisnu Baskoro, Sp.BS untuk rontgen/CT Scan tulang belakang darurat!";
+        message = "⚠️ PERINGATAN DARURAT MOTORIK (POST-SEMEN MEDIS)\nTerjadi kelemahan kaki mendadak pasca-injeksi semen medis tulang belakang. Hal ini mengindikasikan kompresi sumsum saraf mendadak (misalnya akibat semen medis meluap ke kanal spinal).\n\nTindakan Darurat Segera:\n1. Hentikan seluruh aktivitas berjalan, berbaring telentang tegap.\n2. Segera hubungi dr. Nama Dokter, Sp.OT, Subsp. OTB (K) untuk rontgen/CT Scan tulang belakang darurat!";
       } else {
-        message = "⚠️ PERINGATAN DARURAT MOTORIK\nTerjadi kelemahan motorik kaki secara mendadak. Segera hentikan latihan berjalan menggunakan kruk Anda dan segera periksakan diri ke dr. Wisnu Baskoro, Sp.BS atau ke IGD terdekat!";
+        message = "⚠️ PERINGATAN DARURAT MOTORIK\nTerjadi kelemahan motorik kaki secara mendadak. Segera hentikan latihan berjalan menggunakan kruk Anda dan segera periksakan diri ke dr. Nama Dokter, Sp.OT, Subsp. OTB (K) atau ke IGD terdekat!";
       }
     } else if (painLevel >= 7) {
       status = "danger";
@@ -174,7 +174,7 @@ export default function WeightBearGuide() {
                 <ul className="space-y-3.5 text-sm font-semibold text-white/90">
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</span>
-                    <span>Segera jadwalkan pertemuan langsung atau lakukan pemeriksaan fisik darurat dengan <strong className="text-red-400 font-bold">dr. Wisnu Baskoro, Sp.BS</strong> di Rumah Sakit sekarang.</span>
+                    <span>Segera jadwalkan pertemuan langsung atau lakukan pemeriksaan fisik darurat dengan <strong className="text-red-400 font-bold">dr. Nama Dokter, Sp.OT, Subsp. OTB (K)</strong> di Rumah Sakit sekarang.</span>
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
@@ -516,7 +516,7 @@ export default function WeightBearGuide() {
           <ClinicalSection 
             title="Dasar Klinis: Partial Weight Bearing (PWB) Medula Spinalis"
             description="Latihan jalan bertahap (PWB) pada pasien paraparesis pasca-operasi stabilisasi tulang belakang bertujuan melindungi implan pen/pedicle screw dari degradasi mekanis (loose/breakage) sembari melatih sinap-sinap motorik baru. Skrining motorik harian mendeteksi dini kegagalan implan atau pergeseran vertebra yang mengancam kompresi medula spinalis akut."
-            disclaimer="Status PWB sangat bervariasi sesuai level cedera korda spinalis Anda. Selalu ikuti persentase beban spesifik dari dr. Wisnu Baskoro, Sp.BS."
+            disclaimer="Status PWB sangat bervariasi sesuai level cedera korda spinalis Anda. Selalu ikuti persentase beban spesifik dari dr. Nama Dokter, Sp.OT, Subsp. OTB (K)."
             colorClass="cyan"
           />
         </div>
