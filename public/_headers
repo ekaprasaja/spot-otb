@@ -1,0 +1,6 @@
+/chat-widget.js
+  Cross-Origin-Resource-Policy: cross-origin
+
+/*
+  Cross-Origin-Embedder-Policy: credentialless
+  Cross-Origin-Opener-Policy: same-origin

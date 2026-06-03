@@ -1,0 +1,26 @@
+{
+  "name": "SPOT-OTB | Portal Dokter Spesialis",
+  "short_name": "SPOT-OTB",
+  "description": "Portal Digital Dokter Spesialis berbasis AI — SPOT-OTB",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0A0A0C",
+  "theme_color": "#0A0A0C",
+  "categories": ["medical", "health"],
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
+
