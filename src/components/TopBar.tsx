@@ -3,9 +3,13 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useNotificationStore } from "@/store/useNotificationStore";
 
+import { useDoctorConfig } from "@/context/DoctorConfigContext";
+
 export default function TopBar() {
   const { notifications, togglePanel } = useNotificationStore();
   const unreadCount = notifications.filter((n) => !n.read).length;
+  const doctorConfig = useDoctorConfig();
+  const titleText = doctorConfig.clinic || "Wisnu SpineCare AI";
 
   return (
     <header className="hidden md:flex items-center justify-between px-8 py-6 sticky top-0 bg-background/80 backdrop-blur-xl z-50 border-b border-white/5">
@@ -19,7 +23,7 @@ export default function TopBar() {
             animate={{ opacity: 1 }}
             className="text-lg font-inter font-bold text-white tracking-tight flex"
           >
-            {"Wisnu SpineCare AI".split("").map((char, index) => (
+            {titleText.split("").map((char, index) => (
               <motion.span
                 key={index}
                 initial={{ opacity: 0, y: 5, filter: "blur(2px)" }}

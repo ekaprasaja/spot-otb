@@ -10,7 +10,7 @@ import {
   Stethoscope,
   ClipboardList
 } from "lucide-react";
-import { doctorConfig } from "@/doctor-config";
+import { useDoctorConfig } from "@/context/DoctorConfigContext";
 
 const navigation = [
   { name: "Beranda", href: "/", icon: Home },
@@ -21,6 +21,7 @@ const navigation = [
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const doctorConfig = useDoctorConfig();
 
   return (
     <aside className="hidden md:flex flex-col w-72 bg-card border-r border-white/5 h-screen sticky top-0 overflow-hidden">
@@ -31,7 +32,7 @@ export default function Sidebar() {
             <Shield className="text-white w-6 h-6" />
           </div>
           <div>
-            <h1 className="font-outfit font-bold text-xl tracking-tight text-white">Wisnu SpineCare</h1>
+            <h1 className="font-outfit font-bold text-xl tracking-tight text-white">{doctorConfig.clinic || "Wisnu SpineCare"}</h1>
             <p className="text-[10px] font-bold text-primary uppercase tracking-widest leading-none">Spine & Pain Intervention</p>
           </div>
         </Link>
@@ -67,7 +68,7 @@ export default function Sidebar() {
       <div className="p-4 mt-auto">
         <div className="p-4 bg-white/[0.02] border border-white/5 rounded-[2rem] flex items-center gap-3">
           <div className="w-10 h-10 rounded-full border border-white/10 overflow-hidden shadow-inner">
-            <img src={doctorConfig.image} alt={doctorConfig.name} className="w-full h-full object-cover object-top" />
+            <img src={doctorConfig.image || "/images/doctor_profile.webp"} alt={doctorConfig.name} className="w-full h-full object-cover object-top" />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-[13px] font-bold text-white truncate">{doctorConfig.name}</p>

@@ -24,13 +24,14 @@ import {
 import { useOrthoStore } from "@/store/useOrthoStore";
 import { ClinicalSection } from "@/components/shared/ClinicalSection";
 import { ToolInstruction } from "@/components/shared/ToolInstruction";
-import { doctorConfig } from "@/doctor-config";
+import { useDoctorConfig } from "@/context/DoctorConfigContext";
 
 type PrimaryLocation = "lumbar_radiation" | "cervical_radiation" | "lumbar_local" | "cervical_local" | "none";
 type SensationType = "tingling_numbness" | "burning_heat" | "aching" | "cramping";
 type AggravatingFactor = "sitting_bending" | "standing_walking" | "extension_rotation" | "none";
 
 export default function SciaticaMapper() {
+  const doctorConfig = useDoctorConfig();
   const addRecord = useOrthoStore((state) => state.addRecord);
 
   const [primaryLocation, setPrimaryLocation] = useState<PrimaryLocation>("none");
@@ -479,7 +480,7 @@ export default function SciaticaMapper() {
           <ClinicalSection 
             title="Dasar Klinis: Radikulopati Saraf Spinal & Sciatica"
             description="Sciatica dan Radikulopati leher merupakan kondisi tertekannya akar saraf keluar (spinal nerve root) akibat herniasi nucleus pulposus (HNP), hipertrofi ligamen, atau osteofit. Skrining posisi yang memperberat dan deteksi kelemahan motorik (seperti parese L5 penyebab foot drop) memilah secara tajam mana indikasi konservatif/blok nyeri, dan mana indikasi tindakan bedah dekompresi dekompresif minimal invasif (BESS/PELD)."
-            disclaimer="Skrining mandiri digital ini bukan pengganti penegakan diagnosis radiologis (MRI/CT Scan) oleh dr. Nama Dokter, Sp.OT, Subsp. OTB (K)."
+            disclaimer={`Skrining mandiri digital ini bukan pengganti penegakan diagnosis radiologis (MRI/CT Scan) oleh ${doctorConfig.name}.`}
             colorClass="emerald"
           />
         </div>
@@ -522,11 +523,11 @@ export default function SciaticaMapper() {
               <div className="space-y-4 text-left">
                 <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 space-y-3">
                   <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                    RS Soeradji Tirtonegoro Klaten
+                    {doctorConfig.clinic || "Spine & Pain Clinic"}
                   </h4>
                   <div className="flex gap-2.5 text-xs text-foreground/60 leading-relaxed">
                     <MapPinned className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                    <span>Jalan KRT Jl. Dr. Soeradji Tirtonegoro No.1, Dusun 1, Tegalyoso, Kec. Klaten Sel., Kabupaten Klaten, Jawa Tengah 57424</span>
+                    <span>{doctorConfig.location || "Kota, Indonesia"}</span>
                   </div>
                 </div>
 
@@ -542,7 +543,7 @@ export default function SciaticaMapper() {
 
               <div className="space-y-3 pt-2">
                 <a 
-                  href="https://www.google.com/maps/search/?api=1&query=RS+Dr.+Soeradji+Tirtonegoro+Klaten"
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(doctorConfig.clinic || "")}+${encodeURIComponent(doctorConfig.location || "")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full py-4 bg-primary text-white font-bold rounded-2xl text-center text-sm transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/20"

@@ -24,7 +24,6 @@ import DoctorCard from "@/components/DoctorCard";
 import { SafetyNotice } from "@/components/shared/SafetyNotice";
 import Link from "next/link";
 import StatGrid from "@/components/patterns/StatGrid";
-import { doctorConfig } from "@/doctor-config";
 
 export default function DashboardPage() {
   const { records, deleteRecord, clearRecords } = useOrthoStore();

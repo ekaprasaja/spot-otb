@@ -24,11 +24,12 @@ import {
 import { useOrthoStore } from "@/store/useOrthoStore";
 import { ClinicalSection } from "@/components/shared/ClinicalSection";
 import { ToolInstruction } from "@/components/shared/ToolInstruction";
-import { doctorConfig } from "@/doctor-config";
+import { useDoctorConfig } from "@/context/DoctorConfigContext";
 
 type WeightBearProcedure = "vertebroplasty" | "tlif" | "general";
 
 export default function WeightBearGuide() {
+  const doctorConfig = useDoctorConfig();
   const addRecord = useOrthoStore((state) => state.addRecord);
   
   const [procedureType, setProcedureType] = useState<WeightBearProcedure>("general");
@@ -516,7 +517,7 @@ export default function WeightBearGuide() {
           <ClinicalSection 
             title="Dasar Klinis: Partial Weight Bearing (PWB) Medula Spinalis"
             description="Latihan jalan bertahap (PWB) pada pasien paraparesis pasca-operasi stabilisasi tulang belakang bertujuan melindungi implan pen/pedicle screw dari degradasi mekanis (loose/breakage) sembari melatih sinap-sinap motorik baru. Skrining motorik harian mendeteksi dini kegagalan implan atau pergeseran vertebra yang mengancam kompresi medula spinalis akut."
-            disclaimer="Status PWB sangat bervariasi sesuai level cedera korda spinalis Anda. Selalu ikuti persentase beban spesifik dari dr. Nama Dokter, Sp.OT, Subsp. OTB (K)."
+            disclaimer={`Status PWB sangat bervariasi sesuai level cedera korda spinalis Anda. Selalu ikuti persentase beban spesifik dari ${doctorConfig.name || "dokter spesialis"}.`}
             colorClass="cyan"
           />
         </div>
@@ -562,11 +563,11 @@ export default function WeightBearGuide() {
               <div className="space-y-4 text-left">
                 <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 space-y-3">
                   <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                    RS Soeradji Tirtonegoro Klaten
+                    {doctorConfig.clinic || "Spine & Pain Clinic"}
                   </h4>
                   <div className="flex gap-2.5 text-xs text-foreground/60 leading-relaxed">
                     <MapPinned className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                    <span>Jalan KRT Jl. Dr. Soeradji Tirtonegoro No.1, Dusun 1, Tegalyoso, Kec. Klaten Sel., Kabupaten Klaten, Jawa Tengah 57424</span>
+                    <span>{doctorConfig.location || "Kota, Indonesia"}</span>
                   </div>
                 </div>
 
@@ -583,7 +584,7 @@ export default function WeightBearGuide() {
               {/* Action Buttons */}
               <div className="space-y-3 pt-2">
                 <a 
-                  href="https://www.google.com/maps/search/?api=1&query=RS+Dr.+Soeradji+Tirtonegoro+Klaten"
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(doctorConfig.clinic || "")}+${encodeURIComponent(doctorConfig.location || "")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full py-4 bg-primary text-white font-bold rounded-2xl text-center text-sm transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/20"

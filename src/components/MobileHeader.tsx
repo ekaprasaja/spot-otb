@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronLeft, Bell } from "lucide-react";
-import { doctorConfig } from "@/doctor-config";
+import { useDoctorConfig } from "@/context/DoctorConfigContext";
 import { useNotificationStore } from "@/store/useNotificationStore";
 
 export default function MobileHeader() {
@@ -12,6 +12,7 @@ export default function MobileHeader() {
   const isHome = pathname === "/";
   const { notifications, togglePanel } = useNotificationStore();
   const unreadCount = notifications.filter((n) => !n.read).length;
+  const doctorConfig = useDoctorConfig();
 
   return (
     <header className="sticky top-0 z-50 md:hidden bg-[#0A0A0B]/80 backdrop-blur-lg border-b border-white/5">
@@ -26,7 +27,7 @@ export default function MobileHeader() {
               <div className="relative">
                 <div className="w-10 h-10 rounded-xl overflow-hidden border-2 border-primary/20 shadow-xl">
                   <img 
-                    src={doctorConfig.image} 
+                    src={doctorConfig.image || "/images/doctor_profile.webp"} 
                     alt={doctorConfig.name} 
                     className="w-full h-full object-cover object-top"
                   />
@@ -65,7 +66,7 @@ export default function MobileHeader() {
                 animate={{ opacity: 1 }}
                 className="text-[16px] font-inter font-bold text-white tracking-tight"
               >
-                Wisnu SpineCare AI
+                {doctorConfig.clinic || "SpineCare AI"}
               </motion.h1>
             </div>
 

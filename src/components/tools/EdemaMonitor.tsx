@@ -24,12 +24,13 @@ import {
 import { useOrthoStore } from "@/store/useOrthoStore";
 import { ClinicalSection } from "@/components/shared/ClinicalSection";
 import { ToolInstruction } from "@/components/shared/ToolInstruction";
-import { doctorConfig } from "@/doctor-config";
+import { useDoctorConfig } from "@/context/DoctorConfigContext";
 
 type ProcedureType = "surgical" | "injection";
 type SimType = "normal" | "csf" | "infection" | "hematoma" | "irritation";
 
 export default function EdemaMonitor() {
+  const doctorConfig = useDoctorConfig();
   const addRecord = useOrthoStore((state) => state.addRecord);
 
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -411,7 +412,7 @@ export default function EdemaMonitor() {
           <ClinicalSection 
             title="Dasar Klinis: Cerebrospinal Fluid (CSF) Leakage & Infection"
             description="Kebocoran Cairan Serebrospinal (CSF) melalui luka jahitan operasi leher atau punggung (spinal) merupakan komplikasi serius bedah tulang belakang yang dapat memicu kontaminasi retrograde ke selaput otak dan saraf (meningitis). Tanda khas CSF leak adalah terbentuknya noda rembesan cairan bening meluas di perban (halo sign). Segmentasi gambar stateless mengidentifikasi perubahan warna dan meluasnya rembesan secara instan untuk deteksi dini Dural Tear."
-            disclaimer="Uji ini merupakan screening awal segmentasi visual perban steril Anda. Selalu kunjungi ruang praktek dr. Nama Dokter secara langsung atau kunjungi IGD terdekat bila perban terasa basah atau timbul demam tinggi."
+            disclaimer={`Uji ini merupakan screening awal segmentasi visual perban steril Anda. Selalu kunjungi ruang praktek ${doctorConfig.name || "dokter spesialis"} secara langsung atau kunjungi IGD terdekat bila perban terasa basah atau timbul demam tinggi.`}
             colorClass="rose"
           />
 
@@ -466,11 +467,11 @@ export default function EdemaMonitor() {
               <div className="space-y-4 text-left">
                 <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 space-y-3">
                   <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                    RS Soeradji Tirtonegoro Klaten
+                    {doctorConfig.clinic || "Spine & Pain Clinic"}
                   </h4>
                   <div className="flex gap-2.5 text-xs text-foreground/60 leading-relaxed">
                     <MapPinned className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                    <span>Jalan KRT Jl. Dr. Soeradji Tirtonegoro No.1, Dusun 1, Tegalyoso, Kec. Klaten Sel., Kabupaten Klaten, Jawa Tengah 57424</span>
+                    <span>{doctorConfig.location || "Kota, Indonesia"}</span>
                   </div>
                 </div>
 
@@ -487,7 +488,7 @@ export default function EdemaMonitor() {
               {/* Action Buttons */}
               <div className="space-y-3 pt-2">
                 <a 
-                  href="https://www.google.com/maps/search/?api=1&query=RS+Dr.+Soeradji+Tirtonegoro+Klaten"
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(doctorConfig.clinic || "")}+${encodeURIComponent(doctorConfig.location || "")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full py-4 bg-primary text-white font-bold rounded-2xl text-center text-sm transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/20"
