@@ -288,7 +288,7 @@ export default function InclinometerAI() {
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
-                    <span>Segera <strong>jadwalkan pertemuan fisik langsung dengan dr. Nama Dokter, Sp.OT, Subsp. OTB (K)</strong> di klinik rumah sakit untuk evaluasi implan/pen tulang belakang Anda.</span>
+                    <span>Segera <strong>jadwalkan pertemuan fisik langsung dengan {doctorConfig?.name || "dokter spesialis Anda"}</strong> di klinik rumah sakit untuk evaluasi implan/pen tulang belakang Anda.</span>
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</span>
@@ -296,13 +296,13 @@ export default function InclinometerAI() {
                   </li>
                 </ul>
               </div>
-
+ 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <button 
                   onClick={() => setShowClinicModal(true)}
                   className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-5 px-6 rounded-2xl shadow-xl shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 text-sm md:text-base"
                 >
-                  <Stethoscope className="w-5 h-5" /> Kunjungi Klinik dr. Wisnu (Tatap Muka)
+                  <Stethoscope className="w-5 h-5" /> Kunjungi Klinik {doctorConfig?.name ? doctorConfig.name.split(",")[0] : "Dokter"} (Tatap Muka)
                 </button>
                 <a 
                   href="https://www.google.com/maps/search/?api=1&query=IGD+Instalasi+Gawat+Darurat+Rumah+Sakit+Terdekat"

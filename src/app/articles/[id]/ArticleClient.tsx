@@ -129,7 +129,28 @@ export default function ArticleClient({ article: initialArticle }: ArticleClient
     );
   }
 
+  const replacePlaceholders = (text: string) => {
+    if (!text) return "";
+    if (!doctorConfig) return text;
+    const name = doctorConfig.name || "Dokter Spesialis";
+    const clinic = doctorConfig.clinic || "Klinik Utama";
+    const domain = typeof window !== "undefined" ? window.location.hostname : "wisnubaskoro.id";
+
+    return text
+      .replace(/dr\. Nama Dokter, Sp\.OT, Subsp\. OTB \(K\)/gi, name)
+      .replace(/dr\. Nama Dokter/gi, name)
+      .replace(/Nama Dokter/gi, name)
+      .replace(/dr\. Wisnu Baskoro, Sp\.BS, \(F\. N-TB\), FINSS, FINPS/gi, name)
+      .replace(/dr\. Wisnu Baskoro/gi, name)
+      .replace(/dr\. Wisnu/gi, name)
+      .replace(/Wisnu SpineCare/gi, clinic)
+      .replace(/wisnubaskoro\.id/gi, domain);
+  };
+
   const icon = getIcon(currentArticle.category);
+  const displayTitle = replacePlaceholders(currentArticle.title);
+  const displayAuthor = replacePlaceholders(currentArticle.author);
+  const displayContent = replacePlaceholders(currentArticle.content);
 
   return (
     <div className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-hide bg-[#0A0A0B]">
@@ -140,7 +161,7 @@ export default function ArticleClient({ article: initialArticle }: ArticleClient
           animate={{ scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           src={currentArticle.image || "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=60&w=400"} 
-          alt={currentArticle.title}
+          alt={displayTitle}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B] via-[#0A0A0B]/20 to-transparent" />
@@ -167,16 +188,16 @@ export default function ArticleClient({ article: initialArticle }: ArticleClient
             </div>
 
             <h1 className="text-3xl md:text-5xl font-outfit font-bold text-white mb-8 leading-tight">
-              {currentArticle.title}
+              {displayTitle}
             </h1>
 
             <div className="flex flex-wrap items-center gap-6 mb-12 py-6 border-y border-white/5">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
-                  {currentArticle.author?.charAt(0) || "T"}
+                  {displayAuthor?.charAt(0) || "T"}
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-white">{currentArticle.author || "Tim Medis"}</p>
+                  <p className="text-xs font-bold text-white">{displayAuthor || "Tim Medis"}</p>
                   <p className="text-[10px] text-foreground/40 uppercase tracking-tighter">Penulis Medis</p>
                 </div>
               </div>
@@ -201,7 +222,7 @@ export default function ArticleClient({ article: initialArticle }: ArticleClient
 
             <div 
               className="prose prose-invert prose-lg max-w-none text-foreground/70 leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: currentArticle.content }}
+              dangerouslySetInnerHTML={{ __html: displayContent }}
             />
 
             {/* Surgeon Note */}

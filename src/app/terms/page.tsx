@@ -7,7 +7,7 @@ export default function TermsPage() {
     {
       title: "Ketentuan Penggunaan Layanan",
       icon: Gavel,
-      content: "Dengan menggunakan platform wisnubaskoro.id (Spine & Pain Specialist Care), Anda menyetujui bahwa seluruh alat bantu diagnosis AI, kalkulator PWB, log trauma, dan inclinometer dalam aplikasi ini bersifat edukatif dan pemantauan mandiri. Alat-alat ini dirancang untuk mendampingi pemulihan Anda dan tidak boleh dijadikan sebagai dasar diagnosis medis tunggal atau pengganti konsultasi langsung dengan dokter spesialis bedah saraf."
+      content: "Dengan menggunakan platform portal kesehatan kami (Spine & Pain Specialist Care), Anda menyetujui bahwa seluruh alat bantu diagnosis AI, kalkulator PWB, log trauma, dan inclinometer dalam aplikasi ini bersifat edukatif dan pemantauan mandiri. Alat-alat ini dirancang untuk mendampingi pemulihan Anda dan tidak boleh dijadikan sebagai dasar diagnosis medis tunggal atau pengganti konsultasi langsung dengan dokter spesialis orthopedi & traumatologi."
     },
     {
       title: "Batasan Tanggung Jawab Medis",

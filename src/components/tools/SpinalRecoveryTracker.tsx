@@ -67,16 +67,16 @@ export default function SpinalRecoveryTracker() {
       status = "danger";
       zone = "ZONA MERAH";
       if (intervention === "nerve_block") {
-        message = "⚠️ ALARM DEFISIT SARAF PASCA-TINDAKAN\nAnda melaporkan kebas/lemas baru yang progresif di kaki. Jika ini terjadi lebih dari 6 jam pasca-suntikan blok saraf, hal ini mengindikasikan potensi risiko hematoma (bekuan darah) yang menekan akar saraf spinal di area suntikan.\n\nTindakan Darurat:\n1. Segera hentikan aktivitas berjalan, berbaring rata tanpa bantal.\n2. Segera kunjungi tempat praktek dr. Nama Dokter, Sp.OT, Subsp. OTB (K) atau menuju Instalasi Gawat Darurat (IGD) Rumah Sakit terdekat!";
+        message = `⚠️ ALARM DEFISIT SARAF PASCA-TINDAKAN\nAnda melaporkan kebas/lemas baru yang progresif di kaki. Jika ini terjadi lebih dari 6 jam pasca-suntikan blok saraf, hal ini mengindikasikan potensi risiko hematoma (bekuan darah) yang menekan akar saraf spinal di area suntikan.\n\nTindakan Darurat:\n1. Segera hentikan aktivitas berjalan, berbaring rata tanpa bantal.\n2. Segera kunjungi tempat praktek ${doctorConfig?.name || "dokter spesialis Anda"} atau menuju Instalasi Gawat Darurat (IGD) Rumah Sakit terdekat!`;
       } else if (intervention === "pldd") {
-        message = "⚠️ ALARM DEFISIT SARAF PASCA-PLDD\nTerjadi kelemahan/kebas baru pasca-tindakan dekompresi laser. Ini merupakan indikasi iritasi saraf akut atau kompresi sisa bantalan tulang belakang.\n\nTindakan Darurat:\n1. Berbaring telentang, jangan membungkuk atau memutar pinggang.\n2. Segera kunjungi tempat praktek dr. Nama Dokter, Sp.OT, Subsp. OTB (K) sekarang untuk evaluasi neurologis tatap muka darurat!";
+        message = `⚠️ ALARM DEFISIT SARAF PASCA-PLDD\nTerjadi kelemahan/kebas baru pasca-tindakan dekompresi laser. Ini merupakan indikasi iritasi saraf akut atau kompresi sisa bantalan tulang belakang.\n\nTindakan Darurat:\n1. Berbaring telentang, jangan membungkuk atau memutar pinggang.\n2. Segera kunjungi tempat praktek ${doctorConfig?.name || "dokter spesialis Anda"} sekarang untuk evaluasi neurologis tatap muka darurat!`;
       } else {
-        message = "⚠️ ALARM NEUROLOGIS PROGRESIF\nTerjadi kelemahan motorik atau kebas baru pada kaki yang semakin memberat. Segera kunjungi tempat praktek dr. Nama Dokter, Sp.OT, Subsp. OTB (K) secara langsung atau langsung kunjungi IGD terdekat!";
+        message = `⚠️ ALARM NEUROLOGIS PROGRESIF\nTerjadi kelemahan motorik atau kebas baru pada kaki yang semakin memberat. Segera kunjungi tempat praktek ${doctorConfig?.name || "dokter spesialis Anda"} secara langsung atau langsung kunjungi IGD terdekat!`;
       }
     } else if (vasPainScore >= 7) {
       status = "danger";
       zone = "ZONA MERAH";
-      message = "⚠️ ALERT SKALA NYERI EKSTREM\nSkala nyeri Anda berada di level berat (" + vasPainScore + "/10). Sangat dianjurkan untuk tidak memaksakan aktivitas fisik, segera konsumsi obat pereda nyeri sesuai resep dr. Nama Dokter, Sp.OT, Subsp. OTB (K), dan segera jadwalkan kontrol jika nyeri menetap lebih dari 24 jam.";
+      message = `⚠️ ALERT SKALA NYERI EKSTREM\nSkala nyeri Anda berada di level berat (${vasPainScore}/10). Sangat dianjurkan untuk tidak memaksakan aktivitas fisik, segera konsumsi obat pereda nyeri sesuai resep ${doctorConfig?.name || "dokter spesialis Anda"}, dan segera jadwalkan kontrol jika nyeri menetap lebih dari 24 jam.`;
     } else if (vasPainScore >= 4 || parsedLimit < 100) {
       status = "warning";
       zone = "ZONA KUNING";
@@ -186,7 +186,7 @@ export default function SpinalRecoveryTracker() {
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
-                    <span>Hubungi <strong className="text-red-400 font-bold">dr. Nama Dokter, Sp.OT, Subsp. OTB (K)</strong> sekarang juga untuk instruksi lebih lanjut.</span>
+                    <span>Hubungi <strong className="text-red-400 font-bold">{doctorConfig?.name || "dokter spesialis Anda"}</strong> sekarang juga untuk instruksi lebih lanjut.</span>
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</span>
@@ -201,7 +201,7 @@ export default function SpinalRecoveryTracker() {
                   className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-5 px-6 rounded-2xl shadow-xl shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 text-sm md:text-base"
                   id="btn-emergency-clinic"
                 >
-                  <Stethoscope className="w-5 h-5" /> Kunjungi Klinik dr. Wisnu (Tatap Muka)
+                  <Stethoscope className="w-5 h-5" /> Kunjungi Klinik {doctorConfig?.name ? doctorConfig.name.split(",")[0] : "Dokter"} (Tatap Muka)
                 </button>
                 <a 
                   href="https://www.google.com/maps/search/?api=1&query=Instalasi+Gawat+Darurat+IGD+Rumah+Sakit+Terdekat"

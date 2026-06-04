@@ -206,7 +206,7 @@ export default function DexterityPulse() {
         if (speedTps < 2.0 || accuracy < 60) {
           status = "danger";
           zone = "ZONA MERAH";
-          message = "⚠️ ALARM GANGGUAN MOTORIK NEUROLOGIS\nTerjadi penurunan drastis pada fungsi koordinasi motorik halus jari tangan Anda. Ini merupakan tanda adanya kompresi saraf tulang belakang leher (Cervical Myelopathy).\nTindakan yang Harus Dilakukan:\nHarap segera menghentikan aktivitas, batasi pergerakan leher, dan segera temui dr. Nama Dokter, Sp.OT, Subsp. OTB (K) di tempat praktik Rumah Sakit, atau langsung kunjungi Instalasi Gawat Darurat (IGD) terdekat hari ini juga untuk pemeriksaan fisik dan evaluasi MRI tulang belakang leher!";
+          message = `⚠️ ALARM GANGGUAN MOTORIK NEUROLOGIS\nTerjadi penurunan drastis pada fungsi koordinasi motorik halus jari tangan Anda. Ini merupakan tanda adanya kompresi saraf tulang belakang leher (Cervical Myelopathy).\nTindakan yang Harus Dilakukan:\nHarap segera menghentikan aktivitas, batasi pergerakan leher, dan segera temui ${doctorConfig?.name || "dokter spesialis Anda"} di tempat praktik Rumah Sakit, atau langsung kunjungi Instalasi Gawat Darurat (IGD) terdekat hari ini juga untuk pemeriksaan fisik dan evaluasi MRI tulang belakang leher!`;
         } else if (speedTps < 3.5 || accuracy < 80 || consistency < 70) {
           status = "warning";
           zone = "ZONA KUNING";
@@ -298,7 +298,7 @@ export default function DexterityPulse() {
                 <ul className="space-y-3.5 text-sm font-semibold text-white/90">
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</span>
-                    <span>Harap segera menghentikan aktivitas, batasi pergerakan, dan segera temui <strong className="text-red-400 font-bold">dr. Nama Dokter, Sp.OT, Subsp. OTB (K)</strong> di Rumah Sakit sekarang.</span>
+                    <span>Harap segera menghentikan aktivitas, batasi pergerakan, dan segera temui <strong className="text-red-400 font-bold">{doctorConfig?.name || "dokter spesialis Anda"}</strong> di Rumah Sakit sekarang.</span>
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
@@ -312,7 +312,7 @@ export default function DexterityPulse() {
                   onClick={() => setShowClinicModal(true)}
                   className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-5 px-6 rounded-2xl shadow-xl shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 text-sm md:text-base"
                 >
-                  <Stethoscope className="w-5 h-5" /> Kunjungi Klinik dr. Wisnu (Tatap Muka)
+                  <Stethoscope className="w-5 h-5" /> Kunjungi Klinik {doctorConfig?.name ? doctorConfig.name.split(",")[0] : "Dokter"} (Tatap Muka)
                 </button>
                 <a 
                   href="https://www.google.com/maps/search/?api=1&query=CT+Scan+IGD+Instalasi+Gawat+Darurat+Rumah+Sakit+Terdekat"
@@ -363,7 +363,7 @@ export default function DexterityPulse() {
             { title: "Pilih Sisi Pengujian", desc: "Pilih tangan yang akan diuji (Kiri atau Kanan). Lakukan pada kedua tangan secara berkala." },
             { title: "Ketuk Tombol Bergantian", desc: "Gunakan hanya satu jari telunjuk. Ketuk Target A dan Target B secara bergantian secepat dan seakurat mungkin." },
             { title: "Selesaikan Durasi", desc: "Pertahankan kecepatan dan stabilitas irama ketukan Anda selama 10 detik penuh." },
-            { title: "Evaluasi & Tunjukkan", desc: "Data tren ketukan (TPS & Stabilitas Irama) disimpan di memori HP untuk langsung ditunjukkan pada dr. Wisnu." }
+            { title: "Evaluasi & Tunjukkan", desc: `Data tren ketukan (TPS & Stabilitas Irama) disimpan di memori HP untuk langsung ditunjukkan pada ${doctorConfig?.name ? doctorConfig.name.split(",")[0] : "dokter spesialis Anda"}.` }
           ]}
         />
 

@@ -61,9 +61,9 @@ export default function DermatomeTracker() {
       status = "danger";
       zone = "ZONA MERAH";
       if (activeDermatome === "S1" || activeDermatome === "L5") {
-        message = "🚨 ALARM KRITIS: MATI RASA TOTAL (ANESTESIA SPINAL / SADDLE ANESTHESIA)\nTerjadi hilangnya rasa raba total pada area dermatome " + activeDermatome + " atau area bokong/kemaluan. Kondisi ini dicurigai merupakan indikasi Sindrom Kauda Ekuina (Cauda Equina Syndrome) atau jepitan saraf parah.\n\nTindakan Darurat Anda:\n1. Segera hubungi asisten dr. Nama Dokter, Sp.OT, Subsp. OTB (K) atau langsung pergi ke UGD Rumah Sakit terdekat sekarang juga!\n2. Kehilangan kontrol buang air kecil/besar pasca mati rasa merupakan indikasi bedah dekompresi darurat.";
+        message = `🚨 ALARM KRITIS: MATI RASA TOTAL (ANESTESIA SPINAL / SADDLE ANESTHESIA)\nTerjadi hilangnya rasa raba total pada area dermatome ${activeDermatome} atau area bokong/kemaluan. Kondisi ini dicurigai merupakan indikasi Sindrom Kauda Ekuina (Cauda Equina Syndrome) atau jepitan saraf parah.\n\nTindakan Darurat Anda:\n1. Segera hubungi asisten ${doctorConfig?.name || "dokter spesialis Anda"} atau langsung pergi ke UGD Rumah Sakit terdekat sekarang juga!\n2. Kehilangan kontrol buang air kecil/besar pasca mati rasa merupakan indikasi bedah dekompresi darurat.`;
       } else {
-        message = "🚨 ALARM KRITIS: ANOMALI SENSORIK TOTAL\nMati rasa total pada area dermatome " + activeDermatome + " (lengan/tangan) mengindikasikan blok konduksi impuls saraf leher yang parah akibat herniasi masif.\n\nTindakan Darurat Anda:\nSegera hubungi dr. Nama Dokter, Sp.OT, Subsp. OTB (K) untuk penjadwalan pemeriksaan neurologis mendesak guna mencegah defisit permanen.";
+        message = `🚨 ALARM KRITIS: ANOMALI SENSORIK TOTAL\nMati rasa total pada area dermatome ${activeDermatome} (lengan/tangan) mengindikasikan blok konduksi impuls saraf leher yang parah akibat herniasi masif.\n\nTindakan Darurat Anda:\nSegera hubungi ${doctorConfig?.name || "dokter spesialis Anda"} untuk penjadwalan pemeriksaan neurologis mendesak guna mencegah defisit permanen.`;
       }
     } else if (sensationLevel === "hypoesthesia") {
       status = "warning";
@@ -160,7 +160,7 @@ export default function DermatomeTracker() {
                   onClick={() => setShowClinicModal(true)}
                   className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-5 px-6 rounded-2xl shadow-xl shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 text-sm md:text-base"
                 >
-                  <Stethoscope className="w-5 h-5 animate-pulse" /> Kunjungi Klinik dr. Wisnu (Tatap Muka)
+                  <Stethoscope className="w-5 h-5 animate-pulse" /> Kunjungi Klinik {doctorConfig?.name ? doctorConfig.name.split(',')[0] : "Dokter"} (Tatap Muka)
                 </button>
                 <a 
                   href="https://www.google.com/maps/search/?api=1&query=IGD+Instalasi+Gawat+Darurat+Rumah+Sakit+Terdekat"

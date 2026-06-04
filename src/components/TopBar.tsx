@@ -9,7 +9,7 @@ export default function TopBar() {
   const { notifications, togglePanel } = useNotificationStore();
   const unreadCount = notifications.filter((n) => !n.read).length;
   const doctorConfig = useDoctorConfig();
-  const titleText = doctorConfig.clinic || "Wisnu SpineCare AI";
+  const titleText = doctorConfig.clinic || (doctorConfig.name ? (doctorConfig.name.split(",")[0] + " Care") : "Portal Kesehatan");
 
   return (
     <header className="hidden md:flex items-center justify-between px-8 py-6 sticky top-0 bg-background/80 backdrop-blur-xl z-50 border-b border-white/5">

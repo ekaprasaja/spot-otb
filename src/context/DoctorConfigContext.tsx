@@ -25,6 +25,9 @@ export interface DoctorConfig {
   wordpressCategoryFilter: string;
   cvTimeline: CVItem[];
   whitelabelType?: string;
+  whitelabelSub?: string;
+  heroTitle?: string;
+  heroDescription?: string;
 }
 
 const DoctorConfigContext = createContext<DoctorConfig | null>(null);
@@ -70,6 +73,9 @@ export function DoctorConfigProvider({ children }: { children: React.ReactNode }
           wordpressCategoryFilter: rawData.wordpressCategoryFilter || rawData.wordpress_category_filter || "",
           cvTimeline: [],
           whitelabelType: rawData.whitelabelType || "spog",
+          whitelabelSub: rawData.whitelabelSub || rawData.whitelabel_sub || "",
+          heroTitle: rawData.heroTitle || rawData.hero_title || "",
+          heroDescription: rawData.heroDescription || rawData.hero_description || "",
         };
 
         // 1. Inject Dynamic CSS accent color
@@ -121,6 +127,9 @@ export function DoctorConfigProvider({ children }: { children: React.ReactNode }
           wordpressCategoryFilter: "",
           cvTimeline: [],
           whitelabelType: "spot-otb",
+          whitelabelSub: "Spine & Pain Intervention",
+          heroTitle: "",
+          heroDescription: "",
         });
       } finally {
         setLoading(false);

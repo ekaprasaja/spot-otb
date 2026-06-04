@@ -56,7 +56,7 @@ export default function PWAInstallPrompt() {
     setShowPrompt(false);
   };
 
-  const clinicTitle = config?.clinic ? config.clinic.toUpperCase() : "WISNU SPINECARE";
+  const clinicTitle = config?.clinic ? config.clinic.toUpperCase() : "PORTAL KESEHATAN";
 
   return (
     <AnimatePresence>

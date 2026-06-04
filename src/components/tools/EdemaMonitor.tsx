@@ -65,28 +65,28 @@ export default function EdemaMonitor() {
 
     let status: "stable" | "danger" = "stable";
     let zone = "ZONA HIJAU";
-    let message = "Luka/titik bekas tindakan terpantau bersih dan kering. Tidak terdeteksi komplikasi atau tanda-tanda infeksi aktif. Lanjutkan perawatan steril sesuai instruksi dr. Nama Dokter, Sp.OT, Subsp. OTB (K).";
+    let message = `Luka/titik bekas tindakan terpantau bersih dan kering. Tidak terdeteksi komplikasi atau tanda-tanda infeksi aktif. Lanjutkan perawatan steril sesuai instruksi ${doctorConfig?.name || "dokter spesialis Anda"}.`;
 
     if (procedureType === "surgical") {
       if (simulationType === "csf") {
         status = "danger";
         zone = "ZONA MERAH";
-        message = "🚨 ALARM KRITIS: INDIKASI KEBOCORAN CAIRAN SEREBROSPINAL (CSF LEAK)\nTerdeteksi adanya rembesan cairan bening encer meluas pada perban luka operasi tulang belakang (spine) Anda. Kondisi ini membutuhkan penanganan steril segera untuk mencegah kontaminasi selaput otak/tulang belakang (meningitis).\n\nTindakan Darurat Anda:\n1. Tetap dalam posisi berbaring datar sempurna (tanpa bantal) jika luka berada di punggung atau leher.\n2. Segera pergi ke Rumah Sakit tempat dr. Nama Dokter, Sp.OT, Subsp. OTB (K) praktik atau langsung menuju UGD terdekat!";
+        message = `🚨 ALARM KRITIS: INDIKASI KEBOCORAN CAIRAN SEREBROSPINAL (CSF LEAK)\nTerdeteksi adanya rembesan cairan bening encer meluas pada perban luka operasi tulang belakang (spine) Anda. Kondisi ini membutuhkan penanganan steril segera untuk mencegah kontaminasi selaput otak/tulang belakang (meningitis).\n\nTindakan Darurat Anda:\n1. Tetap dalam posisi berbaring datar sempurna (tanpa bantal) jika luka berada di punggung atau leher.\n2. Segera pergi ke Rumah Sakit tempat ${doctorConfig?.name || "dokter spesialis Anda"} praktik atau langsung menuju UGD terdekat!`;
       } else if (simulationType === "infection") {
         status = "danger";
         zone = "ZONA MERAH";
-        message = "🚨 ALARM INFEKSI AKTIF PADA LUKA OPERASI\nTerdeteksi tanda-tanda infeksi bakteri seperti kemerahan meluas yang terasa panas, pembengkakan hebat, atau keluarnya cairan keruh/nanah dari luka bedah.\n\nTindakan Darurat Anda:\n1. Jaga area luka tetap steril, tutup dengan kasa kering steril baru.\n2. Segera hubungi asisten klinis dr. Nama Dokter, Sp.OT, Subsp. OTB (K) untuk evaluasi jahitan dan resep antibiotik.";
+        message = `🚨 ALARM INFEKSI AKTIF PADA LUKA OPERASI\nTerdeteksi tanda-tanda infeksi bakteri seperti kemerahan meluas yang terasa panas, pembengkakan hebat, atau keluarnya cairan keruh/nanah dari luka bedah.\n\nTindakan Darurat Anda:\n1. Jaga area luka tetap steril, tutup dengan kasa kering steril baru.\n2. Segera hubungi asisten klinis ${doctorConfig?.name || "dokter spesialis Anda"} untuk evaluasi jahitan dan resep antibiotik.`;
       }
     } else {
       // Injection/Intervention needle punctures
       if (simulationType === "hematoma") {
         status = "danger";
         zone = "ZONA MERAH";
-        message = "🚨 ALARM MEMAR / HEMATOMA LOKAL MELUAS\nTerdeteksi pembengkakan keras berdenyut atau lebam keunguan yang meluas secara cepat di sekitar titik bekas jarum tindakan intervensi nyeri. Hal ini mengindikasikan perdarahan di bawah kulit.\n\nTindakan Darurat Anda:\n1. Lakukan kompres dingin dengan es dibalut handuk tipis selama 10-15 menit untuk menghentikan aliran darah.\n2. Hubungi dr. Nama Dokter, Sp.OT, Subsp. OTB (K) jika ukuran bengkak bertambah besar secara signifikan.";
+        message = `🚨 ALARM MEMAR / HEMATOMA LOKAL MELUAS\nTerdeteksi pembengkakan keras berdenyut atau lebam keunguan yang meluas secara cepat di sekitar titik bekas jarum tindakan intervensi nyeri. Hal ini mengindikasikan perdarahan di bawah kulit.\n\nTindakan Darurat Anda:\n1. Lakukan kompres dingin dengan es dibalut handuk tipis selama 10-15 menit untuk menghentikan aliran darah.\n2. Hubungi ${doctorConfig?.name || "dokter spesialis Anda"} jika ukuran bengkak bertambah besar secara signifikan.`;
       } else if (simulationType === "irritation") {
         status = "danger";
         zone = "ZONA MERAH";
-        message = "🚨 ALARM IRITASI / REAKSI INFLAMASI TITIK SUNTIKAN\nTerdeteksi gatal hebat, rasa terbakar, bengkak merah lokal, atau bintik kemerahan meluas di area bekas jarum suntikan saraf. Hal ini dapat berupa reaksi hipersensitivitas obat atau iritasi kulit.\n\nTindakan Darurat Anda:\n1. Jaga agar titik suntikan tetap kering dan steril. Jangan mengoleskan salep tanpa resep atau menempelkan koyo.\n2. Hubungi tim dr. Wisnu jika keluhan berlanjut lebih dari 24 jam.";
+        message = `🚨 ALARM IRITASI / REAKSI INFLAMASI TITIK SUNTIKAN\nTerdeteksi gatal hebat, rasa terbakar, bengkak merah lokal, atau bintik kemerahan meluas di area bekas jarum suntikan saraf. Hal ini dapat berupa reaksi hipersensitivitas obat atau iritasi kulit.\n\nTindakan Darurat Anda:\n1. Jaga agar titik suntikan tetap kering dan steril. Jangan mengoleskan salep tanpa resep atau menempelkan koyo.\n2. Hubungi tim ${doctorConfig?.name || "dokter spesialis Anda"} jika keluhan berlanjut lebih dari 24 jam.`;
       }
     }
 
@@ -172,7 +172,7 @@ export default function EdemaMonitor() {
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-600/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
-                    <span><strong>Segera pergi ke Rumah Sakit tempat dr. Nama Dokter, Sp.OT, Subsp. OTB (K) praktik</strong> atau langsung menuju <strong>Instalasi Gawat Darurat (IGD) terdekat sekarang juga!</strong> Jangan tunda sampai besok.</span>
+                    <span><strong>Segera pergi ke Rumah Sakit tempat {doctorConfig?.name || "dokter spesialis Anda"} praktik</strong> atau langsung menuju <strong>Instalasi Gawat Darurat (IGD) terdekat sekarang juga!</strong> Jangan tunda sampai besok.</span>
                   </li>
                 </ul>
               </div>
@@ -182,7 +182,7 @@ export default function EdemaMonitor() {
                   onClick={() => setShowClinicModal(true)}
                   className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-5 px-6 rounded-2xl shadow-xl shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 text-sm md:text-base"
                 >
-                  <Stethoscope className="w-5 h-5 animate-pulse" /> Kunjungi Klinik dr. Wisnu (Tatap Muka)
+                  <Stethoscope className="w-5 h-5 animate-pulse" /> Kunjungi Klinik {doctorConfig?.name ? doctorConfig.name.split(',')[0] : "Dokter"} (Tatap Muka)
                 </button>
                 <a 
                   href="https://www.google.com/maps/search/?api=1&query=IGD+Instalasi+Gawat+Darurat+Rumah+Sakit+Terdekat"

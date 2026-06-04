@@ -38,7 +38,7 @@ export default function MobileHeader() {
               </div>
               <div>
                 <p className="text-[9px] font-bold text-primary uppercase tracking-widest leading-none mb-1">
-                  {doctorConfig.whitelabelType === "spog" ? "Obstetrics & Gynecology" : "Spine & Pain Intervention"}
+                  {doctorConfig.whitelabelSub || (doctorConfig.whitelabelType === "spog" ? "Obstetrics & Gynecology" : "Spine & Pain Intervention")}
                 </p>
                 <h2 className="text-sm font-bold text-white leading-none tracking-tight">{doctorConfig.name}</h2>
               </div>

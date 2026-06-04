@@ -68,11 +68,11 @@ export default function WeightBearGuide() {
       status = "danger";
       zone = "ZONA MERAH";
       if (procedureType === "tlif") {
-        message = "⚠️ PERINGATAN DARURAT FOOT DROP (TLIF)\nTerjadi kelemahan motorik kaki mendadak (sulit mengangkat pergelangan kaki / foot drop). Ini mengindikasikan kemungkinan kompresi atau regangan serius pada akar saraf L5 pasca-operasi TLIF.\n\nTindakan Darurat Segera:\n1. Segera hentikan seluruh latihan jalan, berbaring telentang flat.\n2. Segera hubungi dr. Nama Dokter, Sp.OT, Subsp. OTB (K) atau langsung menuju UGD!";
+        message = `⚠️ PERINGATAN DARURAT FOOT DROP (TLIF)\nTerjadi kelemahan motorik kaki mendadak (sulit mengangkat pergelangan kaki / foot drop). Ini mengindikasikan kemungkinan kompresi atau regangan serius pada akar saraf L5 pasca-operasi TLIF.\n\nTindakan Darurat Segera:\n1. Segera hentikan seluruh latihan jalan, berbaring telentang flat.\n2. Segera hubungi ${doctorConfig?.name || "dokter spesialis Anda"} atau langsung menuju UGD!`;
       } else if (procedureType === "vertebroplasty") {
-        message = "⚠️ PERINGATAN DARURAT MOTORIK (POST-SEMEN MEDIS)\nTerjadi kelemahan kaki mendadak pasca-injeksi semen medis tulang belakang. Hal ini mengindikasikan kompresi sumsum saraf mendadak (misalnya akibat semen medis meluap ke kanal spinal).\n\nTindakan Darurat Segera:\n1. Hentikan seluruh aktivitas berjalan, berbaring telentang tegap.\n2. Segera hubungi dr. Nama Dokter, Sp.OT, Subsp. OTB (K) untuk rontgen/CT Scan tulang belakang darurat!";
+        message = `⚠️ PERINGATAN DARURAT MOTORIK (POST-SEMEN MEDIS)\nTerjadi kelemahan kaki mendadak pasca-injeksi semen medis tulang belakang. Hal ini mengindikasikan kompresi sumsum saraf mendadak (misalnya akibat semen medis meluap ke kanal spinal).\n\nTindakan Darurat Segera:\n1. Hentikan seluruh aktivitas berjalan, berbaring telentang tegap.\n2. Segera hubungi ${doctorConfig?.name || "dokter spesialis Anda"} untuk rontgen/CT Scan tulang belakang darurat!`;
       } else {
-        message = "⚠️ PERINGATAN DARURAT MOTORIK\nTerjadi kelemahan motorik kaki secara mendadak. Segera hentikan latihan berjalan menggunakan kruk Anda dan segera periksakan diri ke dr. Nama Dokter, Sp.OT, Subsp. OTB (K) atau ke IGD terdekat!";
+        message = `⚠️ PERINGATAN DARURAT MOTORIK\nTerjadi kelemahan motorik kaki secara mendadak. Segera hentikan latihan berjalan menggunakan kruk Anda dan segera periksakan diri ke ${doctorConfig?.name || "dokter spesialis Anda"} atau ke IGD terdekat!`;
       }
     } else if (painLevel >= 7) {
       status = "danger";
@@ -175,7 +175,7 @@ export default function WeightBearGuide() {
                 <ul className="space-y-3.5 text-sm font-semibold text-white/90">
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</span>
-                    <span>Segera jadwalkan pertemuan langsung atau lakukan pemeriksaan fisik darurat dengan <strong className="text-red-400 font-bold">dr. Nama Dokter, Sp.OT, Subsp. OTB (K)</strong> di Rumah Sakit sekarang.</span>
+                    <span>Segera jadwalkan pertemuan langsung atau lakukan pemeriksaan fisik darurat dengan <strong className="text-red-400 font-bold">{doctorConfig?.name || "dokter spesialis Anda"}</strong> di Rumah Sakit sekarang.</span>
                   </li>
                   <li className="flex gap-3 items-start leading-relaxed">
                     <span className="w-6 h-6 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
@@ -189,7 +189,7 @@ export default function WeightBearGuide() {
                   onClick={() => setShowClinicModal(true)}
                   className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-5 px-6 rounded-2xl shadow-xl shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 text-sm md:text-base"
                 >
-                  <Stethoscope className="w-5 h-5" /> Kunjungi Klinik dr. Wisnu (Tatap Muka)
+                  <Stethoscope className="w-5 h-5" /> Kunjungi Klinik {doctorConfig?.name ? doctorConfig.name.split(",")[0] : "Dokter"} (Tatap Muka)
                 </button>
                 <a 
                   href="https://www.google.com/maps/search/?api=1&query=IGD+Instalasi+Gawat+Darurat+Rumah+Sakit+Terdekat"
@@ -239,7 +239,7 @@ export default function WeightBearGuide() {
             { title: "Input Data Dasar", desc: "Masukkan Berat Badan Utuh Anda saat ini dan Persentase Beban instruksi Dokter (25%, 50%, atau 75%)." },
             { title: "Gunakan Timbangan", desc: "Tempatkan timbangan injak di bawah kaki sakit saat berdiri untuk merasakan target beban kilogram secara akurat." },
             { title: "Skrining Nyeri & Saraf", desc: "Pilih skala kenyamanan nyeri VAS serta jawab skrining kelemahan motorik secara jujur harian." },
-            { title: "Simpan Secara Lokal", desc: "Hasil kalkulasi akan disimpan di memori HP Anda secara aman untuk langsung ditunjukkan pada dr. Wisnu saat jadwal kontrol." }
+            { title: "Simpan Secara Lokal", desc: `Hasil kalkulasi akan disimpan di memori HP Anda secara aman untuk langsung ditunjukkan pada ${doctorConfig?.name ? doctorConfig.name.split(",")[0] : "dokter spesialis Anda"} saat jadwal kontrol.` }
           ]}
         />
 

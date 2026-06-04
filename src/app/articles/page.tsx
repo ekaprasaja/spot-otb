@@ -307,7 +307,7 @@ export default function ArticlesPage() {
           </Link>
           <div>
             <h1 className="text-3xl md:text-5xl font-outfit font-bold text-white tracking-tight">Artikel Kesehatan</h1>
-            <p className="text-foreground/40 mt-2">Wawasan medis terpercaya untuk kesehatan bedah saraf Anda.</p>
+            <p className="text-foreground/40 mt-2">Wawasan medis terpercaya untuk kesehatan orthopedi & tulang belakang Anda.</p>
           </div>
         </div>
 
@@ -422,7 +422,7 @@ export default function ArticlesPage() {
           <BookOpen className="w-12 h-12 text-primary mx-auto mb-6" />
           <h2 className="text-3xl md:text-5xl font-outfit font-bold text-white mb-6">Jangan Lewatkan Update Medis</h2>
           <p className="text-base md:text-xl text-foreground/50 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Dapatkan tips wawasan bedah saraf langsung ke inbox Anda setiap minggu. Berlangganan buletin kami sekarang.
+            Dapatkan tips wawasan orthopedi & tulang belakang langsung ke inbox Anda setiap minggu. Berlangganan buletin kami sekarang.
           </p>
           
           {status === "success" ? (

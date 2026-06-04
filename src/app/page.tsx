@@ -98,6 +98,24 @@ const tools = [
 
 export default function Home() {
   const doctorConfig = useDoctorConfig();
+  const isSpog = doctorConfig?.whitelabelType === "spog";
+  const customHeroTitle = doctorConfig?.heroTitle;
+  const customHeroDesc = doctorConfig?.heroDescription;
+  
+  // Mobile Hero
+  const heroTitleMobile = customHeroTitle ? customHeroTitle : (isSpog ? "Kesehatan Kehamilan," : "Spine & Pain,");
+  const heroHighlightMobile = customHeroTitle ? "" : "Prioritas Utama";
+  const heroDescMobile = customHeroDesc ? customHeroDesc : (isSpog 
+    ? "Edukasi kehamilan & kandungan terpercaya di bawah pengawasan ahli."
+    : "Edukasi intervensi nyeri & bedah tulang belakang terpercaya di bawah pengawasan ahli.");
+
+  // Desktop Hero
+  const heroTitleDesktop = customHeroTitle ? customHeroTitle : (isSpog ? "Kesehatan Kehamilan & Janin Anda," : "Kesehatan Spine & Manajemen Nyeri,");
+  const heroHighlightDesktop = customHeroTitle ? "" : "Prioritas Utama Kami";
+  const heroDescDesktop = customHeroDesc ? customHeroDesc : (isSpog
+    ? "Dapatkan akses mandiri ke asisten digital kehamilan berstandar SpOG untuk menghitung HPL, rekam detak tendangan janin, kalkulator kontraksi 5-1-1, dan skrining preeklampsia dini."
+    : "Dapatkan edukasi medis orthopedi tulang belakang & manajemen nyeri terpercaya serta akses teknologi diagnostik mandiri langsung di bawah pengawasan ahli.");
+
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -283,7 +301,7 @@ export default function Home() {
                     <Info className="w-8 h-8 text-primary" />
                   </div>
 
-                  <h2 className="text-3xl font-outfit font-bold text-white mb-6 tracking-tight">Tentang SpineCare & Pain Intervention AI v2.2</h2>
+                  <h2 className="text-3xl font-outfit font-bold text-white mb-6 tracking-tight">Tentang Aplikasi</h2>
                   
                   <div className="space-y-6">
                     <p className="text-sm text-foreground/60 leading-relaxed">
@@ -435,7 +453,7 @@ export default function Home() {
                       transition={{ delay: 0.5 }}
                     >
                       <h1 className="text-[28px] font-outfit font-bold leading-[1.1] mb-2 tracking-tight text-white drop-shadow-lg">
-                        {"Spine & Pain,".split("").map((char, i) => (
+                        {heroTitleMobile.split("").map((char, i) => (
                           <motion.span
                             key={i}
                             initial={{ opacity: 0 }}
@@ -446,7 +464,7 @@ export default function Home() {
                           </motion.span>
                         ))}
                         <br />
-                        {"Prioritas Utama".split("").map((char, i) => (
+                        {heroHighlightMobile.split("").map((char, i) => (
                           <motion.span
                             key={i}
                             initial={{ opacity: 0 }}
@@ -460,7 +478,7 @@ export default function Home() {
                       </h1>
                       
                       <p className="text-xs text-white/70 leading-relaxed mb-6 max-w-[240px]">
-                        {"Edukasi intervensi nyeri & bedah tulang belakang terpercaya di bawah pengawasan ahli.".split(" ").map((word, i) => (
+                        {heroDescMobile.split(" ").map((word, i) => (
                           <motion.span
                             key={i}
                             initial={{ opacity: 0, y: 5 }}
@@ -513,7 +531,7 @@ export default function Home() {
             </motion.div>
  
             <h1 className="text-[36px] md:text-7xl font-outfit font-bold leading-[1.05] mb-8 tracking-tight">
-              {"Kesehatan Spine & Manajemen Nyeri,".split(" ").map((word, i) => (
+              {heroTitleDesktop.split(" ").map((word, i) => (
                 <motion.span
                   key={i}
                   initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
@@ -531,7 +549,7 @@ export default function Home() {
                 transition={{ delay: 0.8, duration: 1 }}
                 className="text-primary inline-block mt-2 relative group"
               >
-                Prioritas Utama Kami
+                {heroHighlightDesktop}
                 <motion.div 
                   animate={{ 
                     x: ["-100%", "200%"],
@@ -553,7 +571,7 @@ export default function Home() {
               transition={{ delay: 1, duration: 1 }}
               className="text-lg md:text-xl text-foreground/60 leading-relaxed mb-10 max-w-xl"
             >
-              Dapatkan edukasi medis orthopedi tulang belakang & manajemen nyeri terpercaya serta akses teknologi diagnostik mandiri langsung di bawah pengawasan ahli.
+              {heroDescDesktop}
             </motion.p>
 
             <motion.div
@@ -931,7 +949,7 @@ export default function Home() {
                   transition={{ delay: 0.8, type: "spring" }}
                   className="text-primary text-4xl block mt-1"
                 >
-                  Saraf & Spine
+                  Orthopedi & Spine
                 </motion.span>
               </h1>
               
@@ -949,7 +967,7 @@ export default function Home() {
                 onClick={() => setShowAboutModal(true)}
                 className="px-8 py-3.5 bg-primary text-white rounded-2xl text-[11px] font-bold shadow-xl shadow-primary/30 active:scale-95 transition-all flex items-center gap-2 group"
               >
-                Tentang Saya
+                Tentang Aplikasi
                 <motion.div
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
@@ -1002,7 +1020,7 @@ export default function Home() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-white leading-tight mb-1">Cervical & <br />Lumbar ROM</h3>
-                  <p className="text-[8px] font-bold text-indigo-400 uppercase tracking-[0.2em]">Saraf & Spine</p>
+                  <p className="text-[8px] font-bold text-indigo-400 uppercase tracking-[0.2em]">Orthopedi & Spine</p>
                 </div>
               </div>
             </motion.div>

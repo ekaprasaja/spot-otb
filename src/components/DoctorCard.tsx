@@ -141,9 +141,11 @@ export default function DoctorCard() {
                 <p className="text-primary font-bold text-xs uppercase tracking-widest mt-1.5 mb-4">
                   {doctorConfig.specialty}
                 </p>
-                <p className="text-foreground/50 text-sm leading-relaxed italic max-w-xl">
-                  "{doctorConfig.bio}"
-                </p>
+                {doctorConfig.bio && (
+                  <p className="text-foreground/50 text-sm leading-relaxed italic max-w-xl">
+                    "{doctorConfig.bio}"
+                  </p>
+                )}
               </div>
             </div>
 
