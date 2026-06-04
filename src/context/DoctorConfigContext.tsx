@@ -79,7 +79,7 @@ export function DoctorConfigProvider({ children }: { children: React.ReactNode }
 
         // 2. Parse CV Timeline JSON safely
         try {
-          const cvJson = rawData.doctorCvJson || rawData.doctor_cv_json || "[]";
+          const cvJson = rawData.cvTimeline || rawData.cv_timeline || rawData.doctorCvJson || rawData.doctor_cv_json || "[]";
           normalizedConfig.cvTimeline = typeof cvJson === "string" ? JSON.parse(cvJson) : cvJson;
         } catch (e) {
           normalizedConfig.cvTimeline = [];
