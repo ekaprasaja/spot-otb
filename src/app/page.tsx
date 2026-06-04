@@ -102,6 +102,108 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [articles, setArticles] = useState<any[]>([
+    {
+      id: 1,
+      title: "Postur Tubuh & WfH",
+      desc: "Panduan lengkap mencegah nyeri punggung saat bekerja dari rumah.",
+      tag: "Gaya Hidup",
+      img: "/images/articles/posture.webp"
+    },
+    {
+      id: 2,
+      title: "Nyeri Punggung Produktif",
+      desc: "Strategi menjaga tulang belakang bebas nyeri di usia produktif.",
+      tag: "Kesehatan Spine",
+      img: "/images/article_exercise.webp"
+    },
+    {
+      id: 5,
+      title: "Masa Depan Spesialis Orthopedi",
+      desc: "Revolusi presisi sub-milimeter dengan asisten navigasi robotik AI.",
+      tag: "Teknologi",
+      img: "/images/articles/ai_robotic_surgery.webp"
+    }
+  ]);
+
+  useEffect(() => {
+    let active = true;
+    async function fetchWpArticles() {
+      if (!doctorConfig) return;
+      try {
+        if (doctorConfig.wordpressApiUrl) {
+          const cleanUrl = doctorConfig.wordpressApiUrl.replace(/\/$/, '');
+          let fetchUrl = `${cleanUrl}/wp-json/wp/v2/posts?_embed&per_page=5`;
+          if (doctorConfig.wordpressCategoryFilter) {
+            const catFilter = String(doctorConfig.wordpressCategoryFilter).trim();
+            if (catFilter) {
+              fetchUrl += `&categories=${catFilter}`;
+            }
+          }
+          const res = await fetch(fetchUrl);
+          if (res.ok) {
+            const posts = await res.json();
+            if (posts && Array.isArray(posts) && posts.length > 0) {
+              const wpArticles = posts.map(post => {
+                let thumbnail = "/images/article_exercise.webp";
+                const featuredMedia = post._embedded?.['wp:featuredmedia']?.[0];
+                if (featuredMedia?.source_url) {
+                  thumbnail = featuredMedia.source_url;
+                }
+
+                let category = "EDUKASI";
+                const terms = post._embedded?.['wp:term']?.[0];
+                if (terms && terms.length > 0) {
+                  category = terms[0].name;
+                }
+
+                let desc = post.excerpt?.rendered || "";
+                desc = desc.replace(/<[^>]*>/g, '').substring(0, 120) + "...";
+
+                return {
+                  id: post.id || post.slug,
+                  title: post.title?.rendered || 'Artikel Edukasi',
+                  desc: desc,
+                  tag: category,
+                  img: thumbnail
+                };
+              });
+
+              if (active) {
+                setArticles(wpArticles);
+                return;
+              }
+            }
+          }
+        }
+
+        const tenantId = doctorConfig.id || 'spot-otb';
+        const res = await fetch(`https://newsletter-api.eka-prasaja.workers.dev/v1/${tenantId}/articles`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data?.articles && Array.isArray(data.articles) && data.articles.length > 0) {
+            const cfArticles = data.articles.slice(0, 5).map((art: any) => ({
+              id: art.slug || art.id,
+              title: art.title,
+              desc: art.excerpt || art.description || "Baca artikel lengkap mengenai kesehatan saraf dan tulang belakang.",
+              tag: "EDUKASI",
+              img: art.cover_image || "/images/article_exercise.webp"
+            }));
+
+            if (active) {
+              setArticles(cfArticles);
+              return;
+            }
+          }
+        }
+      } catch (err) {
+        console.error("Failed to fetch articles in SPOT-OTB homepage:", err);
+      }
+    }
+
+    fetchWpArticles();
+    return () => { active = false; };
+  }, [doctorConfig]);
 
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -630,29 +732,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-3 gap-6">
-            {[
-              {
-                id: 1,
-                title: "Postur Tubuh & WfH",
-                desc: "Panduan lengkap mencegah nyeri punggung saat bekerja dari rumah.",
-                tag: "Gaya Hidup",
-                img: "/images/articles/posture.webp"
-              },
-              {
-                id: 2,
-                title: "Nyeri Punggung Produktif",
-                desc: "Strategi menjaga tulang belakang bebas nyeri di usia produktif.",
-                tag: "Kesehatan Spine",
-                img: "/images/article_exercise.webp"
-              },
-              {
-                id: 5,
-                title: "Masa Depan Spesialis Orthopedi",
-                desc: "Revolusi presisi sub-milimeter dengan asisten navigasi robotik AI.",
-                tag: "Teknologi",
-                img: "/images/articles/ai_robotic_surgery.webp"
-              }
-            ].map((post, idx) => (
+            {articles.slice(0, 3).map((post, idx) => (
               <Link key={post.id} href={`/articles/${post.id}`} prefetch={false} className="group">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -937,13 +1017,12 @@ export default function Home() {
         />
 
         <MedicalInsightScroller 
-          insights={[
-            { id: 1, title: "Postur WfH", tag: "Gaya Hidup", img: "/images/articles/posture.webp" },
-            { id: 2, title: "Nyeri Punggung", tag: "Spine", img: "/images/article_exercise.webp" },
-            { id: 11, title: "Terapi Tanpa Operasi", tag: "Spine Preservation", img: "/images/articles/lumbar_compression.webp" },
-            { id: 7, title: "Endoskopi BESS", tag: "Spine Surgery", img: "/images/articles/endoscopic_spine.webp" },
-            { id: 12, title: "Operasi ACDF & TLIF", tag: "Spine Fusion", img: "/images/spine_scan.webp" }
-          ]} 
+          insights={articles.map(art => ({
+            id: art.id,
+            title: art.title,
+            tag: art.tag,
+            img: art.img
+          }))} 
         />
 
         <section className="px-6 mb-12">
