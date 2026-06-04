@@ -103,15 +103,35 @@ export default function Home() {
   const customHeroDesc = doctorConfig?.heroDescription;
   
   // Mobile Hero
-  const heroTitleMobile = customHeroTitle ? customHeroTitle : (isSpog ? "Kesehatan Kehamilan," : "Spine & Pain,");
-  const heroHighlightMobile = customHeroTitle ? "" : "Prioritas Utama";
+  let heroTitleMobile = isSpog ? "Kesehatan Kehamilan," : "Spine & Pain,";
+  let heroHighlightMobile = "Prioritas Utama";
+  if (customHeroTitle) {
+    if (customHeroTitle.includes(",")) {
+      const parts = customHeroTitle.split(",");
+      heroTitleMobile = parts.slice(0, -1).join(",") + ",";
+      heroHighlightMobile = parts[parts.length - 1].trim();
+    } else {
+      heroTitleMobile = customHeroTitle;
+      heroHighlightMobile = "";
+    }
+  }
   const heroDescMobile = customHeroDesc ? customHeroDesc : (isSpog 
     ? "Edukasi kehamilan & kandungan terpercaya di bawah pengawasan ahli."
     : "Edukasi intervensi nyeri & bedah tulang belakang terpercaya di bawah pengawasan ahli.");
 
   // Desktop Hero
-  const heroTitleDesktop = customHeroTitle ? customHeroTitle : (isSpog ? "Kesehatan Kehamilan & Janin Anda," : "Kesehatan Spine & Manajemen Nyeri,");
-  const heroHighlightDesktop = customHeroTitle ? "" : "Prioritas Utama Kami";
+  let heroTitleDesktop = isSpog ? "Kesehatan Kehamilan & Janin Anda," : "Kesehatan Spine & Manajemen Nyeri,";
+  let heroHighlightDesktop = "Prioritas Utama Kami";
+  if (customHeroTitle) {
+    if (customHeroTitle.includes(",")) {
+      const parts = customHeroTitle.split(",");
+      heroTitleDesktop = parts.slice(0, -1).join(",") + ",";
+      heroHighlightDesktop = parts[parts.length - 1].trim();
+    } else {
+      heroTitleDesktop = customHeroTitle;
+      heroHighlightDesktop = "";
+    }
+  }
   const heroDescDesktop = customHeroDesc ? customHeroDesc : (isSpog
     ? "Dapatkan akses mandiri ke asisten digital kehamilan berstandar SpOG untuk menghitung HPL, rekam detak tendangan janin, kalkulator kontraksi 5-1-1, dan skrining preeklampsia dini."
     : "Dapatkan edukasi medis orthopedi tulang belakang & manajemen nyeri terpercaya serta akses teknologi diagnostik mandiri langsung di bawah pengawasan ahli.");
