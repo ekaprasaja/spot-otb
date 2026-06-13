@@ -49,7 +49,7 @@ export default function DoctorCard() {
                 <X className="w-5 h-5" />
               </button>
 
-              <BookingWidget doctorId={doctorConfig.chatbotToken || doctorConfig.doctorId || "site_gkz9dc"} onClose={() => setShowSchedule(false)} />
+              <BookingWidget doctorId={doctorConfig.doctorId || doctorConfig.id || doctorConfig.chatbotToken || "site_gkz9dc"} onClose={() => setShowSchedule(false)} />
             </motion.div>
           </motion.div>
         )}
