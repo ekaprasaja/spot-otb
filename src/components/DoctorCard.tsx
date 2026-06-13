@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDoctorConfig } from "@/context/DoctorConfigContext";
+import BookingWidget from "./BookingWidget";
 import { 
   MapPin, 
   Camera, 
@@ -43,65 +44,12 @@ export default function DoctorCard() {
               {/* Close Button */}
               <button 
                 onClick={() => setShowSchedule(false)}
-                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 text-white transition-colors"
+                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 text-white transition-colors z-50"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Header */}
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary">
-                  <Calendar className="w-6 h-6" />
-                </div>
-                <div>
-                  <span className="text-[9px] font-black text-primary uppercase tracking-[0.2em]">Praktek Klinis</span>
-                  <h3 className="text-xl font-bold text-white">Jadwal Temu & Konsultasi</h3>
-                </div>
-              </div>
-
-              <div className="h-px bg-white/5 w-full" />
-
-              {/* Hospital Details */}
-              <div className="space-y-5">
-                <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 space-y-3">
-                  <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                    <Award className="w-4 h-4 text-primary" />
-                    {doctorConfig.clinic}
-                  </h4>
-                  <div className="flex gap-3 text-xs text-foreground/60 leading-relaxed">
-                    <MapPinned className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                    <span>{doctorConfig.location}</span>
-                  </div>
-                </div>
-
-                {/* Practice Hours */}
-                <div className="bg-primary/5 border border-primary/10 rounded-2xl p-5 flex items-center gap-4">
-                  <Clock className="w-8 h-8 text-primary shrink-0" />
-                  <div>
-                    <h5 className="text-xs font-bold text-primary uppercase tracking-wider">Jam Praktek Dokter</h5>
-                    <p className="text-sm font-bold text-white mt-1">Senin – Jumat</p>
-                    <p className="text-xs text-foreground/50">09.00 – 14.00 WIB</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Footer */}
-              <div className="flex gap-4 pt-4">
-                <a 
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(doctorConfig.clinic + " " + doctorConfig.location)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 py-4 bg-primary text-white font-bold rounded-2xl text-center text-sm hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-primary/20"
-                >
-                  Buka Peta Lokasi
-                </a>
-                <button 
-                  onClick={() => setShowSchedule(false)}
-                  className="flex-1 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl text-sm hover:bg-white/10 transition-colors"
-                >
-                  Tutup
-                </button>
-              </div>
+              <BookingWidget doctorId={doctorConfig.chatbotToken || doctorConfig.tenant_id || "site_gkz9dc"} onClose={() => setShowSchedule(false)} />
             </motion.div>
           </motion.div>
         )}
