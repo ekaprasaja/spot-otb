@@ -143,24 +143,24 @@ export default function Home() {
   const [articles, setArticles] = useState<any[]>([
     {
       id: 1,
-      title: "Postur Tubuh & WfH",
-      desc: "Panduan lengkap mencegah nyeri punggung saat bekerja dari rumah.",
-      tag: "Gaya Hidup",
-      img: "/images/articles/posture.webp"
+      title: "Deteksi Dini Osteosarcoma",
+      desc: "Waspadai nyeri tulang persisten dan pembengkakan pada anak dan remaja sebagai gejala awal kanker tulang.",
+      tag: "Onkologi Ortopedi",
+      img: "/images/articles/osteosarcoma.png"
     },
     {
       id: 2,
-      title: "Nyeri Punggung Produktif",
-      desc: "Strategi menjaga tulang belakang bebas nyeri di usia produktif.",
-      tag: "Kesehatan Spine",
-      img: "/images/article_exercise.webp"
+      title: "Sarkoma Jaringan Lunak",
+      desc: "Mengapa biopsi yang benar oleh ahli onkologi ortopedi sangat vital dalam menentukan keberhasilan terapi tumor otot dan lemak.",
+      tag: "Tumor Muskuloskeletal",
+      img: "/images/articles/soft_tissue_sarcoma.png"
     },
     {
-      id: 5,
-      title: "Masa Depan Spesialis Orthopedi",
-      desc: "Revolusi presisi sub-milimeter dengan asisten navigasi robotik AI.",
-      tag: "Teknologi",
-      img: "/images/articles/ai_robotic_surgery.webp"
+      id: 3,
+      title: "Limb Salvage Surgery",
+      desc: "Teknologi rekonstruksi modern untuk menyelamatkan ekstremitas dan fungsi gerak pasien kanker tulang tanpa amputasi.",
+      tag: "Teknologi Bedah",
+      img: "/images/articles/limb_salvage.png"
     }
   ]);
 

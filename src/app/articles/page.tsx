@@ -17,134 +17,68 @@ import { useDoctorConfig } from "@/context/DoctorConfigContext";
 const fallbackArticles = [
   {
     id: 1,
-    title: "Panduan Lengkap Postur Tubuh WfH: Mencegah Nyeri Punggung Kronis",
-    excerpt: "Bekerja dari rumah tanpa ergonomi yang tepat bisa merusak tulang belakang. Pelajari langkah menciptakan ruang kerja ideal untuk kesehatan jangka panjang.",
-    category: "Gaya Hidup",
-    date: "6 Mei 2026",
+    title: "Deteksi Dini Osteosarcoma: Waspadai Nyeri Tulang pada Anak dan Remaja",
+    excerpt: "Nyeri tulang yang sering disalahartikan sebagai 'growing pains' bisa jadi merupakan gejala osteosarcoma. Kenali tanda bahaya sejak awal untuk penanganan yang tepat.",
+    category: "Kanker Tulang",
+    date: "12 Juni 2026",
     readTime: "8 menit",
-    author: "Tim Medis SPOT-OTB",
-    image: "/images/articles/posture.webp",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. Onk.Ort (K)",
+    image: "/images/articles/osteosarcoma.png",
     color: "from-blue-500/20 to-transparent"
   },
   {
     id: 2,
-    title: "Mengatasi Nyeri Punggung: Panduan Pencegahan Saraf Kejepit (HNP)",
-    excerpt: "Nyeri punggung bukan hanya masalah lansia. Ketahui strategi pelestarian tulang belakang (spine preservation) untuk tetap aktif di usia produktif.",
-    category: "Kesehatan Spine",
-    date: "5 Mei 2026",
+    title: "Sarkoma Jaringan Lunak: Mengapa Jalur Biopsi yang Benar Sangat Menentukan",
+    excerpt: "Biopsi yang salah pada tumor otot atau lemak dapat mengontaminasi jaringan sehat dan mempersulit operasi penyelamatan ekstremitas. Konsultasikan ke subspesialis onkologi ortopedi.",
+    category: "Tumor Jaringan Lunak",
+    date: "10 Juni 2026",
     readTime: "10 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
-    image: "/images/article_exercise.webp",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. Onk.Ort (K)",
+    image: "/images/articles/soft_tissue_sarcoma.png",
     color: "from-emerald-500/20 to-transparent"
   },
   {
     id: 3,
-    title: "Kapan Harus Menjalani Operasi Saraf Kejepit? Memahami Indikasi Absolut Tindakan Bedah",
-    excerpt: "Sebagian besar kasus saraf kejepit (HNP) bisa sembuh tanpa operasi. Pahami tanda bahaya atau indikasi absolut kapan fusi fiksasi menjadi wajib.",
-    category: "Kesehatan Spine",
-    date: "4 Mei 2026",
+    title: "Limb Salvage Surgery: Menyelamatkan Ekstremitas Pasien Kanker Tulang Tanpa Amputasi",
+    excerpt: "Teknologi rekonstruksi modern menggunakan megaprosthesis atau bone graft memungkinkan pembuangan sel kanker tulang secara bersih sekaligus mempertahankan fungsi kaki atau tangan.",
+    category: "Teknologi Bedah",
+    date: "8 Juni 2026",
     readTime: "9 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
-    image: "/images/articles/lumbar_compression.webp",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. Onk.Ort (K)",
+    image: "/images/articles/limb_salvage.png",
     color: "from-rose-500/20 to-transparent"
   },
   {
     id: 4,
-    title: "Radiofrekuensi Ablasi (RFA) Saraf: Solusi Nyeri Sendi Facet Tulang Belakang Tanpa Operasi",
-    excerpt: "Bagi penderita nyeri pinggang kronis akibat radang sendi facet, tindakan RFA menawarkan pereda nyeri jangka panjang dengan menonaktifkan sensor nyeri saraf secara presisi.",
-    category: "Intervensi Nyeri",
-    date: "3 Mei 2026",
+    title: "Metastasis Tulang: Strategi Paliatif & Paliasi Nyeri untuk Mempertahankan Kualitas Hidup",
+    excerpt: "Ketika kanker dari organ lain (payudara, paru, prostat) menyebar ke tulang, tindakan stabilisasi dengan implan dapat mencegah fraktur patologis dan meredakan nyeri hebat.",
+    category: "Kanker Tulang",
+    date: "6 Juni 2026",
     readTime: "7 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
-    image: "/images/articles/lumbar_compression.webp",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. Onk.Ort (K)",
+    image: "/images/articles/osteosarcoma.png",
     color: "from-amber-500/20 to-transparent"
   },
   {
     id: 5,
-    title: "Masa Depan Bedah Spine: AI dan Asisten Robotik",
-    excerpt: "Bagaimana teknologi AI memberikan presisi dekompresi tulang belakang dan penempatan pedicle screw secara sub-milimeter serta mempercepat rehabilitasi.",
-    category: "Teknologi",
-    date: "2 Mei 2026",
+    title: "Penanganan Cedera Tulang Kompleks & Fraktur Patologis Akibat Tumor",
+    excerpt: "Tulang yang rapuh akibat tumor sangat rentan mengalami patah tulang spontan. Pelajari bagaimana fiksasi internal dan semen tulang (cementoplasty) membantu stabilitas mekanis.",
+    category: "Cedera Tulang",
+    date: "4 Juni 2026",
     readTime: "11 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
-    image: "/images/articles/ai_robotic_surgery.webp",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. Onk.Ort (K)",
+    image: "/images/articles/limb_salvage.png",
     color: "from-purple-500/20 to-transparent"
   },
   {
     id: 6,
-    title: "Terapi PRP (Platelet-Rich Plasma) untuk Degenerasi Bantalan Tulang Belakang: Harapan Baru Regenerasi Sendi",
-    excerpt: "Pelajari bagaimana terapi biologis suntikan plasma kaya trombosit (PRP) dapat memicu regenerasi sel bantalan sendi lumbar yang aus dan meminimalkan nyeri punggung.",
-    category: "Intervensi Nyeri",
-    date: "1 Mei 2026",
+    title: "Mengenal Benigna Bone Tumor: Jenis-jenis Tumor Tulang Jinak yang Sering Ditemui",
+    excerpt: "Tidak semua benjolan pada tulang bersifat kanker. Pahami perbedaan tumor tulang jinak seperti osteochondroma atau giant cell tumor (GCT) serta indikasi operasinya.",
+    category: "Tumor Jaringan Lunak",
+    date: "2 Juni 2026",
     readTime: "9 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
-    image: "/images/spine_scan.webp",
-    color: "from-blue-500/20 to-transparent"
-  },
-  {
-    id: 7,
-    title: "Bebas Saraf Kejepit dengan Sayatan 5mm: Mengenal Endoskopi Tulang Belakang (BESS)",
-    excerpt: "Revolusi operasi dekompresi saraf kejepit melalui sayatan kunci (keyhole surgery) minimal invasif BESS untuk pemulihan instan pasca-tindakan.",
-    category: "Kesehatan Spine",
-    date: "30 April 2026",
-    readTime: "8 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
-    image: "/images/articles/endoscopic_spine.webp",
-    color: "from-emerald-500/20 to-transparent"
-  },
-  {
-    id: 8,
-    title: "Mielopati Cervical: Gejala Jepitan Saraf Leher yang Mempengaruhi Ketangkasan Jari dan Keseimbangan Berjalan",
-    excerpt: "Sering mengancingkan baju terasa sulit atau jalan terasa goyah? Waspadai Mielopati Servikal akibat penyempitan saraf pusat di leher Anda.",
-    category: "Kesehatan Spine",
-    date: "29 April 2026",
-    readTime: "9 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
-    image: "/images/articles/lumbar_compression.webp",
-    color: "from-blue-500/20 to-transparent"
-  },
-  {
-    id: 9,
-    title: "Cedera Saraf Tulang Belakang (Spinal Cord Injury): Detik-Detik Emas 'Golden Hour' untuk Mencegah Kelumpuhan",
-    excerpt: "Kecelakaan atau benturan hebat pada punggung membutuhkan penanganan darurat stabilisasi spinal segera. Pahami dekompresi tulang belakang.",
-    category: "Kesehatan Spine",
-    date: "28 April 2026",
-    readTime: "10 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
-    image: "/images/spine_scan.webp",
-    color: "from-emerald-500/20 to-transparent"
-  },
-  {
-    id: 10,
-    title: "Terapi Injeksi Epidural Steroid (ESI): Mengatasi Peradangan Akut pada Saraf Kejepit Lumbar",
-    excerpt: "Injeksi epidural steroid secara langsung ke kanal spinal dapat dengan cepat meredakan nyeri sciatica menjalar hebat akibat hernia diskus lumbar.",
-    category: "Intervensi Nyeri",
-    date: "27 April 2026",
-    readTime: "9 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
-    image: "/images/articles/endoscopic_spine.webp",
-    color: "from-purple-500/20 to-transparent"
-  },
-  {
-    id: 11,
-    title: "Pilihan Terapi Tanpa Operasi Saraf Kejepit: Mengapa Blok Saraf dan PLDD Menjadi Solusi Populer",
-    excerpt: "Bagi penderita HNP yang takut operasi besar, tindakan minimal invasif seperti Selective Nerve Root Block dan dekompresi laser PLDD menawarkan pemulihan cepat.",
-    category: "Intervensi Nyeri",
-    date: "26 April 2026",
-    readTime: "8 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
-    image: "/images/articles/lumbar_compression.webp",
-    color: "from-emerald-500/20 to-transparent"
-  },
-  {
-    id: 12,
-    title: "Mengenal Operasi ACDF dan MISS TLIF: Kapan Stabilisasi Tulang Belakang dengan Pen/Sekrup Diperlukan?",
-    excerpt: "Memahami indikasi fusi leher (ACDF) dan bedah minimal invasif pinggang (MISS TLIF). Pelajari protokol pemulihan pasca-tindakan demi stabilitas implan pen.",
-    category: "Kesehatan Spine",
-    date: "25 April 2026",
-    readTime: "9 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)",
-    image: "/images/spine_scan.webp",
+    author: "dr. Nama Dokter, Sp.OT, Subsp. Onk.Ort (K)",
+    image: "/images/articles/soft_tissue_sarcoma.png",
     color: "from-blue-500/20 to-transparent"
   }
 ];
@@ -156,7 +90,7 @@ export default function ArticlesPage() {
   const [errorMessage, setErrorMessage] = useState("");
   
   const [articlesList, setArticlesList] = useState<any[]>(fallbackArticles);
-  const [categories, setCategories] = useState<string[]>(["Semua", "Gaya Hidup", "Spine", "Intervensi Nyeri", "Teknologi"]);
+  const [categories, setCategories] = useState<string[]>(["Semua", "Kanker Tulang", "Tumor Jaringan Lunak", "Teknologi Bedah", "Cedera Tulang"]);
   const [activeCategory, setActiveCategory] = useState("Semua");
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);

@@ -3,7 +3,7 @@
 // tenant_id harus sama dengan ID di dashboard.incodepanel.com
 
 export const doctorConfig = {
-  tenant_id: "spot-otb",                       // ← ganti dengan tenant_id dari dashboard
+  tenant_id: "dr-prahesta-adi-wibowo-spot-su-sht1a",                       // ← ganti dengan tenant_id dari dashboard
   name: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K)", // ← nama lengkap + gelar spesialisasi
   specialty: "Spesialis Orthopedi & Traumatologi, Konsultan Tulang Belakang (Spine Surgeon)",             // ← spesialisasi lengkap
   clinic: "Spine & Pain Clinic",               // ← nama klinik utama
