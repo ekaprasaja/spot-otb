@@ -234,24 +234,52 @@ export default function ArticleClient() {
 
         // 3. Load dari Cloudflare Workers API
         const tenantId = doctorConfig.id || 'spot-otb';
-        const cfRes = await fetch(`https://newsletter-api.eka-prasaja.workers.dev/v1/${tenantId}/articles`);
+        // Try fetching the specific article by slug first to get full content
+        const cfRes = await fetch(`https://newsletter-api.eka-prasaja.workers.dev/v1/${tenantId}/articles/${id}`);
         if (cfRes.ok) {
-          const data = await cfRes.json();
+          const matched = await cfRes.json();
+          if (matched && !matched.error && active) {
+            setCurrentArticle({
+              id: matched.slug || matched.id,
+              title: matched.title,
+              date: new Date(matched.published_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
+              category: "EDUKASI",
+              image: matched.cover_image || "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=60&w=400",
+              content: matched.content || matched.excerpt || '',
+              author: 'Tim Medis',
+              readTime: '5 menit'
+            });
+            setLoading(false);
+            return;
+          }
+        }
+
+        // Fallback: Fetch the list if direct lookup failed (e.g. if ID was a UUID and we need to find its slug)
+        const cfListRes = await fetch(`https://newsletter-api.eka-prasaja.workers.dev/v1/${tenantId}/articles`);
+        if (cfListRes.ok) {
+          const data = await cfListRes.json();
           if (data?.articles && Array.isArray(data.articles)) {
-            const matched = data.articles.find((art: any) => (art.slug === id || String(art.id) === String(id)));
-            if (matched && active) {
-              setCurrentArticle({
-                id: matched.slug || matched.id,
-                title: matched.title,
-                date: new Date(matched.published_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
-                category: "EDUKASI",
-                image: matched.cover_image || "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=60&w=400",
-                content: matched.content || matched.excerpt || '',
-                author: 'Tim Medis',
-                readTime: '5 menit'
-              });
-              setLoading(false);
-              return;
+            const matchedFromList = data.articles.find((art: any) => (art.slug === id || String(art.id) === String(id)));
+            if (matchedFromList) {
+              const slugToFetch = matchedFromList.slug || matchedFromList.id;
+              const cfDetailRes = await fetch(`https://newsletter-api.eka-prasaja.workers.dev/v1/${tenantId}/articles/${slugToFetch}`);
+              if (cfDetailRes.ok) {
+                const matched = await cfDetailRes.json();
+                if (matched && !matched.error && active) {
+                  setCurrentArticle({
+                    id: matched.slug || matched.id,
+                    title: matched.title,
+                    date: new Date(matched.published_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
+                    category: "EDUKASI",
+                    image: matched.cover_image || "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=60&w=400",
+                    content: matched.content || matched.excerpt || '',
+                    author: 'Tim Medis',
+                    readTime: '5 menit'
+                  });
+                  setLoading(false);
+                  return;
+                }
+              }
             }
           }
         }
