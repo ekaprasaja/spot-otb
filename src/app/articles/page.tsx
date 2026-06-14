@@ -282,7 +282,7 @@ export default function ArticlesPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredArticles.map((article, index) => (
-              <Link key={article.id} href={`/articles/${article.id}`} className="group cursor-pointer">
+              <Link key={article.id} href={`/articles/detail?id=${article.id}`} className="group cursor-pointer">
                 <motion.div
                   initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
                   whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
