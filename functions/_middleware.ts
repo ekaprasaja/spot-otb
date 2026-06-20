@@ -151,7 +151,8 @@ export const onRequest: PagesFunction = async (context) => {
             "image": imgUrl,
             "url": `https://${hostname}`,
             "telephone": isPrahesta ? "(0272) 321020" : `+${tenant.doctor_whatsapp || tenant.reply_to || "62812345678"}`,
-            "medicalSpecialty": "Orthopedic",
+            "medicalSpecialty": tenant.medical_specialty || "Orthopedic",
+            "description": tenant.doctor_description || (isPrahesta ? "Spesialis Orthopedi & Traumatologi, Konsultan Tulang Belakang (Spine Surgeon)" : (tenant.bio || "")),
             "knowsAbout": [
               "Orthopaedic Surgery",
               "Spine Surgery",
@@ -169,12 +170,31 @@ export const onRequest: PagesFunction = async (context) => {
               "addressRegion": "Jawa Tengah",
               "streetAddress": isPrahesta 
                 ? "RSUP dr. Soeradji Tirtonegoro, Jl. KRT Dr. Soeradji Tirtonegoro No.1, Klaten"
-                : (tenant.clinic_address || "Solo, Jawa Tengah")
+                : (tenant.clinic_address || "Solo, Jawa Tengah"),
+              "postalCode": tenant.postal_code || (isPrahesta ? "57424" : "")
             }
           };
 
-          if (isPrahesta) {
-            physicianSchema.priceRange = "Rp 150.000 - Rp 500.000";
+          // Price range & hospital affiliation
+          const dbPriceRange = tenant.price_range || (isPrahesta ? "Rp 150.000 - Rp 500.000" : null);
+          if (dbPriceRange) {
+            physicianSchema.priceRange = dbPriceRange;
+          }
+
+          // Opening Hours
+          if (tenant.schedules && Array.isArray(tenant.schedules) && tenant.schedules.length > 0) {
+            // Mapping dynamic schedules from D1 if available
+            const dayMap: { [key: string]: string } = {
+              "Senin": "Monday", "Selasa": "Tuesday", "Rabu": "Wednesday", 
+              "Kamis": "Thursday", "Jumat": "Friday", "Sabtu": "Saturday", "Minggu": "Sunday"
+            };
+            physicianSchema.openingHoursSpecification = tenant.schedules.map((sch: any) => ({
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [dayMap[sch.day] || sch.day],
+              "opens": sch.timeStart,
+              "closes": sch.timeEnd
+            }));
+          } else if (isPrahesta) {
             physicianSchema.openingHoursSpecification = [
               {
                 "@type": "OpeningHoursSpecification",
@@ -183,14 +203,19 @@ export const onRequest: PagesFunction = async (context) => {
                 "closes": "12:00"
               }
             ];
+          }
+
+          // Hospital Affiliation
+          const dbHospitalName = tenant.hospital_name || (isPrahesta ? "RSUP dr. Soeradji Tirtonegoro Klaten" : null);
+          if (dbHospitalName) {
             physicianSchema.hospitalAffiliation = [
               {
                 "@type": "Hospital",
-                "name": "RSUP dr. Soeradji Tirtonegoro Klaten",
+                "name": dbHospitalName,
                 "address": {
                   "@type": "PostalAddress",
                   "addressCountry": "ID",
-                  "addressLocality": "Klaten",
+                  "addressLocality": isPrahesta ? "Klaten" : "Indonesia",
                   "addressRegion": "Jawa Tengah"
                 }
               }
