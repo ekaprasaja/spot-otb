@@ -99,7 +99,7 @@ export const onRequest: PagesFunction = async (context) => {
     }
 
     // Rewrite the HTML using Cloudflare's edge HTMLRewriter
-    return new HTMLRewriter()
+    const transformedResponse = new HTMLRewriter()
       .on("title", {
         element(el) {
           el.setInnerContent(title);
@@ -127,6 +127,8 @@ export const onRequest: PagesFunction = async (context) => {
 
           // Append Canonical Link
           el.append(`<link rel="canonical" href="${pageUrl}" />`, { html: true });
+          // Append hreflang
+          el.append(`<link rel="alternate" hreflang="id-ID" href="https://${hostname}${url.pathname}" />`, { html: true });
           
           // Append SEO Meta Tags
           el.append(`<meta name="description" content="${description}" />`, { html: true });
@@ -135,12 +137,79 @@ export const onRequest: PagesFunction = async (context) => {
           el.append(`<meta property="og:image" content="${imgUrl}" />`, { html: true });
           el.append(`<meta property="og:url" content="${pageUrl}" />`, { html: true });
           el.append(`<meta property="og:type" content="website" />`, { html: true });
+          el.append(`<meta property="og:locale" content="id_ID" />`, { html: true });
           el.append(`<meta property="og:site_name" content="${cleanDoctorName}" />`, { html: true });
           
           el.append(`<meta name="twitter:card" content="summary_large_image" />`, { html: true });
           el.append(`<meta name="twitter:title" content="${title}" />`, { html: true });
           el.append(`<meta name="twitter:description" content="${description}" />`, { html: true });
           el.append(`<meta name="twitter:image" content="${imgUrl}" />`, { html: true });
+
+          // BreadcrumbList Schema
+          const breadcrumbs: any = {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Beranda",
+                "item": `https://${hostname}/`
+              }
+            ]
+          };
+
+          if (pathname === '/tools') {
+            breadcrumbs.itemListElement.push({
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Kalkulator Medis",
+              "item": `https://${hostname}/tools`
+            });
+          } else if (pathname === '/articles') {
+            breadcrumbs.itemListElement.push({
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Artikel Kesehatan",
+              "item": `https://${hostname}/articles`
+            });
+          } else if (pathname === '/articles/detail') {
+            breadcrumbs.itemListElement.push({
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Artikel Kesehatan",
+              "item": `https://${hostname}/articles`
+            });
+            breadcrumbs.itemListElement.push({
+              "@type": "ListItem",
+              "position": 3,
+              "name": title.split(" — ")[0] || "Artikel",
+              "item": pageUrl
+            });
+          } else if (pathname === '/dashboard') {
+            breadcrumbs.itemListElement.push({
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Dashboard Monitoring",
+              "item": `https://${hostname}/dashboard`
+            });
+          } else if (pathname === '/privacy') {
+            breadcrumbs.itemListElement.push({
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Kebijakan Privasi",
+              "item": `https://${hostname}/privacy`
+            });
+          } else if (pathname === '/terms') {
+            breadcrumbs.itemListElement.push({
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Syarat & Ketentuan",
+              "item": `https://${hostname}/terms`
+            });
+          }
+
+          el.append(`<script type="application/ld+json">${JSON.stringify(breadcrumbs)}</script>`, { html: true });
 
           // Insert JSON-LD Physician Schema
           const physicianSchema: any = {
@@ -161,7 +230,8 @@ export const onRequest: PagesFunction = async (context) => {
               "Pain Management",
               "Scoliosis",
               "Herniated Disc (HNP)",
-              "Low Back Pain"
+              "Low Back Pain",
+              "Spinal Stenosis"
             ],
             "address": {
               "@type": "PostalAddress",
@@ -262,6 +332,19 @@ export const onRequest: PagesFunction = async (context) => {
         }
       })
       .transform(response);
+
+    const secureHeaders = new Headers(transformedResponse.headers);
+    secureHeaders.set("X-Frame-Options", "DENY");
+    secureHeaders.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
+    secureHeaders.set("X-Content-Type-Options", "nosniff");
+    secureHeaders.set("Referrer-Policy", "strict-origin-when-cross-origin");
+    secureHeaders.set("Content-Security-Policy", "upgrade-insecure-requests; block-all-mixed-content");
+
+    return new Response(transformedResponse.body, {
+      status: transformedResponse.status,
+      statusText: transformedResponse.statusText,
+      headers: secureHeaders
+    });
   } catch (e) {
     return response;
   }
