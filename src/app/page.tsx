@@ -393,7 +393,7 @@ export default function Home() {
                 transition={{ duration: 1 }}
                 className="relative w-full aspect-[3/4] rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl mb-8 group"
               >
-                <img src={doctorConfig.image} alt="" className="w-full h-full object-cover object-top" />
+                <img src={doctorConfig.image} alt="dr. Prahesta Adi Wibowo, Sp.OT — Dokter Spesialis Bedah Tulang Belakang Orthopaedic Spine Klaten & Yogyakarta" className="w-full h-full object-cover object-top" />
                 
                 {/* Advanced Gradient Masking */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-[#0a0a0c]/20 to-transparent" />
@@ -500,7 +500,7 @@ export default function Home() {
                         
                         <div className="flex items-center gap-3 mt-2 pt-4 border-t border-white/10">
                           <div className="w-8 h-8 rounded-full border border-white/20 overflow-hidden shrink-0">
-                            <img src={doctorConfig.image} alt="" className="w-full h-full object-cover object-top" />
+                            <img src={doctorConfig.image} alt="dr. Prahesta Adi Wibowo, Sp.OT — Orthopaedic Spine" className="w-full h-full object-cover object-top" />
                           </div>
                           <div className="min-w-0">
                             <h4 className="text-[10px] font-bold text-white truncate">{doctorConfig.name}</h4>
@@ -988,7 +988,7 @@ export default function Home() {
               <img 
                 src="/images/article_exercise.webp" 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                alt="Sciatica Mapper"
+                alt="Ilustrasi Latihan Pemulihan Tulang Belakang dr. Prahesta Adi Wibowo, Sp.OT — Orthopaedic Spine"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B] via-[#0A0A0B]/40 to-transparent" />
               <div className="relative h-full flex flex-col justify-between z-10">
@@ -1010,7 +1010,7 @@ export default function Home() {
               <img 
                 src="/images/spine_scan.webp" 
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-                alt="Spine"
+                alt="Hasil Pemindaian MRI Tulang Belakang Lumbar — Orthopaedic Spine Klaten & Yogyakarta"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B] via-[#0A0A0B]/40 to-transparent" />
               <div className="relative h-full flex flex-col justify-between z-10">
@@ -1062,7 +1062,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold text-white mb-2 leading-tight">Buletin Kesehatan</h3>
               <p className="text-xs text-foreground/50 leading-relaxed">
-                Dapatkan wawasan medis terpercaya dari dr. Nama Dokter langsung ke inbox Anda setiap minggu.
+                Dapatkan wawasan medis terpercaya dari {doctorConfig?.name || "dokter kami"} langsung ke inbox Anda setiap minggu.
               </p>
             </div>
 

@@ -33,7 +33,26 @@ export interface DoctorConfig {
 const DoctorConfigContext = createContext<DoctorConfig | null>(null);
 
 export function DoctorConfigProvider({ children }: { children: React.ReactNode }) {
-  const [config, setConfig] = useState<DoctorConfig | null>(null);
+  const [config, setConfig] = useState<DoctorConfig | null>({
+    id: "prahesta-id",
+    doctorId: "prahesta-id",
+    name: "dr. Prahesta Adi Wibowo, Sp.OT",
+    specialty: "Spesialis Orthopedi & Traumatologi, Konsultan Tulang Belakang (Spine Surgeon)",
+    clinic: "Spine & Pain Clinic",
+    location: "Klaten & Yogyakarta",
+    whatsapp: "62812345678",
+    image: "/images/doctor_profile.webp",
+    bio: "Spesialis Orthopedi & Traumatologi — Konsultan Bedah Tulang Belakang & Intervensi Nyeri.",
+    accentColor: "#3b82f6",
+    chatbotToken: "spot-otb",
+    wordpressApiUrl: "",
+    wordpressCategoryFilter: "",
+    cvTimeline: [],
+    whitelabelType: "spot-otb",
+    whitelabelSub: "Spine & Pain Intervention",
+    heroTitle: "",
+    heroDescription: "",
+  });
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
@@ -139,16 +158,7 @@ export function DoctorConfigProvider({ children }: { children: React.ReactNode }
     resolveConfig();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-[#0A0A0C] flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
-          <p className="text-sm font-semibold text-slate-400">Memuat portal kesehatan Anda...</p>
-        </div>
-      </div>
-    );
-  }
+
 
   if (notFound) {
     return (

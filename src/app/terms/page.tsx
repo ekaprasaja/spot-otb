@@ -1,28 +1,37 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { ChevronLeft, Gavel, AlertTriangle, Scale, BookOpen } from "lucide-react";
+import { useDoctorConfig } from "@/context/DoctorConfigContext";
 
 export default function TermsPage() {
+  const doctorConfig = useDoctorConfig();
+  const doctorName = doctorConfig?.name || "Dokter Kami";
+  const doctorSpecialty = doctorConfig?.specialty || "Spesialis";
+  const clinicName = doctorConfig?.clinic || "Klinik Kami";
+  const domainName = typeof window !== "undefined" ? window.location.hostname : "platform kami";
+
   const sections = [
     {
       title: "Ketentuan Penggunaan Layanan",
       icon: Gavel,
-      content: "Dengan menggunakan platform portal kesehatan kami (Spine & Pain Specialist Care), Anda menyetujui bahwa seluruh alat bantu diagnosis AI, kalkulator PWB, log trauma, dan inclinometer dalam aplikasi ini bersifat edukatif dan pemantauan mandiri. Alat-alat ini dirancang untuk mendampingi pemulihan Anda dan tidak boleh dijadikan sebagai dasar diagnosis medis tunggal atau pengganti konsultasi langsung dengan dokter spesialis orthopedi & traumatologi."
+      content: `Dengan menggunakan platform portal kesehatan kami (${clinicName}), Anda menyetujui bahwa seluruh alat bantu diagnosis AI, kalkulator interaktif, dan log kesehatan dalam aplikasi ini bersifat edukatif dan pemantauan mandiri. Alat-alat ini dirancang untuk mendampingi pemulihan Anda dan tidak boleh dijadikan sebagai dasar diagnosis medis tunggal atau pengganti konsultasi langsung dengan ${doctorSpecialty}.`
     },
     {
       title: "Batasan Tanggung Jawab Medis",
       icon: AlertTriangle,
-      content: "dr. Nama Dokter, Sp.OT, Subsp. OTB (K), (F. N-TB), FINSS, FINPS beserta tim pengembang dan Incode Panel tidak bertanggung jawab atas keputusan medis atau tindakan pengobatan mandiri yang diambil pengguna berdasarkan hasil perhitungan AI. Keakuratan deteksi sensor dan kamera sangat dipengaruhi oleh kondisi lingkungan (seperti pencahayaan) serta spesifikasi teknis perangkat Anda."
+      content: `${doctorName} beserta tim pengembang dan Incode Panel tidak bertanggung jawab atas keputusan medis atau tindakan pengobatan mandiri yang diambil pengguna berdasarkan hasil perhitungan AI. Keakuratan deteksi sensor dan kamera sangat dipengaruhi oleh kondisi lingkungan (seperti pencahayaan) serta spesifikasi teknis perangkat Anda.`
     },
     {
       title: "Kepatuhan & Penggunaan Data",
       icon: Scale,
-      content: "Pengguna wajib memberikan data input yang jujur dan akurat untuk memastikan kalkulator pemulihan (seperti PWB dan Neuro-Motor) menghasilkan estimasi yang tepat. Kami berkomitmen melindungi privasi data Anda dengan memproses seluruh input medis secara lokal dan stateless tanpa retensi data di database kami."
+      content: "Pengguna wajib memberikan data input yang jujur dan akurat untuk memastikan kalkulator pemulihan menghasilkan estimasi yang tepat. Kami berkomitmen melindungi privasi data Anda dengan memproses seluruh input medis secara lokal dan stateless tanpa retensi data di database kami."
     },
     {
       title: "Hak Cipta & Lisensi",
       icon: BookOpen,
-      content: "Seluruh materi edukasi, artikel kesehatan, dan algoritma asisten AI di platform ini dilindungi oleh hak cipta intelektual. Penggunaan, penyalinan, atau distribusi komersial tanpa izin tertulis dari dr. Nama Dokter, Sp.OT, Subsp. OTB (K) dilarang keras."
+      content: `Seluruh materi edukasi, artikel kesehatan, dan algoritma asisten AI di platform ini dilindungi oleh hak cipta intelektual. Penggunaan, penyalinan, atau distribusi komersial tanpa izin tertulis dari ${doctorName} dilarang keras.`
     }
   ];
 
@@ -70,7 +79,7 @@ export default function TermsPage() {
 
         <footer className="mt-20 pt-8 border-t border-white/5 text-center">
           <p className="text-xs text-foreground/20">
-            Penggunaan platform wisnubaskoro.id secara berkelanjutan dianggap sebagai persetujuan penuh atas seluruh ketentuan di atas.
+            Penggunaan platform {domainName} secara berkelanjutan dianggap sebagai persetujuan penuh atas seluruh ketentuan di atas.
           </p>
         </footer>
       </div>

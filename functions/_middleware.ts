@@ -31,19 +31,41 @@ export const onRequest: PagesFunction = async (context) => {
       .split(",")[0]
       .trim() || "Portal Dokter";
 
+    const isPrahesta = hostname.includes('prahesta.id') || lookupKey.includes('prahesta') || (tenant && (tenant.id === 'prahesta-id' || tenant.chatbotToken === 'spot-otb'));
+
     let title = tenant.seoTitle || `${tenant.name} — ${tenant.whitelabelSub || tenant.specialty}`;
     let description = tenant.seoDescription || tenant.bio || "Portal Digital Dokter Spesialis & Asisten AI Monitoring Mandiri";
     let image = tenant.image || "/images/doctor_profile.webp";
+
+    if (isPrahesta) {
+      if (!tenant.seoTitle) {
+        title = "Dokter Tulang Belakang Klaten & Yogyakarta | dr. Prahesta Adi Wibowo, Sp.OT";
+      }
+      if (!tenant.seoDescription) {
+        description = "Konsultasi dr. Prahesta Adi Wibowo, Sp.OT, spesialis ortopedi tulang belakang di RSUP Soeradji Tirtonegoro Klaten & Siloam Yogyakarta.";
+      }
+      if (image.includes("spot-otb.incodepanel.com") || image.includes("incodepanel.com")) {
+        image = "/images/doctor_profile.webp";
+      }
+    }
 
     const pathname = url.pathname;
     
     // Dynamic metadata based on page paths
     if (pathname === '/tools' || pathname.startsWith('/tools/')) {
-      title = `Kalkulator Medis & Skrining Mandiri — ${cleanDoctorName}`;
-      description = `Gunakan alat kesehatan digital dan kalkulator medis terpercaya dari ${rawDoctorName} untuk pemantauan kesehatan mandiri.`;
+      title = isPrahesta 
+        ? `Kalkulator Medis & Skrining Mandiri Tulang Belakang — dr. Prahesta Adi Wibowo, Sp.OT`
+        : `Kalkulator Medis & Skrining Mandiri — ${cleanDoctorName}`;
+      description = isPrahesta
+        ? `Gunakan alat kesehatan digital dan kalkulator medis saraf & tulang belakang terpercaya dari dr. Prahesta Adi Wibowo, Sp.OT.`
+        : `Gunakan alat kesehatan digital dan kalkulator medis terpercaya dari ${rawDoctorName} untuk pemantauan kesehatan mandiri.`;
     } else if (pathname === '/articles') {
-      title = `Artikel & Edukasi Kesehatan — ${cleanDoctorName}`;
-      description = `Kumpulan informasi medis, tips kesehatan, dan edukasi terpercaya yang ditulis oleh ${rawDoctorName}.`;
+      title = isPrahesta
+        ? `Artikel & Edukasi Kesehatan Tulang Belakang Klaten & Jogja — dr. Prahesta Adi Wibowo, Sp.OT`
+        : `Artikel & Edukasi Kesehatan — ${cleanDoctorName}`;
+      description = isPrahesta
+        ? `Kumpulan informasi medis, tips kesehatan, dan edukasi tulang belakang terpercaya yang ditulis oleh dr. Prahesta Adi Wibowo, Sp.OT.`
+        : `Kumpulan informasi medis, tips kesehatan, dan edukasi terpercaya yang ditulis oleh ${rawDoctorName}.`;
     } else if (pathname === '/dashboard') {
       title = `Dashboard Monitoring Pasien — ${cleanDoctorName}`;
       description = `Layanan asisten monitoring pemulihan pasca tindakan medis secara digital oleh ${rawDoctorName}.`;
@@ -121,43 +143,87 @@ export const onRequest: PagesFunction = async (context) => {
           el.append(`<meta name="twitter:image" content="${imgUrl}" />`, { html: true });
 
           // Insert JSON-LD Physician Schema
-          const physicianSchema = {
+          const physicianSchema: any = {
             "@context": "https://schema.org",
             "@type": "Physician",
             "@id": `https://${hostname}/#doctor`,
             "name": tenant.doctor_name || tenant.name || "dr. Prahesta Adi Wibowo, Sp.OT",
             "image": imgUrl,
             "url": `https://${hostname}`,
-            "telephone": `+${tenant.doctor_whatsapp || tenant.reply_to || ""}`,
+            "telephone": `+${tenant.doctor_whatsapp || tenant.reply_to || "62812345678"}`,
             "medicalSpecialty": "Orthopedic",
             "knowsAbout": [
               "Orthopaedic Surgery",
               "Spine Surgery",
               "Minimally Invasive Spine Surgery",
               "Spinal Decompression",
-              "Pain Management"
+              "Pain Management",
+              "Scoliosis",
+              "Herniated Disc (HNP)",
+              "Low Back Pain"
             ],
             "address": {
               "@type": "PostalAddress",
               "addressCountry": "ID",
-              "addressLocality": tenant.clinic_address || "Solo, Jawa Tengah"
+              "addressLocality": isPrahesta ? "Klaten" : (tenant.clinic_address || "Solo"),
+              "addressRegion": "Jawa Tengah",
+              "streetAddress": isPrahesta 
+                ? "RSUP dr. Soeradji Tirtonegoro, Jl. KRT Dr. Soeradji Tirtonegoro No.1, Klaten"
+                : (tenant.clinic_address || "Solo, Jawa Tengah")
             }
           };
+
+          if (isPrahesta) {
+            physicianSchema.priceRange = "Rp 150.000 - Rp 500.000";
+            physicianSchema.openingHoursSpecification = [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "08:00",
+                "closes": "16:00"
+              }
+            ];
+            physicianSchema.hospitalAffiliation = [
+              {
+                "@type": "Hospital",
+                "name": "RSUP dr. Soeradji Tirtonegoro Klaten",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressCountry": "ID",
+                  "addressLocality": "Klaten",
+                  "addressRegion": "Jawa Tengah"
+                }
+              },
+              {
+                "@type": "Hospital",
+                "name": "RS Siloam Yogyakarta",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressCountry": "ID",
+                  "addressLocality": "Yogyakarta",
+                  "addressRegion": "DI Yogyakarta"
+                }
+              }
+            ];
+          }
+
           el.append(`<script type="application/ld+json">${JSON.stringify(physicianSchema)}</script>`, { html: true });
 
           // Insert Google Site Verification Token
-          if (tenant.googleVerificationToken) {
-            el.append(`<meta name="google-site-verification" content="${tenant.googleVerificationToken}" />`, { html: true });
+          const gscToken = tenant.googleVerificationToken || (isPrahesta ? "404-placeholder-gsc" : "");
+          if (gscToken) {
+            el.append(`<meta name="google-site-verification" content="${gscToken}" />`, { html: true });
           }
-          // Insert Google Analytics (Gtag)
-          if (tenant.googleAnalyticsId) {
+          // Insert Google Analytics (GA4 / Gtag)
+          const ga4Id = tenant.googleAnalyticsId || (isPrahesta ? "G-PLAHESTA_GA4_TEMP" : "");
+          if (ga4Id) {
             el.append(`
-              <script async src="https://www.googletagmanager.com/gtag/js?id=${tenant.googleAnalyticsId}"></script>
+              <script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id}"></script>
               <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${tenant.googleAnalyticsId}');
+                gtag('config', '${ga4Id}');
               </script>
             `, { html: true });
           }
@@ -167,7 +233,7 @@ export const onRequest: PagesFunction = async (context) => {
               <script>
                 !function(f,b,e,v,n,t,s)
                 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
                 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
                 n.queue=[];t=b.createElement(e);t.async=!0;
                 t.src=v;s=b.getElementsByTagName(e)[0];

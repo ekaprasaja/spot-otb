@@ -1,8 +1,14 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { ChevronLeft, Shield, Lock, Eye, Mail } from "lucide-react";
+import { useDoctorConfig } from "@/context/DoctorConfigContext";
 
 export default function PrivacyPage() {
+  const doctorConfig = useDoctorConfig();
+  const doctorName = doctorConfig?.name || "Dokter Kami";
+
   const sections = [
     {
       title: "Pengumpulan Data Medis & Kontak",
@@ -17,7 +23,7 @@ export default function PrivacyPage() {
     {
       title: "Layanan Newsletter & Email",
       icon: Mail,
-      content: "Bagi Anda yang secara sukarela mendaftarkan email ke buletin/newsletter kami, kami mengumpulkan email dan nama Anda. Data ini disimpan dengan aman di database terenkripsi kami untuk keperluan pengiriman edukasi kesehatan berkala oleh dr. Nama Dokter, Sp.OT, Subsp. OTB (K). Anda dapat membatalkan langganan kapan saja melalui tautan berhenti berlangganan di email Anda."
+      content: `Bagi Anda yang secara sukarela mendaftarkan email ke buletin/newsletter kami, kami mengumpulkan email dan nama Anda. Data ini disimpan dengan aman di database terenkripsi kami untuk keperluan pengiriman edukasi kesehatan berkala oleh ${doctorName}. Anda dapat membatalkan langganan kapan saja melalui tautan berhenti berlangganan di email Anda.`
     },
     {
       title: "Keamanan & Hak Pengguna",
@@ -70,7 +76,7 @@ export default function PrivacyPage() {
 
         <footer className="mt-20 pt-8 border-t border-white/5 text-center">
           <p className="text-xs text-foreground/20">
-            Pertanyaan mengenai privasi dapat diajukan langsung melalui sesi konsultasi resmi dr. Nama Dokter, Sp.OT, Subsp. OTB (K).
+            Pertanyaan mengenai privasi dapat diajukan langsung melalui sesi konsultasi resmi {doctorName}.
           </p>
         </footer>
       </div>

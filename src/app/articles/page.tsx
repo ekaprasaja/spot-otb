@@ -14,7 +14,140 @@ import {
 import Link from "next/link";
 import { useDoctorConfig } from "@/context/DoctorConfigContext";
 
-const fallbackArticles: any[] = [];
+const fallbackArticles = [
+  {
+    id: 1,
+    title: "Panduan Lengkap Postur Tubuh WfH: Mencegah Nyeri Punggung Kronis",
+    excerpt: "Bekerja dari rumah tanpa ergonomi yang tepat bisa merusak tulang belakang. Pelajari langkah menciptakan ruang kerja ideal untuk kesehatan jangka panjang.",
+    category: "Gaya Hidup",
+    date: "6 Mei 2026",
+    readTime: "8 menit",
+    author: "dr. Prahesta Adi Wibowo, Sp.OT",
+    image: "/images/doctor_profile.webp",
+    color: "from-blue-500/20 to-transparent"
+  },
+  {
+    id: 2,
+    title: "Mengatasi Nyeri Punggung: Panduan Pencegahan Saraf Kejepit (HNP)",
+    excerpt: "Nyeri punggung bukan hanya masalah lansia. Ketahui strategi pelestarian tulang belakang (spine preservation) untuk tetap aktif di usia produktif.",
+    category: "Kesehatan Spine",
+    date: "5 Mei 2026",
+    readTime: "10 menit",
+    author: "dr. Prahesta Adi Wibowo, Sp.OT",
+    image: "/images/doctor_profile.webp",
+    color: "from-emerald-500/20 to-transparent"
+  },
+  {
+    id: 3,
+    title: "Kapan Harus Menjalani Operasi Saraf Kejepit? Memahami Indikasi Absolut Tindakan Bedah",
+    excerpt: "Sebagian besar kasus saraf kejepit (HNP) bisa sembuh tanpa operasi. Pahami tanda bahaya atau indikasi absolut kapan fusi fiksasi menjadi wajib.",
+    category: "Kesehatan Spine",
+    date: "4 Mei 2026",
+    readTime: "9 menit",
+    author: "dr. Prahesta Adi Wibowo, Sp.OT",
+    image: "/images/doctor_profile.webp",
+    color: "from-rose-500/20 to-transparent"
+  },
+  {
+    id: 4,
+    title: "Radiofrekuensi Ablasi (RFA) Saraf: Solusi Nyeri Sendi Facet Tulang Belakang Tanpa Operasi",
+    excerpt: "Bagi penderita nyeri pinggang kronis akibat radang sendi facet, tindakan RFA menawarkan pereda nyeri jangka panjang dengan menonaktifkan sensor nyeri saraf secara presisi.",
+    category: "Intervensi Nyeri",
+    date: "3 Mei 2026",
+    readTime: "7 menit",
+    author: "dr. Prahesta Adi Wibowo, Sp.OT",
+    image: "/images/doctor_profile.webp",
+    color: "from-amber-500/20 to-transparent"
+  },
+  {
+    id: 5,
+    title: "Masa Depan Bedah Spine: AI dan Asisten Robotik",
+    excerpt: "Bagaimana teknologi AI memberikan presisi dekompresi tulang belakang dan penempatan pedicle screw secara sub-milimeter serta mempercepat rehabilitasi.",
+    category: "Teknologi",
+    date: "2 Mei 2026",
+    readTime: "11 menit",
+    author: "dr. Prahesta Adi Wibowo, Sp.OT",
+    image: "/images/doctor_profile.webp",
+    color: "from-purple-500/20 to-transparent"
+  },
+  {
+    id: 6,
+    title: "Terapi PRP (Platelet-Rich Plasma) untuk Degenerasi Bantalan Tulang Belakang",
+    excerpt: "Pelajari bagaimana terapi biologis suntikan plasma kaya trombosit (PRP) dapat memicu regenerasi sel bantalan sendi lumbar yang aus dan meminimalkan nyeri punggung.",
+    category: "Intervensi Nyeri",
+    date: "1 Mei 2026",
+    readTime: "9 menit",
+    author: "dr. Prahesta Adi Wibowo, Sp.OT",
+    image: "/images/doctor_profile.webp",
+    color: "from-blue-500/20 to-transparent"
+  },
+  {
+    id: 7,
+    title: "Bebas Saraf Kejepit dengan Sayatan 5mm: Mengenal Endoskopi Tulang Belakang (BESS)",
+    excerpt: "Revolusi operasi dekompresi saraf kejepit melalui sayatan kunci (keyhole surgery) minimal invasif BESS untuk pemulihan instan pasca-tindakan.",
+    category: "Kesehatan Spine",
+    date: "30 April 2026",
+    readTime: "8 menit",
+    author: "dr. Prahesta Adi Wibowo, Sp.OT",
+    image: "/images/doctor_profile.webp",
+    color: "from-emerald-500/20 to-transparent"
+  },
+  {
+    id: 8,
+    title: "Mielopati Cervical: Gejala Jepitan Saraf Leher yang Mempengaruhi Ketangkasan",
+    excerpt: "Sering mengancingkan baju terasa sulit atau jalan terasa goyah? Waspadai Mielopati Servikal akibat penyempitan saraf pusat di leher Anda.",
+    category: "Kesehatan Spine",
+    date: "29 April 2026",
+    readTime: "9 menit",
+    author: "dr. Prahesta Adi Wibowo, Sp.OT",
+    image: "/images/doctor_profile.webp",
+    color: "from-blue-500/20 to-transparent"
+  },
+  {
+    id: 9,
+    title: "Cedera Saraf Tulang Belakang: Detik-Detik Emas 'Golden Hour'",
+    excerpt: "Kecelakaan atau benturan hebat pada punggung membutuhkan penanganan darurat stabilisasi spinal segera. Pahami dekompresi tulang belakang.",
+    category: "Kesehatan Spine",
+    date: "28 April 2026",
+    readTime: "10 menit",
+    author: "dr. Prahesta Adi Wibowo, Sp.OT",
+    image: "/images/doctor_profile.webp",
+    color: "from-emerald-500/20 to-transparent"
+  },
+  {
+    id: 10,
+    title: "Terapi Injeksi Epidural Steroid (ESI): Mengatasi Peradangan Akut",
+    excerpt: "Injeksi epidural steroid secara langsung ke kanal spinal dapat dengan cepat meredakan nyeri sciatica menjalar hebat akibat hernia diskus lumbar.",
+    category: "Intervensi Nyeri",
+    date: "27 April 2026",
+    readTime: "9 menit",
+    author: "dr. Prahesta Adi Wibowo, Sp.OT",
+    image: "/images/doctor_profile.webp",
+    color: "from-purple-500/20 to-transparent"
+  },
+  {
+    id: 11,
+    title: "Pilihan Terapi Tanpa Operasi Saraf Kejepit: Mengapa Blok Saraf dan PLDD Menjadi Populer",
+    excerpt: "Bagi penderita HNP yang takut operasi besar, tindakan minimal invasif seperti Selective Nerve Root Block dan dekompresi laser PLDD menawarkan pemulihan cepat.",
+    category: "Intervensi Nyeri",
+    date: "26 April 2026",
+    readTime: "8 menit",
+    author: "dr. Prahesta Adi Wibowo, Sp.OT",
+    image: "/images/doctor_profile.webp",
+    color: "from-emerald-500/20 to-transparent"
+  },
+  {
+    id: 12,
+    title: "Mengenal Operasi ACDF dan MISS TLIF: Kapan Stabilisasi Sekrup Diperlukan?",
+    excerpt: "Memahami indikasi fusi leher (ACDF) dan bedah minimal invasif pinggang (MISS TLIF). Pelajari protokol pemulihan pasca-tindakan demi stabilitas implan pen.",
+    category: "Kesehatan Spine",
+    date: "25 April 2026",
+    readTime: "9 menit",
+    author: "dr. Prahesta Adi Wibowo, Sp.OT",
+    image: "/images/doctor_profile.webp",
+    color: "from-blue-500/20 to-transparent"
+  }
+];
 
 export default function ArticlesPage() {
   const doctorConfig = useDoctorConfig();
@@ -23,7 +156,7 @@ export default function ArticlesPage() {
   const [errorMessage, setErrorMessage] = useState("");
   
   const [articlesList, setArticlesList] = useState<any[]>(fallbackArticles);
-  const [categories, setCategories] = useState<string[]>(["Semua", "Kanker Tulang", "Tumor Jaringan Lunak", "Teknologi Bedah", "Cedera Tulang"]);
+  const [categories, setCategories] = useState<string[]>(["Semua", "Gaya Hidup", "Kesehatan Spine", "Intervensi Nyeri", "Teknologi"]);
   const [activeCategory, setActiveCategory] = useState("Semua");
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
