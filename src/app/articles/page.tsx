@@ -23,7 +23,7 @@ const fallbackArticles = [
     date: "6 Mei 2026",
     readTime: "8 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/doctor_profile.webp",
+    image: "/images/articles/posture.webp",
     color: "from-blue-500/20 to-transparent"
   },
   {
@@ -34,7 +34,7 @@ const fallbackArticles = [
     date: "5 Mei 2026",
     readTime: "10 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/doctor_profile.webp",
+    image: "/images/articles/lumbar_compression.webp",
     color: "from-emerald-500/20 to-transparent"
   },
   {
@@ -45,7 +45,7 @@ const fallbackArticles = [
     date: "4 Mei 2026",
     readTime: "9 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/doctor_profile.webp",
+    image: "/images/spine_scan.webp",
     color: "from-rose-500/20 to-transparent"
   },
   {
@@ -56,7 +56,7 @@ const fallbackArticles = [
     date: "3 Mei 2026",
     readTime: "7 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/doctor_profile.webp",
+    image: "/images/articles/endoscopic_spine.webp",
     color: "from-amber-500/20 to-transparent"
   },
   {
@@ -67,7 +67,7 @@ const fallbackArticles = [
     date: "2 Mei 2026",
     readTime: "11 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/doctor_profile.webp",
+    image: "/images/articles/ai_robotic_surgery.webp",
     color: "from-purple-500/20 to-transparent"
   },
   {
@@ -78,7 +78,7 @@ const fallbackArticles = [
     date: "1 Mei 2026",
     readTime: "9 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/doctor_profile.webp",
+    image: "/images/articles/joint.webp",
     color: "from-blue-500/20 to-transparent"
   },
   {
@@ -89,7 +89,7 @@ const fallbackArticles = [
     date: "30 April 2026",
     readTime: "8 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/doctor_profile.webp",
+    image: "/images/articles/endoscopic_spine.webp",
     color: "from-emerald-500/20 to-transparent"
   },
   {
@@ -100,7 +100,7 @@ const fallbackArticles = [
     date: "29 April 2026",
     readTime: "9 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/doctor_profile.webp",
+    image: "/images/articles/lumbar_compression.webp",
     color: "from-blue-500/20 to-transparent"
   },
   {
@@ -111,7 +111,7 @@ const fallbackArticles = [
     date: "28 April 2026",
     readTime: "10 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/doctor_profile.webp",
+    image: "/images/spine_scan.webp",
     color: "from-emerald-500/20 to-transparent"
   },
   {
@@ -122,7 +122,7 @@ const fallbackArticles = [
     date: "27 April 2026",
     readTime: "9 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/doctor_profile.webp",
+    image: "/images/articles/endoscopic_spine.webp",
     color: "from-purple-500/20 to-transparent"
   },
   {
@@ -133,7 +133,7 @@ const fallbackArticles = [
     date: "26 April 2026",
     readTime: "8 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/doctor_profile.webp",
+    image: "/images/articles/lumbar_compression.webp",
     color: "from-emerald-500/20 to-transparent"
   },
   {
@@ -144,7 +144,7 @@ const fallbackArticles = [
     date: "25 April 2026",
     readTime: "9 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/doctor_profile.webp",
+    image: "/images/spine_scan.webp",
     color: "from-blue-500/20 to-transparent"
   }
 ];
