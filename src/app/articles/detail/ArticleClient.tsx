@@ -394,7 +394,7 @@ export default function ArticleClient() {
                 </div>
                 <div>
                   <p className="text-xs font-bold text-white">{displayAuthor || "Tim Medis"}</p>
-                  <p className="text-[10px] text-foreground/40 uppercase tracking-tighter">Penulis Medis</p>
+                  <p className="text-[10px] text-foreground/40 uppercase tracking-tighter">Dokter Spesialis</p>
                 </div>
               </div>
               <div className="h-8 w-px bg-white/5 hidden md:block" />
