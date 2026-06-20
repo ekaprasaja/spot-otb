@@ -140,7 +140,29 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [articles, setArticles] = useState<any[]>([]);
+  const [articles, setArticles] = useState<any[]>([
+    {
+      id: "1",
+      title: "Deteksi Dini Osteosarcoma",
+      desc: "Waspadai nyeri tulang persisten pada anak-anak dan remaja di usia pertumbuhan aktif.",
+      tag: "Kanker Tulang",
+      img: "/images/articles/osteosarcoma.png"
+    },
+    {
+      id: "3",
+      title: "Limb Salvage Surgery",
+      desc: "Teknologi rekonstruksi ekstremitas untuk menyelamatkan tungkai tanpa amputasi pada kanker tulang.",
+      tag: "Teknologi Bedah",
+      img: "/images/articles/limb_salvage.png"
+    },
+    {
+      id: "2",
+      title: "Sarkoma Jaringan Lunak",
+      desc: "Mengapa ketepatan melakukan jalur biopsi pertama sangat menentukan masa depan ekstremitas pasien.",
+      tag: "Tumor Jaringan Lunak",
+      img: "/images/articles/soft_tissue_sarcoma.png"
+    }
+  ]);
 
   useEffect(() => {
     let active = true;
@@ -741,7 +763,7 @@ export default function Home() {
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h2 className="text-2xl font-outfit font-bold text-white">Wawasan Medis</h2>
-                <p className="text-sm text-foreground/40 mt-1">Edukasi kesehatan tulang belakang untuk kebugaran jangka panjang Anda</p>
+                <p className="text-sm text-foreground/40 mt-1">Edukasi kesehatan orthopedi dan tumor tulang untuk pemulihan optimal Anda</p>
               </div>
               <Link href="/articles" prefetch={false} className="text-xs font-bold text-primary uppercase tracking-widest hover:underline">
                 Lihat Semua Artikel
@@ -750,7 +772,7 @@ export default function Home() {
 
             <div className="grid grid-cols-3 gap-6">
               {articles.slice(0, 3).map((post, idx) => (
-                <Link key={post.id} href={`/articles/${post.id}`} prefetch={false} className="group">
+                <Link key={post.id} href={`/articles/detail?id=${post.id}`} prefetch={false} className="group">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -783,10 +805,10 @@ export default function Home() {
                 Edukasi Berkala
               </div>
               <h3 className="text-3xl md:text-4xl font-outfit font-bold text-white mb-4 tracking-tight">
-                Dapatkan Update Kesehatan Tulang Belakang
+                Dapatkan Update Kesehatan Orthopedi & Bone Tumor
               </h3>
               <p className="text-sm md:text-base text-foreground/50 leading-relaxed">
-                Bergabunglah dengan ribuan pembaca setia kami. Dapatkan wawasan tepercaya, tips kebugaran tulang belakang, dan artikel edukasi medis dari {doctorConfig.name} langsung ke inbox Anda setiap minggu.
+                Bergabunglah dengan ribuan pembaca setia kami. Dapatkan wawasan tepercaya, tips kebugaran orthopedi, dan artikel edukasi medis dari {doctorConfig.name} langsung ke inbox Anda setiap minggu.
               </p>
             </div>
 
