@@ -320,19 +320,32 @@ export default function ArticleClient() {
     const clinic = doctorConfig.clinic || "Klinik Utama";
     const domain = typeof window !== "undefined" ? window.location.hostname : "wisnubaskoro.id";
 
-    return text
+    let result = text
+      .replace(/dr\. Nama Dokter, Sp\.OT, Subsp\. Onk\.Ort \(K\)/gi, name)
       .replace(/dr\. Nama Dokter, Sp\.OT, Subsp\. OTB \(K\)/gi, name)
       .replace(/dr\. Nama Dokter/gi, name)
-      .replace(/Nama Dokter/gi, name)
-      .replace(/dr\. Wisnu Baskoro, Sp\.BS, \(F\. N-TB\), FINSS, FINPS/gi, name)
-      .replace(/dr\. Wisnu Baskoro/gi, name)
-      .replace(/dr\. Wisnu/gi, name)
+      .replace(/Nama Dokter/gi, name);
+
+    if (!name.includes("Wisnu Baskoro")) {
+      result = result
+        .replace(/dr\. Wisnu Baskoro, Sp\.BS, \(F\. N-TB\), FINSS, FINPS/gi, name)
+        .replace(/dr\. Wisnu Baskoro/gi, name)
+        .replace(/dr\. Wisnu/gi, name);
+    }
+
+    if (!name.includes("Prahesta")) {
+      result = result
+        .replace(/dr\. Prahesta Adi Wibowo, Sp\.OT/gi, name)
+        .replace(/dr\. Prahesta/gi, name);
+    }
+
+    return result
       .replace(/Wisnu SpineCare/gi, clinic)
       .replace(/wisnubaskoro\.id/gi, domain);
   };
 
   const displayTitle = replacePlaceholders(currentArticle.title);
-  const displayAuthor = replacePlaceholders(currentArticle.author);
+  const displayAuthor = doctorConfig?.name || replacePlaceholders(currentArticle.author);
   const displayContent = replacePlaceholders(currentArticle.content);
 
   return (
