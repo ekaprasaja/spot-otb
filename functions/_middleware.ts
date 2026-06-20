@@ -36,47 +36,25 @@ export const onRequest: PagesFunction = async (context) => {
           el.setInnerContent(title);
         }
       })
-      .on("meta[name='description']", {
-        element(el) {
-          el.setAttribute("content", description);
-        }
-      })
-      .on("meta[property='og:title']", {
-        element(el) {
-          el.setAttribute("content", title);
-        }
-      })
-      .on("meta[property='og:description']", {
-        element(el) {
-          el.setAttribute("content", description);
-        }
-      })
-      .on("meta[property='og:image']", {
-        element(el) {
-          const imgUrl = image.startsWith('http') ? image : `https://${hostname}${image}`;
-          el.setAttribute("content", imgUrl);
-        }
-      })
-      .on("meta[name='twitter:title']", {
-        element(el) {
-          el.setAttribute("content", title);
-        }
-      })
-      .on("meta[name='twitter:description']", {
-        element(el) {
-          el.setAttribute("content", description);
-        }
-      })
-      .on("meta[name='twitter:image']", {
-        element(el) {
-          const imgUrl = image.startsWith('http') ? image : `https://${hostname}${image}`;
-          el.setAttribute("content", imgUrl);
-        }
-      })
       .on("head", {
         element(el) {
-          // Insert JSON-LD Physician Schema
           const imgUrl = image.startsWith('http') ? image : `https://${hostname}${image}`;
+
+          // Append SEO Meta Tags
+          el.append(`<meta name="description" content="${description}" />`, { html: true });
+          el.append(`<meta property="og:title" content="${title}" />`, { html: true });
+          el.append(`<meta property="og:description" content="${description}" />`, { html: true });
+          el.append(`<meta property="og:image" content="${imgUrl}" />`, { html: true });
+          el.append(`<meta property="og:url" content="https://${hostname}${url.pathname}" />`, { html: true });
+          el.append(`<meta property="og:type" content="website" />`, { html: true });
+          el.append(`<meta property="og:site_name" content="${tenant.name || 'Portal Dokter'}" />`, { html: true });
+          
+          el.append(`<meta name="twitter:card" content="summary_large_image" />`, { html: true });
+          el.append(`<meta name="twitter:title" content="${title}" />`, { html: true });
+          el.append(`<meta name="twitter:description" content="${description}" />`, { html: true });
+          el.append(`<meta name="twitter:image" content="${imgUrl}" />`, { html: true });
+
+          // Insert JSON-LD Physician Schema
           const physicianSchema = {
             "@context": "https://schema.org",
             "@type": "Physician",
