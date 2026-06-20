@@ -10,6 +10,15 @@ export const onRequest: PagesFunction = async (context) => {
   let urls = [
     { loc: `${origin}/`, changefreq: 'daily', priority: '1.0' },
     { loc: `${origin}/articles`, changefreq: 'daily', priority: '0.8' },
+    { loc: `${origin}/tools`, changefreq: 'weekly', priority: '0.7' },
+    { loc: `${origin}/tools/dermatome-tracker`, changefreq: 'weekly', priority: '0.6' },
+    { loc: `${origin}/tools/dexterity`, changefreq: 'weekly', priority: '0.6' },
+    { loc: `${origin}/tools/edema`, changefreq: 'weekly', priority: '0.6' },
+    { loc: `${origin}/tools/recovery`, changefreq: 'weekly', priority: '0.6' },
+    { loc: `${origin}/tools/sciatica-radiculopathy`, changefreq: 'weekly', priority: '0.6' },
+    { loc: `${origin}/tools/spine`, changefreq: 'weekly', priority: '0.6' },
+    { loc: `${origin}/tools/trauma`, changefreq: 'weekly', priority: '0.6' },
+    { loc: `${origin}/dashboard`, changefreq: 'weekly', priority: '0.7' },
     { loc: `${origin}/privacy`, changefreq: 'monthly', priority: '0.3' },
     { loc: `${origin}/terms`, changefreq: 'monthly', priority: '0.3' },
   ];
