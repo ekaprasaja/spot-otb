@@ -144,7 +144,7 @@ export default function ArticlesPage() {
                   category: category,
                   date: new Date(post.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
                   readTime: '5 menit',
-                  author: post._embedded?.author?.[0]?.name || 'Tim Medis',
+                  author: post._embedded?.author?.[0]?.name || 'DOCTOR_NAME',
                   image: thumbnail,
                   color: "from-blue-500/20 to-transparent",
                   isWp: true
@@ -174,7 +174,7 @@ export default function ArticlesPage() {
               category: "EDUKASI",
               date: new Date(art.published_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
               readTime: '5 menit',
-              author: 'Tim Medis',
+              author: 'DOCTOR_NAME',
               image: art.cover_image || "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=60&w=400",
               color: "from-blue-500/20 to-transparent"
             }));
@@ -351,9 +351,11 @@ export default function ArticlesPage() {
                   <div className="flex items-center justify-between pt-6 border-t border-white/5">
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-[10px] font-bold text-primary">
-                        {article.author.charAt(0)}
+                        {(doctorConfig?.name || article.author).charAt(0)}
                       </div>
-                      <span className="text-xs font-bold text-foreground/40">{article.author}</span>
+                      <span className="text-xs font-bold text-foreground/40">
+                        {(article.author === 'DOCTOR_NAME' || article.author.includes('Tim Medis') || article.author.includes('Nama Dokter')) ? (doctorConfig?.name || article.author) : article.author}
+                      </span>
                     </div>
                     <div className="flex items-center gap-1 text-[11px] font-bold text-primary uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0">
                       Baca <ChevronRight className="w-3 h-3" />
