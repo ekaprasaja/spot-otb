@@ -25,9 +25,56 @@ export const onRequest: PagesFunction = async (context) => {
     }
     const tenant = await configRes.json() as any;
 
-    const title = tenant.seoTitle || `${tenant.name} — ${tenant.whitelabelSub || tenant.specialty}`;
-    const description = tenant.seoDescription || tenant.bio || "Portal Digital Dokter Spesialis & Asisten AI Monitoring Mandiri";
-    const image = tenant.image || "/images/doctor_profile.webp";
+    const rawDoctorName = tenant.doctor_name || tenant.name || "";
+    const cleanDoctorName = rawDoctorName
+      .replace(/^(dr\.|dr|Dr\.|Dr)\s+/i, "")
+      .split(",")[0]
+      .trim() || "Portal Dokter";
+
+    let title = tenant.seoTitle || `${tenant.name} — ${tenant.whitelabelSub || tenant.specialty}`;
+    let description = tenant.seoDescription || tenant.bio || "Portal Digital Dokter Spesialis & Asisten AI Monitoring Mandiri";
+    let image = tenant.image || "/images/doctor_profile.webp";
+
+    const pathname = url.pathname;
+    
+    // Dynamic metadata based on page paths
+    if (pathname === '/tools' || pathname.startsWith('/tools/')) {
+      title = `Kalkulator Medis & Skrining Mandiri — ${cleanDoctorName}`;
+      description = `Gunakan alat kesehatan digital dan kalkulator medis terpercaya dari ${rawDoctorName} untuk pemantauan kesehatan mandiri.`;
+    } else if (pathname === '/articles') {
+      title = `Artikel & Edukasi Kesehatan — ${cleanDoctorName}`;
+      description = `Kumpulan informasi medis, tips kesehatan, dan edukasi terpercaya yang ditulis oleh ${rawDoctorName}.`;
+    } else if (pathname === '/dashboard') {
+      title = `Dashboard Monitoring Pasien — ${cleanDoctorName}`;
+      description = `Layanan asisten monitoring pemulihan pasca tindakan medis secara digital oleh ${rawDoctorName}.`;
+    } else if (pathname === '/privacy') {
+      title = `Kebijakan Privasi — ${cleanDoctorName}`;
+      description = `Kebijakan privasi portal digital dan asisten monitoring kesehatan ${rawDoctorName}.`;
+    } else if (pathname === '/terms') {
+      title = `Syarat & Ketentuan Layanan — ${cleanDoctorName}`;
+      description = `Syarat dan ketentuan penggunaan layanan portal digital ${rawDoctorName}.`;
+    } else if (pathname === '/articles/detail') {
+      const articleId = url.searchParams.get('id');
+      if (articleId) {
+        try {
+          const articleRes = await fetch(
+            `https://newsletter-api.eka-prasaja.workers.dev/v1/${tenant.id || lookupKey}/articles/${articleId}`
+          );
+          if (articleRes.ok) {
+            const article = await articleRes.json() as any;
+            if (article && article.title) {
+              title = `${article.title} — ${cleanDoctorName}`;
+              description = article.excerpt || (article.content ? article.content.replace(/<[^>]*>/g, '').substring(0, 150).trim() + '...' : description);
+              if (article.cover_image) {
+                image = article.cover_image;
+              }
+            }
+          }
+        } catch (err) {
+          // Fallback to default articles metadata
+        }
+      }
+    }
 
     // Rewrite the HTML using Cloudflare's edge HTMLRewriter
     return new HTMLRewriter()
@@ -36,18 +83,37 @@ export const onRequest: PagesFunction = async (context) => {
           el.setInnerContent(title);
         }
       })
+      .on("meta[name='description']", {
+        element(el) {
+          el.remove();
+        }
+      })
+      .on("meta[property^='og:']", {
+        element(el) {
+          el.remove();
+        }
+      })
+      .on("meta[name^='twitter:']", {
+        element(el) {
+          el.remove();
+        }
+      })
       .on("head", {
         element(el) {
           const imgUrl = image.startsWith('http') ? image : `https://${hostname}${image}`;
+          const pageUrl = `https://${hostname}${url.pathname}${url.search ? url.search : ''}`;
 
+          // Append Canonical Link
+          el.append(`<link rel="canonical" href="${pageUrl}" />`, { html: true });
+          
           // Append SEO Meta Tags
           el.append(`<meta name="description" content="${description}" />`, { html: true });
           el.append(`<meta property="og:title" content="${title}" />`, { html: true });
           el.append(`<meta property="og:description" content="${description}" />`, { html: true });
           el.append(`<meta property="og:image" content="${imgUrl}" />`, { html: true });
-          el.append(`<meta property="og:url" content="https://${hostname}${url.pathname}" />`, { html: true });
+          el.append(`<meta property="og:url" content="${pageUrl}" />`, { html: true });
           el.append(`<meta property="og:type" content="website" />`, { html: true });
-          el.append(`<meta property="og:site_name" content="${tenant.name || 'Portal Dokter'}" />`, { html: true });
+          el.append(`<meta property="og:site_name" content="${cleanDoctorName}" />`, { html: true });
           
           el.append(`<meta name="twitter:card" content="summary_large_image" />`, { html: true });
           el.append(`<meta name="twitter:title" content="${title}" />`, { html: true });
