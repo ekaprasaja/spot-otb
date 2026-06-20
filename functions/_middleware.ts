@@ -75,6 +75,32 @@ export const onRequest: PagesFunction = async (context) => {
       })
       .on("head", {
         element(el) {
+          // Insert JSON-LD Physician Schema
+          const imgUrl = image.startsWith('http') ? image : `https://${hostname}${image}`;
+          const physicianSchema = {
+            "@context": "https://schema.org",
+            "@type": "Physician",
+            "@id": `https://${hostname}/#doctor`,
+            "name": tenant.doctor_name || tenant.name || "dr. Prahesta Adi Wibowo, Sp.OT",
+            "image": imgUrl,
+            "url": `https://${hostname}`,
+            "telephone": `+${tenant.doctor_whatsapp || tenant.reply_to || ""}`,
+            "medicalSpecialty": "Orthopedic",
+            "knowsAbout": [
+              "Orthopaedic Surgery",
+              "Spine Surgery",
+              "Minimally Invasive Spine Surgery",
+              "Spinal Decompression",
+              "Pain Management"
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "ID",
+              "addressLocality": tenant.clinic_address || "Solo, Jawa Tengah"
+            }
+          };
+          el.append(`<script type="application/ld+json">${JSON.stringify(physicianSchema)}</script>`, { html: true });
+
           // Insert Google Site Verification Token
           if (tenant.googleVerificationToken) {
             el.append(`<meta name="google-site-verification" content="${tenant.googleVerificationToken}" />`, { html: true });
