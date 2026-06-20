@@ -178,9 +178,9 @@ export const onRequest: PagesFunction = async (context) => {
             physicianSchema.openingHoursSpecification = [
               {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "dayOfWeek": ["Monday", "Wednesday"],
                 "opens": "08:00",
-                "closes": "16:00"
+                "closes": "12:00"
               }
             ];
             physicianSchema.hospitalAffiliation = [
