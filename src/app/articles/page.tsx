@@ -14,74 +14,7 @@ import {
 import Link from "next/link";
 import { useDoctorConfig } from "@/context/DoctorConfigContext";
 
-const fallbackArticles = [
-  {
-    id: 1,
-    title: "Deteksi Dini Osteosarcoma: Waspadai Nyeri Tulang pada Anak dan Remaja",
-    excerpt: "Nyeri tulang yang sering disalahartikan sebagai 'growing pains' bisa jadi merupakan gejala osteosarcoma. Kenali tanda bahaya sejak awal untuk penanganan yang tepat.",
-    category: "Kanker Tulang",
-    date: "12 Juni 2026",
-    readTime: "8 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. Onk.Ort (K)",
-    image: "/images/articles/osteosarcoma.png",
-    color: "from-blue-500/20 to-transparent"
-  },
-  {
-    id: 2,
-    title: "Sarkoma Jaringan Lunak: Mengapa Jalur Biopsi yang Benar Sangat Menentukan",
-    excerpt: "Biopsi yang salah pada tumor otot atau lemak dapat mengontaminasi jaringan sehat dan mempersulit operasi penyelamatan ekstremitas. Konsultasikan ke subspesialis onkologi ortopedi.",
-    category: "Tumor Jaringan Lunak",
-    date: "10 Juni 2026",
-    readTime: "10 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. Onk.Ort (K)",
-    image: "/images/articles/soft_tissue_sarcoma.png",
-    color: "from-emerald-500/20 to-transparent"
-  },
-  {
-    id: 3,
-    title: "Limb Salvage Surgery: Menyelamatkan Ekstremitas Pasien Kanker Tulang Tanpa Amputasi",
-    excerpt: "Teknologi rekonstruksi modern menggunakan megaprosthesis atau bone graft memungkinkan pembuangan sel kanker tulang secara bersih sekaligus mempertahankan fungsi kaki atau tangan.",
-    category: "Teknologi Bedah",
-    date: "8 Juni 2026",
-    readTime: "9 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. Onk.Ort (K)",
-    image: "/images/articles/limb_salvage.png",
-    color: "from-rose-500/20 to-transparent"
-  },
-  {
-    id: 4,
-    title: "Metastasis Tulang: Strategi Paliatif & Paliasi Nyeri untuk Mempertahankan Kualitas Hidup",
-    excerpt: "Ketika kanker dari organ lain (payudara, paru, prostat) menyebar ke tulang, tindakan stabilisasi dengan implan dapat mencegah fraktur patologis dan meredakan nyeri hebat.",
-    category: "Kanker Tulang",
-    date: "6 Juni 2026",
-    readTime: "7 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. Onk.Ort (K)",
-    image: "/images/articles/osteosarcoma.png",
-    color: "from-amber-500/20 to-transparent"
-  },
-  {
-    id: 5,
-    title: "Penanganan Cedera Tulang Kompleks & Fraktur Patologis Akibat Tumor",
-    excerpt: "Tulang yang rapuh akibat tumor sangat rentan mengalami patah tulang spontan. Pelajari bagaimana fiksasi internal dan semen tulang (cementoplasty) membantu stabilitas mekanis.",
-    category: "Cedera Tulang",
-    date: "4 Juni 2026",
-    readTime: "11 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. Onk.Ort (K)",
-    image: "/images/articles/limb_salvage.png",
-    color: "from-purple-500/20 to-transparent"
-  },
-  {
-    id: 6,
-    title: "Mengenal Benigna Bone Tumor: Jenis-jenis Tumor Tulang Jinak yang Sering Ditemui",
-    excerpt: "Tidak semua benjolan pada tulang bersifat kanker. Pahami perbedaan tumor tulang jinak seperti osteochondroma atau giant cell tumor (GCT) serta indikasi operasinya.",
-    category: "Tumor Jaringan Lunak",
-    date: "2 Juni 2026",
-    readTime: "9 menit",
-    author: "dr. Nama Dokter, Sp.OT, Subsp. Onk.Ort (K)",
-    image: "/images/articles/soft_tissue_sarcoma.png",
-    color: "from-blue-500/20 to-transparent"
-  }
-];
+const fallbackArticles: any[] = [];
 
 export default function ArticlesPage() {
   const doctorConfig = useDoctorConfig();
@@ -278,6 +211,14 @@ export default function ArticlesPage() {
         {loading ? (
           <div className="flex justify-center py-20">
             <div className="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
+          </div>
+        ) : filteredArticles.length === 0 ? (
+          <div className="text-center py-20 bg-card border border-white/5 rounded-[2.5rem] px-6">
+            <BookOpen className="w-12 h-12 text-primary/30 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-white mb-2">Belum Ada Artikel</h3>
+            <p className="text-foreground/45 text-sm max-w-md mx-auto">
+              Artikel edukasi kesehatan belum diterbitkan. Silakan kembali beberapa saat lagi untuk mendapatkan informasi kesehatan terpercaya.
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

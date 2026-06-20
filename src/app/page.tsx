@@ -140,29 +140,7 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [articles, setArticles] = useState<any[]>([
-    {
-      id: 1,
-      title: "Deteksi Dini Osteosarcoma",
-      desc: "Waspadai nyeri tulang persisten dan pembengkakan pada anak dan remaja sebagai gejala awal kanker tulang.",
-      tag: "Onkologi Ortopedi",
-      img: "/images/articles/osteosarcoma.png"
-    },
-    {
-      id: 2,
-      title: "Sarkoma Jaringan Lunak",
-      desc: "Mengapa biopsi yang benar oleh ahli onkologi ortopedi sangat vital dalam menentukan keberhasilan terapi tumor otot dan lemak.",
-      tag: "Tumor Muskuloskeletal",
-      img: "/images/articles/soft_tissue_sarcoma.png"
-    },
-    {
-      id: 3,
-      title: "Limb Salvage Surgery",
-      desc: "Teknologi rekonstruksi modern untuk menyelamatkan ekstremitas dan fungsi gerak pasien kanker tulang tanpa amputasi.",
-      tag: "Teknologi Bedah",
-      img: "/images/articles/limb_salvage.png"
-    }
-  ]);
+  const [articles, setArticles] = useState<any[]>([]);
 
   useEffect(() => {
     let active = true;
@@ -758,40 +736,42 @@ export default function Home() {
         </div>
 
         {/* --- LATEST ARTICLES SECTION --- */}
-        <div className="mt-20">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h2 className="text-2xl font-outfit font-bold text-white">Wawasan Medis</h2>
-              <p className="text-sm text-foreground/40 mt-1">Edukasi kesehatan tulang belakang untuk kebugaran jangka panjang Anda</p>
-            </div>
-            <Link href="/articles" prefetch={false} className="text-xs font-bold text-primary uppercase tracking-widest hover:underline">
-              Lihat Semua Artikel
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-3 gap-6">
-            {articles.slice(0, 3).map((post, idx) => (
-              <Link key={post.id} href={`/articles/${post.id}`} prefetch={false} className="group">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bg-card rounded-[2rem] border border-white/5 overflow-hidden group-hover:border-primary/20 transition-all"
-                >
-                  <div className="aspect-[16/9] overflow-hidden">
-                    <img src={post.img} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  </div>
-                  <div className="p-6">
-                    <span className="text-[9px] font-bold text-primary uppercase tracking-widest mb-2 block">{post.tag}</span>
-                    <h4 className="text-white font-bold mb-2 group-hover:text-primary transition-colors">{post.title}</h4>
-                    <p className="text-[12px] text-foreground/40 line-clamp-2">{post.desc}</p>
-                  </div>
-                </motion.div>
+        {articles.length > 0 && (
+          <div className="mt-20">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h2 className="text-2xl font-outfit font-bold text-white">Wawasan Medis</h2>
+                <p className="text-sm text-foreground/40 mt-1">Edukasi kesehatan tulang belakang untuk kebugaran jangka panjang Anda</p>
+              </div>
+              <Link href="/articles" prefetch={false} className="text-xs font-bold text-primary uppercase tracking-widest hover:underline">
+                Lihat Semua Artikel
               </Link>
-            ))}
-          </div>
+            </div>
 
+            <div className="grid grid-cols-3 gap-6">
+              {articles.slice(0, 3).map((post, idx) => (
+                <Link key={post.id} href={`/articles/${post.id}`} prefetch={false} className="group">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="bg-card rounded-[2rem] border border-white/5 overflow-hidden group-hover:border-primary/20 transition-all"
+                  >
+                    <div className="aspect-[16/9] overflow-hidden">
+                      <img src={post.img} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    </div>
+                    <div className="p-6">
+                      <span className="text-[9px] font-bold text-primary uppercase tracking-widest mb-2 block">{post.tag}</span>
+                      <h4 className="text-white font-bold mb-2 group-hover:text-primary transition-colors">{post.title}</h4>
+                      <p className="text-[12px] text-foreground/40 line-clamp-2">{post.desc}</p>
+                    </div>
+                  </motion.div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
           {/* --- PREMIUM INTEGRATED NEWSLETTER BANNER --- */}
           <div className="mt-24 relative overflow-hidden bg-gradient-to-br from-primary/10 via-white/[0.02] to-transparent rounded-[3rem] border border-white/[0.05] p-12 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-10">
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[150px] -z-10 rounded-full pointer-events-none" />
@@ -873,7 +853,6 @@ export default function Home() {
               )}
             </div>
           </div>
-        </div>
 
         {/* Web Footer Branding */}
         <footer className="py-16 text-center border-t border-white/[0.02] mt-24">
