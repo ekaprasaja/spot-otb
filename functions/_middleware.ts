@@ -39,10 +39,10 @@ export const onRequest: PagesFunction = async (context) => {
 
     if (isPrahesta) {
       if (!tenant.seoTitle) {
-        title = "Dokter Tulang Belakang Klaten & Yogyakarta | dr. Prahesta Adi Wibowo, Sp.OT";
+        title = "Dokter Tulang Belakang Klaten | dr. Prahesta Adi Wibowo, Sp.OT";
       }
       if (!tenant.seoDescription) {
-        description = "Konsultasi dr. Prahesta Adi Wibowo, Sp.OT, spesialis ortopedi tulang belakang di RSUP Soeradji Tirtonegoro Klaten & Siloam Yogyakarta.";
+        description = "Konsultasi dr. Prahesta Adi Wibowo, Sp.OT, spesialis ortopedi tulang belakang di RSUP Soeradji Tirtonegoro Klaten.";
       }
       if (image.includes("spot-otb.incodepanel.com") || image.includes("incodepanel.com")) {
         image = "/images/doctor_profile.webp";
@@ -61,7 +61,7 @@ export const onRequest: PagesFunction = async (context) => {
         : `Gunakan alat kesehatan digital dan kalkulator medis terpercaya dari ${rawDoctorName} untuk pemantauan kesehatan mandiri.`;
     } else if (pathname === '/articles') {
       title = isPrahesta
-        ? `Artikel & Edukasi Kesehatan Tulang Belakang Klaten & Jogja — dr. Prahesta Adi Wibowo, Sp.OT`
+        ? `Artikel & Edukasi Kesehatan Tulang Belakang Klaten — dr. Prahesta Adi Wibowo, Sp.OT`
         : `Artikel & Edukasi Kesehatan — ${cleanDoctorName}`;
       description = isPrahesta
         ? `Kumpulan informasi medis, tips kesehatan, dan edukasi tulang belakang terpercaya yang ditulis oleh dr. Prahesta Adi Wibowo, Sp.OT.`
@@ -192,16 +192,6 @@ export const onRequest: PagesFunction = async (context) => {
                   "addressCountry": "ID",
                   "addressLocality": "Klaten",
                   "addressRegion": "Jawa Tengah"
-                }
-              },
-              {
-                "@type": "Hospital",
-                "name": "RS Siloam Yogyakarta",
-                "address": {
-                  "@type": "PostalAddress",
-                  "addressCountry": "ID",
-                  "addressLocality": "Yogyakarta",
-                  "addressRegion": "DI Yogyakarta"
                 }
               }
             ];
