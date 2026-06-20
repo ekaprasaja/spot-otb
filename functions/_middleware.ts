@@ -295,20 +295,18 @@ export const onRequest: PagesFunction = async (context) => {
           el.append(`<script type="application/ld+json">${JSON.stringify(physicianSchema)}</script>`, { html: true });
 
           // Insert Google Site Verification Token
-          const gscToken = tenant.googleVerificationToken || (isPrahesta ? "404-placeholder-gsc" : "");
-          if (gscToken) {
-            el.append(`<meta name="google-site-verification" content="${gscToken}" />`, { html: true });
+          if (tenant.googleVerificationToken) {
+            el.append(`<meta name="google-site-verification" content="${tenant.googleVerificationToken}" />`, { html: true });
           }
           // Insert Google Analytics (GA4 / Gtag)
-          const ga4Id = tenant.googleAnalyticsId || (isPrahesta ? "G-PLAHESTA_GA4_TEMP" : "");
-          if (ga4Id) {
+          if (tenant.googleAnalyticsId) {
             el.append(`
-              <script async src="https://www.googletagmanager.com/gtag/js?id=${ga4Id}"></script>
+              <script async src="https://www.googletagmanager.com/gtag/js?id=${tenant.googleAnalyticsId}"></script>
               <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${ga4Id}');
+                gtag('config', '${tenant.googleAnalyticsId}');
               </script>
             `, { html: true });
           }
