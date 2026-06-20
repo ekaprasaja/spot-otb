@@ -24,7 +24,8 @@ const fallbackArticles = [
     readTime: "8 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
     image: "/images/articles/posture.webp",
-    color: "from-blue-500/20 to-transparent"
+    color: "from-blue-500/20 to-transparent",
+    status: "Draf"
   },
   {
     id: 2,
@@ -35,7 +36,8 @@ const fallbackArticles = [
     readTime: "10 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
     image: "/images/articles/lumbar_compression.webp",
-    color: "from-emerald-500/20 to-transparent"
+    color: "from-emerald-500/20 to-transparent",
+    status: "Draf"
   },
   {
     id: 3,
@@ -46,7 +48,8 @@ const fallbackArticles = [
     readTime: "9 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
     image: "/images/spine_scan.webp",
-    color: "from-rose-500/20 to-transparent"
+    color: "from-rose-500/20 to-transparent",
+    status: "Draf"
   },
   {
     id: 4,
@@ -57,7 +60,8 @@ const fallbackArticles = [
     readTime: "7 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
     image: "/images/articles/endoscopic_spine.webp",
-    color: "from-amber-500/20 to-transparent"
+    color: "from-amber-500/20 to-transparent",
+    status: "Draf"
   },
   {
     id: 5,
@@ -68,7 +72,8 @@ const fallbackArticles = [
     readTime: "11 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
     image: "/images/articles/ai_robotic_surgery.webp",
-    color: "from-purple-500/20 to-transparent"
+    color: "from-purple-500/20 to-transparent",
+    status: "Draf"
   },
   {
     id: 6,
@@ -79,7 +84,8 @@ const fallbackArticles = [
     readTime: "9 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
     image: "/images/articles/joint.webp",
-    color: "from-blue-500/20 to-transparent"
+    color: "from-blue-500/20 to-transparent",
+    status: "Draf"
   },
   {
     id: 7,
@@ -90,7 +96,8 @@ const fallbackArticles = [
     readTime: "8 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
     image: "/images/articles/endoscopic_spine.webp",
-    color: "from-emerald-500/20 to-transparent"
+    color: "from-emerald-500/20 to-transparent",
+    status: "Draf"
   },
   {
     id: 8,
@@ -101,7 +108,8 @@ const fallbackArticles = [
     readTime: "9 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
     image: "/images/articles/lumbar_compression.webp",
-    color: "from-blue-500/20 to-transparent"
+    color: "from-blue-500/20 to-transparent",
+    status: "Draf"
   },
   {
     id: 9,
@@ -112,7 +120,8 @@ const fallbackArticles = [
     readTime: "10 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
     image: "/images/spine_scan.webp",
-    color: "from-emerald-500/20 to-transparent"
+    color: "from-emerald-500/20 to-transparent",
+    status: "Draf"
   },
   {
     id: 10,
@@ -123,7 +132,8 @@ const fallbackArticles = [
     readTime: "9 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
     image: "/images/articles/endoscopic_spine.webp",
-    color: "from-purple-500/20 to-transparent"
+    color: "from-purple-500/20 to-transparent",
+    status: "Draf"
   },
   {
     id: 11,
@@ -134,7 +144,8 @@ const fallbackArticles = [
     readTime: "8 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
     image: "/images/articles/lumbar_compression.webp",
-    color: "from-emerald-500/20 to-transparent"
+    color: "from-emerald-500/20 to-transparent",
+    status: "Draf"
   },
   {
     id: 12,
@@ -145,7 +156,8 @@ const fallbackArticles = [
     readTime: "9 menit",
     author: "dr. Prahesta Adi Wibowo, Sp.OT",
     image: "/images/spine_scan.webp",
-    color: "from-blue-500/20 to-transparent"
+    color: "from-blue-500/20 to-transparent",
+    status: "Draf"
   }
 ];
 
@@ -376,10 +388,15 @@ export default function ArticlesPage() {
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t ${article.color} to-transparent`} />
-                  <div className="absolute top-6 left-6">
+                  <div className="absolute top-6 left-6 flex gap-2">
                     <span className="px-4 py-2 bg-black/50 backdrop-blur-md rounded-full text-[10px] font-bold text-white uppercase tracking-widest border border-white/10">
                       {article.category}
                     </span>
+                    {article.status === "Draf" && (
+                      <span className="px-4 py-2 bg-amber-500/30 backdrop-blur-md rounded-full text-[10px] font-black text-amber-400 uppercase tracking-widest border border-amber-500/40">
+                        Draf
+                      </span>
+                    )}
                   </div>
                 </div>
 
