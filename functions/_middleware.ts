@@ -150,7 +150,7 @@ export const onRequest: PagesFunction = async (context) => {
             "name": tenant.doctor_name || tenant.name || "dr. Prahesta Adi Wibowo, Sp.OT",
             "image": imgUrl,
             "url": `https://${hostname}`,
-            "telephone": `+${tenant.doctor_whatsapp || tenant.reply_to || "62812345678"}`,
+            "telephone": isPrahesta ? "(0272) 321020" : `+${tenant.doctor_whatsapp || tenant.reply_to || "62812345678"}`,
             "medicalSpecialty": "Orthopedic",
             "knowsAbout": [
               "Orthopaedic Surgery",
