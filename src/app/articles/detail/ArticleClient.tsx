@@ -174,6 +174,20 @@ const getIcon = (category: string) => {
   }
 };
 
+function getFallbackImage(slug: string): string {
+  const s = slug.toLowerCase();
+  if (s.includes('osteosarcoma') || s.includes('kanker') || s.includes('tulang')) {
+    return '/images/articles/osteosarcoma.png';
+  }
+  if (s.includes('sarcoma') || s.includes('sarkoma') || s.includes('jaringan-lunak')) {
+    return '/images/articles/soft_tissue_sarcoma.png';
+  }
+  if (s.includes('limb-salvage') || s.includes('amputasi') || s.includes('bedah')) {
+    return '/images/articles/limb_salvage.png';
+  }
+  return '/images/articles/osteosarcoma.png';
+}
+
 export default function ArticleClient() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id") || "1";
@@ -204,7 +218,7 @@ export default function ArticleClient() {
           if (wpRes.ok) {
             const post = await wpRes.json();
             if (post && active) {
-              let thumbnail = "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=60&w=400";
+              let thumbnail = "/images/articles/osteosarcoma.png";
               const featuredMedia = post._embedded?.['wp:featuredmedia']?.[0];
               if (featuredMedia?.source_url) {
                 thumbnail = featuredMedia.source_url;
@@ -244,7 +258,7 @@ export default function ArticleClient() {
               title: matched.title,
               date: new Date(matched.published_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
               category: "EDUKASI",
-              image: matched.cover_image || "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=60&w=400",
+              image: matched.cover_image || getFallbackImage(matched.slug || matched.id || ""),
               content: matched.content || matched.excerpt || '',
               author: 'Tim Medis',
               readTime: '5 menit'
@@ -271,7 +285,7 @@ export default function ArticleClient() {
                     title: matched.title,
                     date: new Date(matched.published_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
                     category: "EDUKASI",
-                    image: matched.cover_image || "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=60&w=400",
+                    image: matched.cover_image || getFallbackImage(matched.slug || matched.id || ""),
                     content: matched.content || matched.excerpt || '',
                     author: 'Tim Medis',
                     readTime: '5 menit'
@@ -356,7 +370,7 @@ export default function ArticleClient() {
           initial={{ scale: 1.2 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          src={currentArticle.image || "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=60&w=400"} 
+          src={currentArticle.image || getFallbackImage(currentArticle.id || "")} 
           alt={displayTitle}
           className="w-full h-full object-cover"
         />

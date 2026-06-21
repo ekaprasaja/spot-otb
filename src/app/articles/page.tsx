@@ -89,6 +89,20 @@ const fallbackArticles = [
   }
 ];
 
+function getFallbackImage(slug: string): string {
+  const s = slug.toLowerCase();
+  if (s.includes('osteosarcoma') || s.includes('kanker') || s.includes('tulang')) {
+    return '/images/articles/osteosarcoma.png';
+  }
+  if (s.includes('sarcoma') || s.includes('sarkoma') || s.includes('jaringan-lunak')) {
+    return '/images/articles/soft_tissue_sarcoma.png';
+  }
+  if (s.includes('limb-salvage') || s.includes('amputasi') || s.includes('bedah')) {
+    return '/images/articles/limb_salvage.png';
+  }
+  return '/images/articles/osteosarcoma.png';
+}
+
 export default function ArticlesPage() {
   const doctorConfig = useDoctorConfig();
   const [email, setEmail] = useState("");
@@ -122,7 +136,7 @@ export default function ArticlesPage() {
             const posts = await res.json();
             if (posts && Array.isArray(posts) && posts.length > 0) {
               const wpArticles = posts.map(post => {
-                let thumbnail = "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=60&w=400";
+                let thumbnail = "/images/articles/osteosarcoma.png";
                 const featuredMedia = post._embedded?.['wp:featuredmedia']?.[0];
                 if (featuredMedia?.source_url) {
                   thumbnail = featuredMedia.source_url;
@@ -175,7 +189,7 @@ export default function ArticlesPage() {
               date: new Date(art.published_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
               readTime: '5 menit',
               author: 'DOCTOR_NAME',
-              image: art.cover_image || "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=60&w=400",
+              image: art.cover_image || getFallbackImage(art.slug || art.id || ""),
               color: "from-blue-500/20 to-transparent"
             }));
 
@@ -311,7 +325,7 @@ export default function ArticlesPage() {
                 >
                 <div className="relative aspect-[16/10] rounded-[2.5rem] overflow-hidden mb-6 border border-white/5">
                   <img 
-                    src={article.image || "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=60&w=400"} 
+                    src={article.image || getFallbackImage(article.id || "")} 
                     alt={article.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />

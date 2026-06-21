@@ -96,6 +96,20 @@ const tools = [
   },
 ];
 
+function getFallbackImage(slug: string): string {
+  const s = slug.toLowerCase();
+  if (s.includes('osteosarcoma') || s.includes('kanker') || s.includes('tulang')) {
+    return '/images/articles/osteosarcoma.png';
+  }
+  if (s.includes('sarcoma') || s.includes('sarkoma') || s.includes('jaringan-lunak')) {
+    return '/images/articles/soft_tissue_sarcoma.png';
+  }
+  if (s.includes('limb-salvage') || s.includes('amputasi') || s.includes('bedah')) {
+    return '/images/articles/limb_salvage.png';
+  }
+  return '/images/articles/osteosarcoma.png';
+}
+
 export default function Home() {
   const doctorConfig = useDoctorConfig();
   const isSpog = doctorConfig?.whitelabelType === "spog";
@@ -225,7 +239,7 @@ export default function Home() {
               title: art.title,
               desc: art.excerpt || art.description || "Baca artikel lengkap mengenai kesehatan saraf dan tulang belakang.",
               tag: "EDUKASI",
-              img: art.cover_image || "/images/article_exercise.webp"
+              img: art.cover_image || getFallbackImage(art.slug || art.id || "")
             }));
 
             if (active) {
