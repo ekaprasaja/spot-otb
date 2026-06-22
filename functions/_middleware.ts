@@ -100,6 +100,13 @@ export const onRequest: PagesFunction = async (context) => {
 
     // Rewrite the HTML using Cloudflare's edge HTMLRewriter
     const transformedResponse = new HTMLRewriter()
+      .on("h1", {
+        element(el) {
+          if (pathname === "/" && (tenant.seo_h1 || tenant.seoH1)) {
+            el.setInnerContent(tenant.seo_h1 || tenant.seoH1);
+          }
+        }
+      })
       .on("title", {
         element(el) {
           el.setInnerContent(title);
