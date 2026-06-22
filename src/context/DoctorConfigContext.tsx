@@ -28,6 +28,7 @@ export interface DoctorConfig {
   whitelabelSub?: string;
   heroTitle?: string;
   heroDescription?: string;
+  seoH1?: string;
 }
 
 const DoctorConfigContext = createContext<DoctorConfig | null>(null);
@@ -49,9 +50,10 @@ export function DoctorConfigProvider({ children }: { children: React.ReactNode }
     wordpressCategoryFilter: "",
     cvTimeline: [],
     whitelabelType: "spot-otb",
-    whitelabelSub: "Spine & Pain Intervention",
+    whitelabelSub: "Bone & Joint",
     heroTitle: "",
     heroDescription: "",
+    seoH1: "",
   });
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -95,6 +97,7 @@ export function DoctorConfigProvider({ children }: { children: React.ReactNode }
           whitelabelSub: rawData.whitelabelSub || rawData.whitelabel_sub || "",
           heroTitle: rawData.heroTitle || rawData.hero_title || "",
           heroDescription: rawData.heroDescription || rawData.hero_description || "",
+          seoH1: rawData.seoH1 || rawData.seo_h1 || "",
         };
 
         // 1. Inject Dynamic CSS accent color
@@ -146,9 +149,10 @@ export function DoctorConfigProvider({ children }: { children: React.ReactNode }
           wordpressCategoryFilter: "",
           cvTimeline: [],
           whitelabelType: "spot-otb",
-          whitelabelSub: "Spine & Pain Intervention",
+          whitelabelSub: "Bone & Joint",
           heroTitle: "",
           heroDescription: "",
+          seoH1: "",
         });
       } finally {
         setLoading(false);

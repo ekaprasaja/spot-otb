@@ -374,6 +374,9 @@ export default function Home() {
       </AnimatePresence>
       {/* --- SHARED HERO SECTION --- */}
       <section className="relative px-5 md:px-12 pt-8 md:pt-16 pb-10 md:pb-20 overflow-hidden tech-grid">
+        <h1 className="sr-only">
+          {config?.seoH1 || `${heroTitleDesktop} ${heroHighlightDesktop}`}
+        </h1>
         <AnimeBackground />
         
         {/* Magic Background Elements */}
@@ -486,7 +489,7 @@ export default function Home() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.5 }}
                     >
-                      <h1 className="text-[28px] font-outfit font-bold leading-[1.1] mb-2 tracking-tight text-white drop-shadow-lg">
+                      <h2 className="text-[28px] font-outfit font-bold leading-[1.1] mb-2 tracking-tight text-white drop-shadow-lg">
                         {heroTitleMobile.split("").map((char, i) => (
                           <motion.span
                             key={i}
@@ -509,7 +512,7 @@ export default function Home() {
                             {char}
                           </motion.span>
                         ))}
-                      </h1>
+                      </h2>
                       
                       <p className="text-xs text-white/70 leading-relaxed mb-6 max-w-[240px]">
                         {heroDescMobile.split(" ").map((word, i) => (
@@ -564,7 +567,7 @@ export default function Home() {
               </div>
             </motion.div>
  
-            <h1 className="text-[36px] md:text-7xl font-outfit font-bold leading-[1.05] mb-8 tracking-tight">
+            <h2 className="text-[36px] md:text-7xl font-outfit font-bold leading-[1.05] mb-8 tracking-tight">
               {heroTitleDesktop.split(" ").map((word, i) => (
                 <motion.span
                   key={i}
@@ -597,7 +600,7 @@ export default function Home() {
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg] pointer-events-none"
                 />
               </motion.span>
-            </h1>
+            </h2>
             
             <motion.p 
               initial={{ opacity: 0 }}
@@ -965,7 +968,7 @@ export default function Home() {
                 <span className="text-[8px] font-black text-white/80 uppercase tracking-widest">AI Diagnostics Live</span>
               </motion.div>
               
-              <h1 className="text-3xl font-bold text-white mb-3 tracking-tight leading-tight">
+              <h2 className="text-3xl font-bold text-white mb-3 tracking-tight leading-tight">
                 {["Pendamping", "Kesehatan"].map((word, i) => (
                   <motion.span 
                     key={i}
@@ -986,7 +989,7 @@ export default function Home() {
                 >
                   Orthopedi & Spine
                 </motion.span>
-              </h1>
+              </h2>
               
               <motion.p 
                 initial={{ opacity: 0 }}
