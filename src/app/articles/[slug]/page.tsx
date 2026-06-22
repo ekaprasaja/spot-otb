@@ -192,6 +192,8 @@ async function fetchArticleData(slug: string) {
         return {
           id: matched.slug || matched.id,
           title: matched.title,
+          seoTitle: matched.seo_title || "",
+          seoDescription: matched.seo_description || "",
           date: new Date(matched.published_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
           category: "EDUKASI",
           image: matched.cover_image || getFallbackImage(matched.slug || matched.id || ""),
@@ -216,6 +218,8 @@ async function fetchArticleData(slug: string) {
               return {
                 id: matched.slug || matched.id,
                 title: matched.title,
+                seoTitle: matched.seo_title || "",
+                seoDescription: matched.seo_description || "",
                 date: new Date(matched.published_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
                 category: "EDUKASI",
                 image: matched.cover_image || getFallbackImage(matched.slug || matched.id || ""),
@@ -248,13 +252,31 @@ interface PageProps {
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params;
   const article = await fetchArticleData(params.slug);
-  const displayTitle = replacePlaceholders(article.title);
+  
+  const seoTitleRaw = article.seoTitle || article.title;
+  const displayTitle = replacePlaceholders(seoTitleRaw);
+  
+  // Try to use seoDescription, or strip HTML tags from content to make a good description
+  const rawExcerpt = article.seoDescription || (article.content ? article.content.replace(/<[^>]+>/g, '').substring(0, 160) : article.title);
+  const displayDescription = replacePlaceholders(rawExcerpt);
 
   return {
-    title: `${displayTitle} — dr. Prahesta Adi Wibowo`,
-    description: replacePlaceholders(article.title) + " - Dapatkan informasi kesehatan tumor dan kanker tulang langsung dari dr. Prahesta Adi Wibowo, Sp.OT.",
+    title: article.seoTitle ? displayTitle : `${displayTitle} — dr. Prahesta Adi Wibowo`,
+    description: displayDescription,
     alternates: {
       canonical: `https://prahesta.id/articles/${params.slug}`,
+    },
+    openGraph: {
+      title: displayTitle,
+      description: displayDescription,
+      images: [
+        {
+          url: article.image.startsWith("http") ? article.image : `https://prahesta.id${article.image}`,
+          width: 1200,
+          height: 630,
+          alt: displayTitle,
+        }
+      ]
     }
   };
 }
