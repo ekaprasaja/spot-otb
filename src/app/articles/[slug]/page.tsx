@@ -235,6 +235,12 @@ async function fetchArticleData(slug: string) {
   return articlesData["1"];
 }
 
+export async function generateStaticParams() {
+  return Object.keys(articlesData).map((slug) => ({
+    slug: slug,
+  }));
+}
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }

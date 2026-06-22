@@ -41,7 +41,7 @@ export const onRequest: PagesFunction = async (context) => {
           for (const article of data.articles) {
             const articleSlug = article.slug || article.id;
             urls.push({
-              loc: `${origin}/articles/detail?id=${articleSlug}`,
+              loc: `${origin}/articles/${articleSlug}`,
               changefreq: 'weekly',
               priority: '0.6'
             });
