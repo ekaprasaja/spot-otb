@@ -786,7 +786,7 @@ export default function Home() {
 
             <div className="grid grid-cols-3 gap-6">
               {articles.slice(0, 3).map((post, idx) => (
-                <Link key={post.id} href={`/articles/detail?id=${post.id}`} prefetch={false} className="group">
+              <Link key={post.id} href={`/articles/${post.id}`} prefetch={false} className="group">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

@@ -33,7 +33,7 @@ export default function MedicalInsightScroller({
       
       <div className="flex gap-4 overflow-x-auto scrollbar-hide px-6 pb-4 snap-x snap-mandatory touch-auto">
         {insights.map((insight) => (
-          <Link key={insight.id} href={`/articles/detail?id=${insight.id}`} prefetch={false} className="snap-center shrink-0 w-[260px] group first:ml-0 last:mr-6">
+          <Link key={insight.id} href={`/articles/${insight.id}`} prefetch={false} className="snap-center shrink-0 w-[260px] group first:ml-0 last:mr-6">
             <div className="glass-card rounded-[2rem] overflow-hidden shadow-lg border-white/5">
               <div className="aspect-[16/10] overflow-hidden relative">
                 <img src={insight.img} alt={insight.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />

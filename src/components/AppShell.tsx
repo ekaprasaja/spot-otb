@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import MobileHeader from "./MobileHeader";
 import BottomNav from "./BottomNav";
 import Sidebar from "./Sidebar";
@@ -8,6 +10,25 @@ import NotificationCenter from "./shared/NotificationCenter";
 import PWAInstallPrompt from "./shared/PWAInstallPrompt";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      let canonicalUrl = `https://prahesta.id${pathname}`;
+      
+      // Dynamic article route is handled explicitly by its Server Component metadata
+      if (!pathname.startsWith("/articles/")) {
+        let link: HTMLLinkElement | null = document.querySelector("link[rel='canonical']");
+        if (!link) {
+          link = document.createElement("link");
+          link.setAttribute("rel", "canonical");
+          document.head.appendChild(link);
+        }
+        link.setAttribute("href", canonicalUrl);
+      }
+    }
+  }, [pathname]);
+
   return (
     <div className="flex min-h-screen bg-background relative overflow-hidden">
       {/* Global PWA Install Dialog */}
