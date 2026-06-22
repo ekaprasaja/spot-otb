@@ -375,7 +375,7 @@ export default function Home() {
       {/* --- SHARED HERO SECTION --- */}
       <section className="relative px-5 md:px-12 pt-8 md:pt-16 pb-10 md:pb-20 overflow-hidden tech-grid">
         <h1 className="sr-only">
-          {config?.seoH1 || `${heroTitleDesktop} ${heroHighlightDesktop}`}
+          {doctorConfig.seoH1 || `${heroTitleDesktop} ${heroHighlightDesktop}`}
         </h1>
         <AnimeBackground />
         
