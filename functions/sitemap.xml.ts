@@ -38,14 +38,14 @@ export const onRequest: PagesFunction = async (context) => {
       if (articlesRes.ok) {
         const data = await articlesRes.json() as any;
         if (data && Array.isArray(data.articles)) {
-          for (const article of data.articles) {
-            const articleSlug = article.id || article.slug;
+          data.articles.forEach((article: any, i: number) => {
+            const articleNum = i + 1; // routes are /articles/1, /articles/2, ...
             urls.push({
-              loc: `${origin}/articles/${articleSlug}`,
+              loc: `${origin}/articles/${articleNum}`,
               changefreq: 'weekly',
               priority: '0.6'
             });
-          }
+          });
         }
       }
     }
