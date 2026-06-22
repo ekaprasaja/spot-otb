@@ -39,7 +39,7 @@ export const onRequest: PagesFunction = async (context) => {
         const data = await articlesRes.json() as any;
         if (data && Array.isArray(data.articles)) {
           for (const article of data.articles) {
-            const articleSlug = article.slug || article.id;
+            const articleSlug = article.id || article.slug;
             urls.push({
               loc: `${origin}/articles/${articleSlug}`,
               changefreq: 'weekly',
