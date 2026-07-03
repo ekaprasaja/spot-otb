@@ -25,6 +25,7 @@ import { useOrthoStore } from "@/store/useOrthoStore";
 import { ClinicalSection } from "@/components/shared/ClinicalSection";
 import { ToolInstruction } from "@/components/shared/ToolInstruction";
 import { useDoctorConfig } from "@/context/DoctorConfigContext";
+import BookingWidget from "@/components/BookingWidget";
 
 type PrimaryLocation = "lumbar_radiation" | "cervical_radiation" | "lumbar_local" | "cervical_local" | "none";
 type SensationType = "tingling_numbness" | "burning_heat" | "aching" | "cramping";
@@ -190,21 +191,13 @@ export default function SciaticaMapper() {
                 </ul>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex justify-center pt-4">
                 <button 
                   onClick={() => setShowClinicModal(true)}
-                  className="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-5 px-6 rounded-2xl shadow-xl shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 text-sm md:text-base"
+                  className="w-full max-w-md bg-red-600 hover:bg-red-700 text-white font-bold py-5 px-6 rounded-2xl shadow-xl shadow-red-600/30 transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 text-sm md:text-base"
                 >
                   <Stethoscope className="w-5 h-5" /> Kunjungi Klinik (Tatap Muka)
                 </button>
-                <a 
-                  href="https://www.google.com/maps/search/?api=1&query=UGD+Instalasi+Gawat+Darurat+Rumah+Sakit+Terdekat"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-bold py-5 px-6 rounded-2xl transition-all duration-300 active:scale-95 flex items-center justify-center gap-3 text-sm md:text-base"
-                >
-                  <MapPin className="w-5 h-5 text-red-400" /> Rute UGD Terdekat
-                </a>
               </div>
 
               <div className="pt-6 border-t border-red-500/10">
@@ -500,63 +493,17 @@ export default function SciaticaMapper() {
               initial={{ scale: 0.95, y: 15 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.95, y: 15 }}
-              className="relative max-w-md w-full bg-[#111113] border border-white/10 rounded-[2.5rem] p-8 md:p-10 shadow-2xl text-center space-y-6"
+              className="relative max-w-xl w-full bg-[#111113] border border-white/10 rounded-[2.5rem] p-8 md:p-10 shadow-2xl space-y-6"
               onClick={(e) => e.stopPropagation()}
             >
               <button 
                 onClick={() => setShowClinicModal(false)}
-                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 text-white transition-colors"
+                className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 text-white transition-colors z-50"
               >
                 <X className="w-5 h-5" />
               </button>
 
-              <div className="space-y-2">
-                <div className="w-12 h-12 bg-primary/20 rounded-xl flex items-center justify-center text-primary mx-auto">
-                  <Calendar className="w-6 h-6" />
-                </div>
-                <span className="text-[9px] font-black text-primary uppercase tracking-[0.2em] block">Praktek Klinis</span>
-                <h3 className="text-xl font-bold text-white">Jadwal & Alamat Praktek</h3>
-              </div>
-
-              <div className="h-px bg-white/5 w-full" />
-
-              <div className="space-y-4 text-left">
-                <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 space-y-3">
-                  <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                    {doctorConfig.clinic || "Spine & Pain Clinic"}
-                  </h4>
-                  <div className="flex gap-2.5 text-xs text-foreground/60 leading-relaxed">
-                    <MapPinned className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                    <span>{doctorConfig.location || "Kota, Indonesia"}</span>
-                  </div>
-                </div>
-
-                <div className="bg-primary/5 border border-primary/10 rounded-2xl p-5 flex items-center gap-3.5">
-                  <Clock className="w-6 h-6 text-primary shrink-0" />
-                  <div>
-                    <h5 className="text-xs font-bold text-primary uppercase tracking-wider">Jam Praktek</h5>
-                    <p className="text-xs font-bold text-white mt-1">Senin – Jumat</p>
-                    <p className="text-[10px] text-foreground/50">09.00 – 14.00 WIB</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-3 pt-2">
-                <a 
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(doctorConfig.clinic || "")}+${encodeURIComponent(doctorConfig.location || "")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full py-4 bg-primary text-white font-bold rounded-2xl text-center text-sm transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-primary/20"
-                >
-                  Buka Peta Lokasi
-                </a>
-                <button 
-                  onClick={() => setShowClinicModal(false)}
-                  className="block w-full py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl text-sm transition-colors hover:bg-white/10"
-                >
-                  Tutup
-                </button>
-              </div>
+              <BookingWidget doctorId={doctorConfig.doctorId} onClose={() => setShowClinicModal(false)} />
             </motion.div>
           </motion.div>
         )}
