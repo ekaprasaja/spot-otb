@@ -822,10 +822,10 @@ export default function Home() {
                 Edukasi Berkala
               </div>
               <h3 className="text-3xl md:text-4xl font-outfit font-bold text-white mb-4 tracking-tight">
-                Dapatkan Update Kesehatan Orthopedi & Bone Tumor
+                Dapatkan Update Kesehatan {isSpog ? (doctorConfig?.whitelabelSub || "Kehamilan & Kandungan") : (doctorConfig?.whitelabelSub || "Orthopedi & Bone Tumor")}
               </h3>
               <p className="text-sm md:text-base text-foreground/50 leading-relaxed">
-                Bergabunglah dengan ribuan pembaca setia kami. Dapatkan wawasan tepercaya, tips kebugaran orthopedi, dan artikel edukasi medis dari {doctorConfig.name} langsung ke inbox Anda setiap minggu.
+                Bergabunglah dengan ribuan pembaca setia kami. Dapatkan wawasan tepercaya, tips kebugaran {isSpog ? "kehamilan" : "orthopedi"}, dan artikel edukasi medis dari {doctorConfig?.name || "dokter spesialis"} langsung ke inbox Anda setiap minggu.
               </p>
             </div>
 
