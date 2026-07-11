@@ -39,9 +39,9 @@ export const onRequest: PagesFunction = async (context) => {
         const data = await articlesRes.json() as any;
         if (data && Array.isArray(data.articles)) {
           data.articles.forEach((article: any) => {
-            const id = article.slug || article.id;
+            const articleSlug = article.slug || String(article.id);
             urls.push({
-              loc: `${origin}/articles/detail?id=${id}`,
+              loc: `${origin}/articles/${articleSlug}`,
               changefreq: 'weekly',
               priority: '0.6'
             });
