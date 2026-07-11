@@ -8,8 +8,10 @@ const withPWA = require('next-pwa')({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
+  trailingSlash: true,
   turbopack: {},
   reactStrictMode: true,
+  outputFileTracingRoot: __dirname,
   async headers() {
     return [
       {

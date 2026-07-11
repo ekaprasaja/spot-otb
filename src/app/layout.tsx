@@ -37,6 +37,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className={`${inter.variable} ${outfit.variable} h-full antialiased`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.ready.then(function(reg) {
+                    reg.update();
+                  });
+                });
+              }
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col font-inter overscroll-none">
         <ErrorBoundary>
           <DoctorConfigProvider>
