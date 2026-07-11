@@ -203,3 +203,44 @@
     z-index: 100000 !important;
   }
 }
+
+/* ── Internal Links Box (dirender dari database) ── */
+.artikel-terkait {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+}
+
+.artikel-terkait-label {
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.artikel-terkait ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.artikel-terkait a {
+  font-size: 0.875rem;
+  color: rgba(224, 226, 237, 0.6);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.artikel-terkait a:hover {
+  color: var(--primary);
+}
+

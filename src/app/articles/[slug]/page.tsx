@@ -2,7 +2,8 @@ import React from "react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Calendar, Clock, Share2, Bookmark, ChevronRight, Shield } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Share2, Bookmark, ChevronRight, ChevronLeft, Shield } from "lucide-react";
+import ArticleBookingCTA from "@/components/ArticleBookingCTA";
 
 const defaultDoctor = {
   name: "dr. Prahesta Adi Wibowo, Sp.OT",
@@ -93,6 +94,23 @@ async function fetchArticleData(slug: string) {
   return null;
 }
 
+async function fetchAllArticles(): Promise<{ slug: string; title: string }[]> {
+  try {
+    const tenantId = defaultDoctor.doctorId;
+    const res = await fetch(`https://newsletter-api.eka-prasaja.workers.dev/v1/${tenantId}/articles`);
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.articles && Array.isArray(data.articles)) {
+        return data.articles.map((a: any) => ({
+          slug: a.slug || String(a.id),
+          title: a.title || '',
+        }));
+      }
+    }
+  } catch {}
+  return [];
+}
+
 export async function generateStaticParams() {
   try {
     const tenantId = defaultDoctor.doctorId;
@@ -156,11 +174,18 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 
 export default async function ArticleDetailPage(props: PageProps) {
   const params = await props.params;
-  const article = await fetchArticleData(params.slug);
+  const [article, allArticles] = await Promise.all([
+    fetchArticleData(params.slug),
+    fetchAllArticles(),
+  ]);
   
   if (!article) {
     notFound();
   }
+
+  const currentIndex = allArticles.findIndex(a => a.slug === params.slug);
+  const prevArticle = currentIndex > 0 ? allArticles[currentIndex - 1] : null;
+  const nextArticle = currentIndex < allArticles.length - 1 ? allArticles[currentIndex + 1] : null;
 
   const displayTitle = replacePlaceholders(article.title);
   const displayAuthor = defaultDoctor.name;
@@ -294,8 +319,11 @@ export default async function ArticleDetailPage(props: PageProps) {
                 dangerouslySetInnerHTML={{ __html: displayContent }}
               />
 
+              {/* Article Booking CTA */}
+              <ArticleBookingCTA doctorId={defaultDoctor.doctorId} />
+
               {/* Surgeon Note */}
-              <div className="mt-16 p-8 bg-primary/5 border border-primary/10 rounded-[2.5rem] flex flex-col md:flex-row gap-6 items-center">
+              <div className="mt-8 p-8 bg-primary/5 border border-primary/10 rounded-[2.5rem] flex flex-col md:flex-row gap-6 items-center">
                 <div className="w-20 h-20 rounded-3xl bg-primary flex items-center justify-center shrink-0 shadow-lg shadow-primary/20">
                   <Shield className="w-10 h-10 text-white" />
                 </div>
@@ -307,17 +335,63 @@ export default async function ArticleDetailPage(props: PageProps) {
                 </div>
               </div>
             </div>
-
-            {/* Related Articles CTA */}
-            <div className="mt-20 flex flex-col items-center text-center">
-              <h3 className="text-2xl font-bold text-white mb-8">Lanjutkan Membaca</h3>
-              <Link href="/articles" className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 border border-white/10 rounded-2xl font-bold text-white hover:bg-white/10 transition-all">
-                Kembali ke Semua Artikel <ChevronRight className="w-4 h-4" />
-              </Link>
-            </div>
           </div>
         </article>
+      </div>
+
+      {/* ── Prev / Next + Back Navigation ── */}
+      <div className="max-w-3xl mx-auto px-4 pb-16 mt-2">
+        {/* Back to Blog */}
+        <div className="flex justify-center mb-8">
+          <Link
+            href="/articles"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/10 bg-white/[0.03] text-white/50 hover:text-primary hover:border-primary/30 transition-all text-sm font-semibold"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            Kembali ke Blog
+          </Link>
+        </div>
+
+        {/* Prev / Next */}
+        {(prevArticle || nextArticle) && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Previous */}
+            {prevArticle ? (
+              <Link
+                href={`/articles/${prevArticle.slug}`}
+                className="group flex flex-col gap-2 p-5 rounded-2xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.05] hover:border-primary/20 transition-all"
+              >
+                <span className="flex items-center gap-1.5 text-[10px] font-black text-white/30 uppercase tracking-widest group-hover:text-primary/60 transition-colors">
+                  <ChevronLeft className="w-3 h-3" /> Artikel Sebelumnya
+                </span>
+                <p className="text-sm font-bold text-white/70 group-hover:text-white transition-colors line-clamp-2 leading-snug">
+                  {prevArticle.title}
+                </p>
+              </Link>
+            ) : (
+              <div />
+            )}
+
+            {/* Next */}
+            {nextArticle ? (
+              <Link
+                href={`/articles/${nextArticle.slug}`}
+                className="group flex flex-col gap-2 p-5 rounded-2xl border border-white/8 bg-white/[0.02] hover:bg-white/[0.05] hover:border-primary/20 transition-all text-right md:items-end"
+              >
+                <span className="flex items-center gap-1.5 text-[10px] font-black text-white/30 uppercase tracking-widest group-hover:text-primary/60 transition-colors">
+                  Artikel Berikutnya <ChevronRight className="w-3 h-3" />
+                </span>
+                <p className="text-sm font-bold text-white/70 group-hover:text-white transition-colors line-clamp-2 leading-snug">
+                  {nextArticle.title}
+                </p>
+              </Link>
+            ) : (
+              <div />
+            )}
+          </div>
+        )}
       </div>
     </>
   );
 }
+
