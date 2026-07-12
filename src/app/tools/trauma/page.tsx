@@ -3,6 +3,14 @@ import DoctorCard from "@/components/DoctorCard";
 import { SafetyNotice } from "@/components/shared/SafetyNotice";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Weight-Bear Guide (Panduan Pasca Trauma) — dr. Prahesta Adi Wibowo, Sp.OT",
+    description: "Panduan pembebanan kaki aman bertahap pasca fiksasi internal cedera tulang belakang oleh dr. Prahesta Adi Wibowo, Sp.OT.",
+  };
+}
 
 export default function TraumaPage() {
   return (

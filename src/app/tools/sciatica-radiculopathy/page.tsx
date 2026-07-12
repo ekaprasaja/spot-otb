@@ -3,6 +3,14 @@ import DoctorCard from "@/components/DoctorCard";
 import { SafetyNotice } from "@/components/shared/SafetyNotice";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Sciatica & Radiculopathy Mapper — dr. Prahesta Adi Wibowo, Sp.OT",
+    description: "Skrining mandiri gejala jepitan saraf pinggang menjalar (sciatica) atau saraf leher oleh dr. Prahesta Adi Wibowo, Sp.OT.",
+  };
+}
 
 export default function SciaticaPage() {
   return (

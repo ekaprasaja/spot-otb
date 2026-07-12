@@ -3,6 +3,14 @@ import DoctorCard from "@/components/DoctorCard";
 import { SafetyNotice } from "@/components/shared/SafetyNotice";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Dermatome Mapper — Peta Sensorik Saraf Tulang Belakang",
+    description: "Pemetaan area kebas, kesemutan, atau hilangnya sensasi raba kulit sesuai dermatom saraf spinal oleh dr. Prahesta Adi Wibowo, Sp.OT.",
+  };
+}
 
 export default function DermatomePage() {
   return (

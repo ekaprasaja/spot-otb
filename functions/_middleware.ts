@@ -48,7 +48,15 @@ export const onRequest: PagesFunction = async (context) => {
     }
 
     const pathname = url.pathname;
-    const cleanPath = pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname;
+    let cleanPath = pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname;
+    if (cleanPath.endsWith('/index.html')) {
+      cleanPath = cleanPath.slice(0, -11);
+    } else if (cleanPath.endsWith('.html')) {
+      cleanPath = cleanPath.slice(0, -5);
+    }
+    if (cleanPath === "") {
+      cleanPath = "/";
+    }
     
     // Dynamic metadata based on page paths
     if (cleanPath === '/tools') {

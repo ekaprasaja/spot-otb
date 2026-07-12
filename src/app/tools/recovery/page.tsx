@@ -3,6 +3,14 @@ import DoctorCard from "@/components/DoctorCard";
 import { SafetyNotice } from "@/components/shared/SafetyNotice";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "VAS & Neuro-Deficit Diary (Evaluasi Nyeri) — dr. Prahesta Adi Wibowo, Sp.OT",
+    description: "Evaluasi pemulihan harian skala nyeri (VAS) dan jarak berjalan pasca-tindakan injeksi blok saraf oleh dr. Prahesta Adi Wibowo, Sp.OT.",
+  };
+}
 
 export default function RecoveryPage() {
   return (

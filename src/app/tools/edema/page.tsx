@@ -3,6 +3,14 @@ import DoctorCard from "@/components/DoctorCard";
 import { SafetyNotice } from "@/components/shared/SafetyNotice";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Wound & CSF Tracker (Evaluasi Luka Operasi) — dr. Prahesta Adi Wibowo, Sp.OT",
+    description: "Evaluasi perban luka operasi tulang belakang dari rembesan cairan serebrospinal (CSF) oleh dr. Prahesta Adi Wibowo, Sp.OT.",
+  };
+}
 
 export default function EdemaPage() {
   return (

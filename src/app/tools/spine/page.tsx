@@ -3,6 +3,14 @@ import DoctorCard from "@/components/DoctorCard";
 import { SafetyNotice } from "@/components/shared/SafetyNotice";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Spine ROM Checker — Skrining Mobilitas Tulang Belakang",
+    description: "Evaluasi batas aman leher & pinggang pasca-operasi fusi tulang belakang oleh dr. Prahesta Adi Wibowo, Sp.OT.",
+  };
+}
 
 export default function SpinePage() {
   return (

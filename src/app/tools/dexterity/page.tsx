@@ -3,6 +3,14 @@ import DoctorCard from "@/components/DoctorCard";
 import { SafetyNotice } from "@/components/shared/SafetyNotice";
 import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "Dexterity Test — Skrining Ketangkasan Motorik",
+    description: "Uji koordinasi motorik halus jari telunjuk untuk memantau derajat Cervical Myelopathy oleh dr. Prahesta Adi Wibowo, Sp.OT.",
+  };
+}
 
 export default function DexterityPage() {
   return (
