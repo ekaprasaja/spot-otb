@@ -20,6 +20,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  title: "Portal Dokter",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,
