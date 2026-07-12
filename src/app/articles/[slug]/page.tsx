@@ -213,7 +213,7 @@ export default async function ArticleDetailPage(props: PageProps) {
       "name": defaultDoctor.name,
       "logo": {
         "@type": "ImageObject",
-        "url": "https://prahesta.id/images/doctor_profile.webp"
+        "url": "https://prahesta.id/images/prahesta.webp"
       }
     },
     "description": displayDescription

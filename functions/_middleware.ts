@@ -44,9 +44,7 @@ export const onRequest: PagesFunction = async (context) => {
       if (!tenant.seoDescription) {
         description = "Konsultasi dr. Prahesta Adi Wibowo, Sp.OT, spesialis ortopedi tulang belakang di RSUP Soeradji Tirtonegoro Klaten.";
       }
-      if (image.includes("spot-otb.incodepanel.com") || image.includes("incodepanel.com")) {
-        image = "/images/doctor_profile.webp";
-      }
+      image = "/images/prahesta.webp";
     }
 
     const pathname = url.pathname;
