@@ -48,53 +48,72 @@ export const onRequest: PagesFunction = async (context) => {
     }
 
     const pathname = url.pathname;
+    const cleanPath = pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname;
     
     // Dynamic metadata based on page paths
-    if (pathname === '/tools') {
+    if (cleanPath === '/tools') {
       title = isPrahesta 
         ? `Kalkulator Medis & Skrining Mandiri Tulang Belakang — dr. Prahesta Adi Wibowo, Sp.OT`
         : `Kalkulator Medis & Skrining Mandiri — ${cleanDoctorName}`;
       description = isPrahesta
         ? `Gunakan alat kesehatan digital dan kalkulator medis saraf & tulang belakang terpercaya dari dr. Prahesta Adi Wibowo, Sp.OT.`
         : `Gunakan alat kesehatan digital dan kalkulator medis terpercaya dari ${rawDoctorName} untuk pemantauan kesehatan mandiri.`;
-    } else if (pathname === '/tools/sciatica-radiculopathy') {
-      title = `Sciatica & Radiculopathy Mapper — ${cleanDoctorName}`;
+    } else if (cleanPath === '/tools/sciatica-radiculopathy') {
+      title = isPrahesta
+        ? `Sciatica & Radiculopathy Mapper — dr. Prahesta Adi Wibowo, Sp.OT`
+        : `Sciatica & Radiculopathy Mapper — ${cleanDoctorName}`;
       description = `Skrining mandiri gejala jepitan saraf pinggang menjalar (sciatica) atau saraf leher oleh ${rawDoctorName}.`;
-    } else if (pathname === '/tools/dermatome-tracker') {
-      title = `Dermatome Pain Tracker — ${cleanDoctorName}`;
+    } else if (cleanPath === '/tools/dermatome-tracker') {
+      title = isPrahesta
+        ? `Dermatome Mapper — Peta Sensorik Saraf Tulang Belakang`
+        : `Dermatome Pain Tracker — ${cleanDoctorName}`;
       description = `Pemetaan area kebas, kesemutan, atau hilangnya sensasi raba kulit sesuai dermatom saraf spinal oleh ${rawDoctorName}.`;
-    } else if (pathname === '/tools/dexterity') {
-      title = `Dexterity Pulse (Uji Motorik Jari) — ${cleanDoctorName}`;
+    } else if (cleanPath === '/tools/dexterity') {
+      title = isPrahesta
+        ? `Dexterity Test — Skrining Ketangkasan Motorik`
+        : `Dexterity Pulse (Uji Motorik Jari) — ${cleanDoctorName}`;
       description = `Uji koordinasi motorik halus jari telunjuk untuk memantau derajat Cervical Myelopathy oleh ${rawDoctorName}.`;
-    } else if (pathname === '/tools/spine') {
-      title = `Cervical & Lumbar ROM — ${cleanDoctorName}`;
+    } else if (cleanPath === '/tools/spine') {
+      title = isPrahesta
+        ? `Spine ROM Checker — Skrining Mobilitas Tulang Belakang`
+        : `Cervical & Lumbar ROM — ${cleanDoctorName}`;
       description = `Evaluasi batas aman leher & pinggang pasca-operasi fusi tulang belakang oleh ${rawDoctorName}.`;
-    } else if (pathname === '/tools/trauma') {
-      title = `Weight-Bear Guide (Panduan Pasca Trauma) — ${cleanDoctorName}`;
+    } else if (cleanPath === '/tools/trauma') {
+      title = isPrahesta
+        ? `Weight-Bear Guide (Panduan Pasca Trauma) — dr. Prahesta Adi Wibowo, Sp.OT`
+        : `Weight-Bear Guide (Panduan Pasca Trauma) — ${cleanDoctorName}`;
       description = `Panduan pembebanan kaki aman bertahap pasca fiksasi internal cedera tulang belakang oleh ${rawDoctorName}.`;
-    } else if (pathname === '/tools/edema') {
-      title = `Wound & CSF Tracker (Evaluasi Luka Operasi) — ${cleanDoctorName}`;
+    } else if (cleanPath === '/tools/edema') {
+      title = isPrahesta
+        ? `Wound & CSF Tracker (Evaluasi Luka Operasi) — dr. Prahesta Adi Wibowo, Sp.OT`
+        : `Wound & CSF Tracker (Evaluasi Luka Operasi) — ${cleanDoctorName}`;
       description = `Evaluasi perban luka operasi tulang belakang dari rembesan cairan serebrospinal (CSF) oleh ${rawDoctorName}.`;
-    } else if (pathname === '/tools/recovery') {
-      title = `VAS & Neuro-Deficit Diary (Evaluasi Nyeri) — ${cleanDoctorName}`;
+    } else if (cleanPath === '/tools/recovery') {
+      title = isPrahesta
+        ? `VAS & Neuro-Deficit Diary (Evaluasi Nyeri) — dr. Prahesta Adi Wibowo, Sp.OT`
+        : `VAS & Neuro-Deficit Diary (Evaluasi Nyeri) — ${cleanDoctorName}`;
       description = `Evaluasi pemulihan harian skala nyeri (VAS) dan jarak berjalan pasca-tindakan injeksi blok saraf oleh ${rawDoctorName}.`;
-    } else if (pathname === '/articles') {
+    } else if (cleanPath === '/articles') {
       title = isPrahesta
         ? `Artikel & Edukasi Kesehatan Tulang Belakang Klaten — dr. Prahesta Adi Wibowo, Sp.OT`
         : `Artikel & Edukasi Kesehatan — ${cleanDoctorName}`;
       description = isPrahesta
         ? `Kumpulan informasi medis, tips kesehatan, dan edukasi tulang belakang terpercaya yang ditulis oleh dr. Prahesta Adi Wibowo, Sp.OT.`
         : `Kumpulan informasi medis, tips kesehatan, dan edukasi terpercaya yang ditulis oleh ${rawDoctorName}.`;
-    } else if (pathname === '/dashboard') {
+    } else if (cleanPath === '/dashboard') {
       title = `Dashboard Monitoring Pasien — ${cleanDoctorName}`;
       description = `Layanan asisten monitoring pemulihan pasca tindakan medis secara digital oleh ${rawDoctorName}.`;
-    } else if (pathname === '/privacy') {
-      title = `Kebijakan Privasi — ${cleanDoctorName}`;
+    } else if (cleanPath === '/privacy') {
+      title = isPrahesta
+        ? `Kebijakan Privasi — Portal Dokter dr. Prahesta Adi Wibowo, Sp.OT`
+        : `Kebijakan Privasi — Portal Dokter ${rawDoctorName}`;
       description = `Kebijakan privasi portal digital dan asisten monitoring kesehatan ${rawDoctorName}.`;
-    } else if (pathname === '/terms') {
-      title = `Syarat & Ketentuan Layanan — ${cleanDoctorName}`;
+    } else if (cleanPath === '/terms') {
+      title = isPrahesta
+        ? `Syarat & Ketentuan — Portal Dokter dr. Prahesta Adi Wibowo, Sp.OT`
+        : `Syarat & Ketentuan — Portal Dokter ${rawDoctorName}`;
       description = `Syarat dan ketentuan penggunaan layanan portal digital ${rawDoctorName}.`;
-    } else if (pathname === '/articles/detail') {
+    } else if (cleanPath === '/articles/detail') {
       const articleId = url.searchParams.get('id');
       if (articleId) {
         try {
@@ -117,13 +136,13 @@ export const onRequest: PagesFunction = async (context) => {
       }
     }
 
-    const isArticleDetail = pathname.startsWith('/articles/') && pathname !== '/articles';
+    const isArticleDetail = cleanPath.startsWith('/articles/') && cleanPath !== '/articles';
 
     // Rewrite the HTML using Cloudflare's edge HTMLRewriter
     const transformedResponse = new HTMLRewriter()
       .on("h1", {
         element(el) {
-          if (pathname === "/" && (tenant.seo_h1 || tenant.seoH1)) {
+          if (cleanPath === "/" && (tenant.seo_h1 || tenant.seoH1)) {
             el.setInnerContent(tenant.seo_h1 || tenant.seoH1);
           }
         }
