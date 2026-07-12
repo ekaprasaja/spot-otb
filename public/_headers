@@ -1,6 +1,11 @@
 /chat-widget.js
   Cross-Origin-Resource-Policy: cross-origin
 
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+/workbox-*.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
 /*
   Cross-Origin-Embedder-Policy: credentialless
   Cross-Origin-Opener-Policy: same-origin
