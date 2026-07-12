@@ -14,80 +14,7 @@ import {
 import Link from "next/link";
 import { useDoctorConfig } from "@/context/DoctorConfigContext";
 
-const fallbackArticles = [
-  {
-    id: 1,
-    title: "Deteksi Dini Osteosarcoma: Waspadai Nyeri Tulang pada Anak dan Remaja",
-    excerpt: "Osteosarcoma adalah jenis kanker tulang primer ganas yang paling sering menyerang anak-anak dan remaja di usia pertumbuhan aktif (10-20 tahun). Lokasi yang paling sering terkena adalah area sekitar lutut.",
-    category: "Kanker Tulang",
-    date: "12 Juni 2026",
-    readTime: "8 menit",
-    author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/articles/osteosarcoma.png",
-    color: "from-blue-500/20 to-transparent",
-    status: "Draf"
-  },
-  {
-    id: 2,
-    title: "Sarkoma Jaringan Lunak: Mengapa Jalur Biopsi yang Benar Sangat Menentukan",
-    excerpt: "Sarkoma jaringan lunak adalah kanker langka yang tumbuh di jaringan penyokong tubuh. Salah satu tantangan terbesar dalam penanganan tumor ini adalah melakukan biopsi awal dengan teknik dan jalur yang benar.",
-    category: "Tumor Jaringan Lunak",
-    date: "10 Juni 2026",
-    readTime: "10 menit",
-    author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/articles/soft_tissue_sarcoma.png",
-    color: "from-emerald-500/20 to-transparent",
-    status: "Draf"
-  },
-  {
-    id: 3,
-    title: "Limb Salvage Surgery: Menyelamatkan Ekstremitas Pasien Kanker Tulang Tanpa Amputasi",
-    excerpt: "Amputasi bukan lagi satu-satunya jalan keluar bagi penderita kanker tulang ganas. Dengan kemajuan teknik bedah onkologi ortopedi, kini lebih dari 90% pasien kanker tulang dapat menjalani prosedur Limb Salvage.",
-    category: "Teknologi Bedah",
-    date: "8 Juni 2026",
-    readTime: "9 menit",
-    author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/articles/limb_salvage.png",
-    color: "from-rose-500/20 to-transparent",
-    status: "Draf"
-  },
-  {
-    id: 4,
-    title: "Metastasis Tulang: Strategi Paliatif & Paliasi Nyeri untuk Mempertahankan Kualitas Hidup",
-    excerpt: "Metastasis tulang terjadi ketika sel kanker dari organ lain menyebar ke tulang. Pelajari peran bedah onkologi ortopedi paliatif untuk meredakan nyeri dan menstabilkan struktur tulang.",
-    category: "Kanker Tulang",
-    date: "6 Juni 2026",
-    readTime: "7 menit",
-    author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/articles/osteosarcoma.png",
-    color: "from-amber-500/20 to-transparent",
-    status: "Draf"
-  },
-  {
-    id: 5,
-    title: "Penanganan Cedera Tulang Kompleks & Fraktur Patologis Akibat Tumor",
-    excerpt: "Fraktur patologis adalah patah tulang yang terjadi pada tulang yang telah mengalami kelemahan akibat tumor. Pahami penanganan fiksasi internal modern menggunakan pen khusus dan semen tulang.",
-    category: "Cedera Tulang",
-    date: "4 Juni 2026",
-    readTime: "11 menit",
-    author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/articles/limb_salvage.png",
-    color: "from-purple-500/20 to-transparent",
-    status: "Draf"
-  },
-  {
-    id: 6,
-    title: "Mengenal Benigna Bone Tumor: Jenis-jenis Tumor Tulang Jinak yang Sering Ditemui",
-    excerpt: "Tidak semua benjolan pada tulang bersifat ganas. Sebagian besar tumor tulang yang terdeteksi sebenarnya jinak, namun tetap memerlukan penanganan tepat agar tidak merusak struktur tulang lokal.",
-    category: "Tumor Jaringan Lunak",
-    date: "2 Juni 2026",
-    readTime: "9 menit",
-    author: "dr. Prahesta Adi Wibowo, Sp.OT",
-    image: "/images/articles/soft_tissue_sarcoma.png",
-    color: "from-blue-500/20 to-transparent",
-    status: "Draf"
-  }
-];
+
 
 function getFallbackImage(slug: string): string {
   const s = slug.toLowerCase();
@@ -109,8 +36,8 @@ export default function ArticlesPage() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   
-  const [articlesList, setArticlesList] = useState<any[]>(fallbackArticles);
-  const [categories, setCategories] = useState<string[]>(["Semua", "Kanker Tulang", "Tumor Jaringan Lunak", "Teknologi Bedah", "Cedera Tulang"]);
+  const [articlesList, setArticlesList] = useState<any[]>([]);
+  const [categories, setCategories] = useState<string[]>(["Semua", "EDUKASI"]);
   const [activeCategory, setActiveCategory] = useState("Semua");
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(false);
