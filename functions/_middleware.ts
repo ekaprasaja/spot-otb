@@ -137,6 +137,7 @@ export const onRequest: PagesFunction = async (context) => {
           
           // Append SEO Meta Tags
           el.append(`<meta name="description" content="${description}" />`, { html: true });
+          el.append(`<meta name="thumbnail" content="${imgUrl}" />`, { html: true });
           el.append(`<meta property="og:title" content="${title}" />`, { html: true });
           el.append(`<meta property="og:description" content="${description}" />`, { html: true });
           el.append(`<meta property="og:image" content="${imgUrl}" />`, { html: true });
