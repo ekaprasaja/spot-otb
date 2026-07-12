@@ -18,7 +18,7 @@ export default function TopBar() {
           <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
             <Activity className="w-5 h-5 text-primary" />
           </div>
-          <motion.h1 
+          <motion.span 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-lg font-inter font-bold text-white tracking-tight flex"
@@ -37,7 +37,7 @@ export default function TopBar() {
                 {char === " " ? "\u00A0" : char}
               </motion.span>
             ))}
-          </motion.h1>
+          </motion.span>
         </Link>
 
         <div className="relative w-full max-w-md group">
