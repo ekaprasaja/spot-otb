@@ -338,9 +338,9 @@ export default function InclinometerAI() {
             <Scan className="text-white w-7 h-7" />
           </div>
           <div>
-            <h2 className="text-2xl md:text-3xl font-outfit font-bold text-white flex items-center gap-2.5">
+            <h1 className="text-2xl md:text-3xl font-outfit font-bold text-white flex items-center gap-2.5">
               Cervical & Lumbar ROM <span className="text-[9px] bg-emerald-500/20 px-2.5 py-1 rounded-full text-emerald-400 font-black tracking-widest uppercase">Spine</span>
-            </h2>
+            </h1>
             <p className="text-foreground/50 text-xs md:text-sm">Pemantau Range of Motion Tulang Belakang Pasca-Operasi Besar</p>
           </div>
         </div>

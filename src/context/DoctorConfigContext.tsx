@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export interface CVItem {
   year: string;
@@ -29,11 +30,14 @@ export interface DoctorConfig {
   heroTitle?: string;
   heroDescription?: string;
   seoH1?: string;
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 const DoctorConfigContext = createContext<DoctorConfig | null>(null);
 
 export function DoctorConfigProvider({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const [config, setConfig] = useState<DoctorConfig | null>({
     id: "prahesta-id",
     doctorId: "prahesta-id",
@@ -54,6 +58,8 @@ export function DoctorConfigProvider({ children }: { children: React.ReactNode }
     heroTitle: "",
     heroDescription: "",
     seoH1: "",
+    seoTitle: "",
+    seoDescription: "",
   });
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -98,6 +104,8 @@ export function DoctorConfigProvider({ children }: { children: React.ReactNode }
           heroTitle: rawData.heroTitle || rawData.hero_title || "",
           heroDescription: rawData.heroDescription || rawData.hero_description || "",
           seoH1: rawData.seoH1 || rawData.seo_h1 || "",
+          seoTitle: rawData.seoTitle || rawData.seo_title || "",
+          seoDescription: rawData.seoDescription || rawData.seo_description || "",
         };
 
         // 1. Inject Dynamic CSS accent color
@@ -153,6 +161,8 @@ export function DoctorConfigProvider({ children }: { children: React.ReactNode }
           heroTitle: "",
           heroDescription: "",
           seoH1: "",
+          seoTitle: "",
+          seoDescription: "",
         });
       } finally {
         setLoading(false);
@@ -163,6 +173,77 @@ export function DoctorConfigProvider({ children }: { children: React.ReactNode }
   }, []);
 
 
+
+  useEffect(() => {
+    if (!config) return;
+    const isPrahesta = window.location.hostname.includes('prahesta.id') || config.id?.includes('prahesta');
+    const isWisnu = window.location.hostname.includes('wisnubaskoro.id') || config.id?.includes('wisnu');
+    const cleanDoctorName = config.name ? config.name.split(",")[0].trim() : "Dokter Spesialis";
+    const rawDoctorName = config.name || "dr. Prahesta Adi Wibowo, Sp.OT";
+    
+    let title = "";
+    if (pathname === '/') {
+      title = config.seoTitle || (isPrahesta 
+        ? "Dokter Tulang Belakang Klaten | dr. Prahesta Adi Wibowo, Sp.OT" 
+        : isWisnu 
+          ? "Dokter Tulang Belakang Klaten | dr. Wisnu Baskoro, Sp.BS" 
+          : `Portal Dokter — ${rawDoctorName}`);
+    } else if (pathname === '/tools') {
+      title = isPrahesta 
+        ? `Kalkulator Medis & Skrining Mandiri Tulang Belakang — dr. Prahesta Adi Wibowo, Sp.OT`
+        : `Kalkulator Medis & Skrining Mandiri — ${cleanDoctorName}`;
+    } else if (pathname === '/tools/sciatica-radiculopathy') {
+      title = isPrahesta
+        ? `Sciatica & Radiculopathy Mapper — dr. Prahesta Adi Wibowo, Sp.OT`
+        : `Sciatica & Radiculopathy Mapper — ${cleanDoctorName}`;
+    } else if (pathname === '/tools/dermatome-tracker') {
+      title = isPrahesta
+        ? `Dermatome Mapper — Peta Sensorik Saraf Tulang Belakang`
+        : `Dermatome Pain Tracker — ${cleanDoctorName}`;
+    } else if (pathname === '/tools/dexterity') {
+      title = isPrahesta
+        ? `Dexterity Test — Skrining Ketangkasan Motorik`
+        : `Dexterity Pulse (Uji Motorik Jari) — ${cleanDoctorName}`;
+    } else if (pathname === '/tools/spine') {
+      title = isPrahesta
+        ? `Spine ROM Checker — Skrining Mobilitas Tulang Belakang`
+        : `Cervical & Lumbar ROM — ${cleanDoctorName}`;
+    } else if (pathname === '/tools/trauma') {
+      title = isPrahesta
+        ? `Weight-Bear Guide (Panduan Pasca Trauma) — dr. Prahesta Adi Wibowo, Sp.OT`
+        : `Weight-Bear Guide (Panduan Pasca Trauma) — ${cleanDoctorName}`;
+    } else if (pathname === '/tools/edema') {
+      title = isPrahesta
+        ? `Wound & CSF Tracker (Evaluasi Luka Operasi) — dr. Prahesta Adi Wibowo, Sp.OT`
+        : `Wound & CSF Tracker (Evaluasi Luka Operasi) — ${cleanDoctorName}`;
+    } else if (pathname === '/tools/recovery') {
+      title = isPrahesta
+        ? `VAS & Neuro-Deficit Diary (Evaluasi Nyeri) — dr. Prahesta Adi Wibowo, Sp.OT`
+        : `VAS & Neuro-Deficit Diary (Evaluasi Nyeri) — ${cleanDoctorName}`;
+    } else if (pathname === '/articles') {
+      title = isPrahesta
+        ? `Artikel & Edukasi Kesehatan Tulang Belakang Klaten — dr. Prahesta Adi Wibowo, Sp.OT`
+        : `Artikel & Edukasi Kesehatan — ${cleanDoctorName}`;
+    } else if (pathname === '/dashboard') {
+      title = `Dashboard Monitoring Pasien — ${cleanDoctorName}`;
+    } else if (pathname === '/privacy') {
+      title = isPrahesta
+        ? `Kebijakan Privasi — Portal Dokter dr. Prahesta Adi Wibowo, Sp.OT`
+        : isWisnu 
+          ? `Kebijakan Privasi — Portal Dokter dr. Wisnu Baskoro, Sp.BS`
+          : `Kebijakan Privasi — Portal Dokter ${rawDoctorName}`;
+    } else if (pathname === '/terms') {
+      title = isPrahesta
+        ? `Syarat & Ketentuan — Portal Dokter dr. Prahesta Adi Wibowo, Sp.OT`
+        : isWisnu
+          ? `Syarat & Ketentuan — Portal Dokter dr. Wisnu Baskoro, Sp.BS`
+          : `Syarat & Ketentuan Layanan — ${cleanDoctorName}`;
+    }
+    
+    if (title && !pathname.startsWith('/articles/')) {
+      document.title = title;
+    }
+  }, [pathname, config]);
 
   if (notFound) {
     return (

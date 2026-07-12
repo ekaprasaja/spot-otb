@@ -218,9 +218,9 @@ export default function EdemaMonitor() {
             <ActivitySquare className="text-white w-7 h-7" />
           </div>
           <div>
-            <h2 className="text-2xl md:text-3xl font-outfit font-bold text-white flex items-center gap-2.5">
+            <h1 className="text-2xl md:text-3xl font-outfit font-bold text-white flex items-center gap-2.5">
               Wound & CSF Tracker <span className="text-[9px] bg-indigo-500/20 px-2.5 py-1 rounded-full text-indigo-400 font-black tracking-widest uppercase">Spine</span>
-            </h2>
+            </h1>
             <p className="text-foreground/50 text-xs md:text-sm">Pemantau Luka Operasi Tulang Belakang & Rembesan Cairan Spinal</p>
           </div>
         </div>

@@ -226,7 +226,7 @@ export default function WeightBearGuide() {
             <ActivitySquare className="text-white w-7 h-7" />
           </div>
           <div>
-            <h2 className="text-2xl md:text-3xl font-outfit font-bold text-white tracking-tight">Weight-Bear Guide</h2>
+            <h1 className="text-2xl md:text-3xl font-outfit font-bold text-white tracking-tight">Weight-Bear Guide</h1>
             <p className="text-cyan-400/80 text-xs font-black uppercase tracking-[0.2em] mt-0.5">Partial Weight Bearing (PWB) Protocol</p>
           </div>
         </div>
