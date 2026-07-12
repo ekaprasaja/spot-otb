@@ -20,8 +20,6 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Portal Dokter Spesialis",
-  description: "Portal Digital Dokter Spesialis & Asisten AI Monitoring Mandiri",
   manifest: "/manifest.json",
   appleWebApp: {
     capable: true,

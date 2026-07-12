@@ -241,7 +241,10 @@ export function DoctorConfigProvider({ children }: { children: React.ReactNode }
     }
     
     if (title && !pathname.startsWith('/articles/')) {
-      document.title = title;
+      const timer = setTimeout(() => {
+        document.title = title;
+      }, 0);
+      return () => clearTimeout(timer);
     }
   }, [pathname, config]);
 
