@@ -63,13 +63,13 @@ export default function MobileHeader() {
               >
                 <ChevronLeft className="w-5 h-5 text-white/60" />
               </Link>
-              <motion.h1 
+              <motion.h2 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="text-[16px] font-inter font-bold text-white tracking-tight"
               >
                 {doctorConfig.clinic || "SpineCare AI"}
-              </motion.h1>
+              </motion.h2>
             </div>
 
             <div className="flex items-center gap-2">

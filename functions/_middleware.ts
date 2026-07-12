@@ -50,13 +50,34 @@ export const onRequest: PagesFunction = async (context) => {
     const pathname = url.pathname;
     
     // Dynamic metadata based on page paths
-    if (pathname === '/tools' || pathname.startsWith('/tools/')) {
+    if (pathname === '/tools') {
       title = isPrahesta 
         ? `Kalkulator Medis & Skrining Mandiri Tulang Belakang — dr. Prahesta Adi Wibowo, Sp.OT`
         : `Kalkulator Medis & Skrining Mandiri — ${cleanDoctorName}`;
       description = isPrahesta
         ? `Gunakan alat kesehatan digital dan kalkulator medis saraf & tulang belakang terpercaya dari dr. Prahesta Adi Wibowo, Sp.OT.`
         : `Gunakan alat kesehatan digital dan kalkulator medis terpercaya dari ${rawDoctorName} untuk pemantauan kesehatan mandiri.`;
+    } else if (pathname === '/tools/sciatica-radiculopathy') {
+      title = `Sciatica & Radiculopathy Mapper — ${cleanDoctorName}`;
+      description = `Skrining mandiri gejala jepitan saraf pinggang menjalar (sciatica) atau saraf leher oleh ${rawDoctorName}.`;
+    } else if (pathname === '/tools/dermatome-tracker') {
+      title = `Dermatome Pain Tracker — ${cleanDoctorName}`;
+      description = `Pemetaan area kebas, kesemutan, atau hilangnya sensasi raba kulit sesuai dermatom saraf spinal oleh ${rawDoctorName}.`;
+    } else if (pathname === '/tools/dexterity') {
+      title = `Dexterity Pulse (Uji Motorik Jari) — ${cleanDoctorName}`;
+      description = `Uji koordinasi motorik halus jari telunjuk untuk memantau derajat Cervical Myelopathy oleh ${rawDoctorName}.`;
+    } else if (pathname === '/tools/spine') {
+      title = `Cervical & Lumbar ROM — ${cleanDoctorName}`;
+      description = `Evaluasi batas aman leher & pinggang pasca-operasi fusi tulang belakang oleh ${rawDoctorName}.`;
+    } else if (pathname === '/tools/trauma') {
+      title = `Weight-Bear Guide (Panduan Pasca Trauma) — ${cleanDoctorName}`;
+      description = `Panduan pembebanan kaki aman bertahap pasca fiksasi internal cedera tulang belakang oleh ${rawDoctorName}.`;
+    } else if (pathname === '/tools/edema') {
+      title = `Wound & CSF Tracker (Evaluasi Luka Operasi) — ${cleanDoctorName}`;
+      description = `Evaluasi perban luka operasi tulang belakang dari rembesan cairan serebrospinal (CSF) oleh ${rawDoctorName}.`;
+    } else if (pathname === '/tools/recovery') {
+      title = `VAS & Neuro-Deficit Diary (Evaluasi Nyeri) — ${cleanDoctorName}`;
+      description = `Evaluasi pemulihan harian skala nyeri (VAS) dan jarak berjalan pasca-tindakan injeksi blok saraf oleh ${rawDoctorName}.`;
     } else if (pathname === '/articles') {
       title = isPrahesta
         ? `Artikel & Edukasi Kesehatan Tulang Belakang Klaten — dr. Prahesta Adi Wibowo, Sp.OT`
@@ -96,6 +117,8 @@ export const onRequest: PagesFunction = async (context) => {
       }
     }
 
+    const isArticleDetail = pathname.startsWith('/articles/') && pathname !== '/articles';
+
     // Rewrite the HTML using Cloudflare's edge HTMLRewriter
     const transformedResponse = new HTMLRewriter()
       .on("h1", {
@@ -107,22 +130,22 @@ export const onRequest: PagesFunction = async (context) => {
       })
       .on("title", {
         element(el) {
-          el.setInnerContent(title);
+          if (!isArticleDetail) el.setInnerContent(title);
         }
       })
       .on("meta[name='description']", {
         element(el) {
-          el.remove();
+          if (!isArticleDetail) el.remove();
         }
       })
       .on("meta[property^='og:']", {
         element(el) {
-          el.remove();
+          if (!isArticleDetail) el.remove();
         }
       })
       .on("meta[name^='twitter:']", {
         element(el) {
-          el.remove();
+          if (!isArticleDetail) el.remove();
         }
       })
       .on("head", {
@@ -135,21 +158,23 @@ export const onRequest: PagesFunction = async (context) => {
           // Append hreflang
           el.append(`<link rel="alternate" hreflang="id-ID" href="https://${hostname}${url.pathname}" />`, { html: true });
           
-          // Append SEO Meta Tags
-          el.append(`<meta name="description" content="${description}" />`, { html: true });
-          el.append(`<meta name="thumbnail" content="${imgUrl}" />`, { html: true });
-          el.append(`<meta property="og:title" content="${title}" />`, { html: true });
-          el.append(`<meta property="og:description" content="${description}" />`, { html: true });
-          el.append(`<meta property="og:image" content="${imgUrl}" />`, { html: true });
-          el.append(`<meta property="og:url" content="${pageUrl}" />`, { html: true });
-          el.append(`<meta property="og:type" content="website" />`, { html: true });
-          el.append(`<meta property="og:locale" content="id_ID" />`, { html: true });
-          el.append(`<meta property="og:site_name" content="${cleanDoctorName}" />`, { html: true });
-          
-          el.append(`<meta name="twitter:card" content="summary_large_image" />`, { html: true });
-          el.append(`<meta name="twitter:title" content="${title}" />`, { html: true });
-          el.append(`<meta name="twitter:description" content="${description}" />`, { html: true });
-          el.append(`<meta name="twitter:image" content="${imgUrl}" />`, { html: true });
+          if (!isArticleDetail) {
+            // Append SEO Meta Tags
+            el.append(`<meta name="description" content="${description}" />`, { html: true });
+            el.append(`<meta name="thumbnail" content="${imgUrl}" />`, { html: true });
+            el.append(`<meta property="og:title" content="${title}" />`, { html: true });
+            el.append(`<meta property="og:description" content="${description}" />`, { html: true });
+            el.append(`<meta property="og:image" content="${imgUrl}" />`, { html: true });
+            el.append(`<meta property="og:url" content="${pageUrl}" />`, { html: true });
+            el.append(`<meta property="og:type" content="website" />`, { html: true });
+            el.append(`<meta property="og:locale" content="id_ID" />`, { html: true });
+            el.append(`<meta property="og:site_name" content="${cleanDoctorName}" />`, { html: true });
+            
+            el.append(`<meta name="twitter:card" content="summary_large_image" />`, { html: true });
+            el.append(`<meta name="twitter:title" content="${title}" />`, { html: true });
+            el.append(`<meta name="twitter:description" content="${description}" />`, { html: true });
+            el.append(`<meta name="twitter:image" content="${imgUrl}" />`, { html: true });
+          }
 
           // BreadcrumbList Schema
           const breadcrumbs: any = {

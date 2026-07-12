@@ -32,7 +32,7 @@ export default function Sidebar() {
             <Shield className="text-white w-6 h-6" />
           </div>
           <div>
-            <h1 className="font-outfit font-bold text-xl tracking-tight text-white">{doctorConfig.clinic || (doctorConfig.name ? (doctorConfig.name.split(",")[0] + " Care") : "Portal Kesehatan")}</h1>
+            <h2 className="font-outfit font-bold text-xl tracking-tight text-white">{doctorConfig.clinic || (doctorConfig.name ? (doctorConfig.name.split(",")[0] + " Care") : "Portal Kesehatan")}</h2>
             <p className="text-[10px] font-bold text-primary uppercase tracking-widest leading-none">
               {doctorConfig.whitelabelSub || (doctorConfig.whitelabelType === "spog" ? "Obstetrics & Gynecology" : "Spine & Pain Intervention")}
             </p>

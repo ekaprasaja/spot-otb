@@ -38,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="id" className={`${inter.variable} ${outfit.variable} h-full antialiased`}>
       <head>
+        <meta charSet="utf-8" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
